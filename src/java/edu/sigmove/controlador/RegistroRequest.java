@@ -8,7 +8,6 @@ package edu.sigmove.controlador;
 import edu.sigmove.entity.Usuario;
 import edu.sigmove.facade.UsuarioFacadeLocal;
 import java.io.Serializable;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;

@@ -9,6 +9,7 @@ import edu.sigmove.entity.Usuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,15 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         super(Usuario.class);
     }
     
+    @Override
+    public Usuario loginUsuario(String usuarioIn , String contraseñaIn){
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuario AND u.contraseña = :contraseñaIn");
+            q.setParameter("usuario",usuarioIn );
+            q.setParameter("contraseñaIn",contraseñaIn );
+            return (Usuario) q.getSingleResult();            
+        } catch (Exception e) {
+        return  new Usuario();
+        }
+    }
 }

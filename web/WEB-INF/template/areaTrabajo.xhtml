@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition >
+        <!-- **********************************************************************************************************************************************************
+         MAIN CONTENT
+         *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href="#">
+                                <em class="fa fa-home"></em>
+                            </a></li>
+                        <li class="active">Inicio</li>
+                    </ol>
+                </div><!--/.row-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Ultimos Movimientos</h1>
+                    </div>
+                </div><!--/.row-->
+                <div class="panel panel-container">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="panel panel-teal panel-widget border-right">
+                                <div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+                                    <div class="large">120</div>
+                                    <div class="text-muted">Compras realizadas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="panel panel-blue panel-widget border-right">
+                                <div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
+                                    <div class="large">250</div>
+                                    <div class="text-muted">Solicitudes realizadas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="panel panel-orange panel-widget border-right">
+                                <div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+                                    <div class="large">24</div>
+                                    <div class="text-muted">Usuarios nuevos registrados</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                            <div class="panel panel-red panel-widget ">
+                                <div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
+                                    <div class="large">25.2k</div>
+                                    <div class="text-muted">Vistas en la pagina</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.row-->
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Trafico de uso en la pagina
+                                <ul class="pull-right panel-settings panel-button-tab-right">
+                                    <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <em class="fa fa-cogs"></em>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <ul class="dropdown-settings">
+                                                    <li><a href="charts.html">
+                                                            <em class="fa fa-cog"></em> Ir a reportes
+                                                        </a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+                            <div class="panel-body">
+                                <div class="canvas-wrapper">
+                                    <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body easypiechart-panel">
+                                <h4>Respuesta a solicitudes</h4>
+                                <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body easypiechart-panel">
+                                <h4>Compras realizadas</h4>
+                                <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body easypiechart-panel">
+                                <h4>Usuarios nuevos</h4>
+                                <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body easypiechart-panel">
+                                <h4>Vistas</h4>
+                                <div class="easypiechart" id="easypiechart-red" data-percent="99" ><span class="percent">99%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default chat">
+                            <div class="panel-heading">
+                                Mensajes de clientes
+                                <ul class="pull-right panel-settings panel-button-tab-right">
+                                    <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <em class="fa fa-cogs"></em>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <ul class="dropdown-settings">
+                                                    <li><a href="charts.html">
+                                                            <em class="fa fa-cog"></em> Ir a reportes
+                                                        </a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li class="left clearfix"><span class="chat-img pull-left">
+                                            <img src="../resources/img.lum/usuario1.png" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header"><strong class="primary-font">Juliana Sanchez</strong> <small class="text-muted">Hace 32 minutos</small></div>
+                                            <p>Quiero felicitarlos por tener un excelente sitio para mirar todo lo relacionado con ropa y moda.</p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix"><span class="chat-img pull-right">
+                                            <img src="../resources/img.lum/usuario2.png" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header"><strong class="pull-left primary-font">Gabriel diaz</strong> <small class="text-muted">Hace 6 minutos</small></div>
+                                            <p>Me siento comodo navegando por su pagina, sugiero que puedan añadir muchas mas cosas referente a tipos de ropa.</p>
+                                        </div>
+                                    </li>
+                                    <li class="left clearfix"><span class="chat-img pull-left">
+                                            <img src="../resources/img.lum/usuario3.png" alt="User Avatar" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header"><strong class="primary-font">Zaida Ojeda</strong> <small class="text-muted">Hace 10 minutos</small></div>
+                                            <p>Me encanta mucho el tipo de ropa que muestran quisiera que se comuniquen conmigo al número 3123549781 para saber mas de su tienda.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <input id="btn-input" type="text" class="form-control input-md" placeholder="Escribe una respuesta aqui..." /><span class="input-group-btn">
+                                        <button class="btn btn-primary btn-md" id="btn-chat">Enviar</button>
+                                    </span></div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Lista de prendas añadidas
+                                <ul class="pull-right panel-settings panel-button-tab-right">
+                                    <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <em class="fa fa-cogs"></em>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <ul class="dropdown-settings">
+                                                    <li><a href="charts.html">
+                                                            <em class="fa fa-cog"></em> Ir a reportes
+                                                        </a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+                            <div class="panel-body">
+                                <ul class="todo-list">
+                                    <li class="todo-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-1" />
+                                            <label for="checkbox-1">Vestido corte recto amarillo</label>
+                                        </div>
+                                        <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                <em class="fa fa-trash"></em>
+                                            </a></div>
+                                    </li>
+                                    <li class="todo-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-2" />
+                                            <label for="checkbox-2">Leggins blanco</label>
+                                        </div>
+                                        <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                <em class="fa fa-trash"></em>
+                                            </a></div>
+                                    </li>
+                                    <li class="todo-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-3" />
+                                            <label for="checkbox-3">Chaqueta cuero cafe</label>
+                                        </div>
+                                        <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                <em class="fa fa-trash"></em>
+                                            </a></div>
+                                    </li>
+                                    <li class="todo-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-4" />
+                                            <label for="checkbox-4">Camisa polo roja</label>
+                                        </div>
+                                        <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                <em class="fa fa-trash"></em>
+                                            </a></div>
+                                    </li>
+                                    <li class="todo-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-5" />
+                                            <label for="checkbox-5">Short negro</label>
+                                        </div>
+                                        <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                <em class="fa fa-trash"></em>
+                                            </a></div>
+                                    </li>
+                                    <li class="todo-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-6" />
+                                            <label for="checkbox-6">Sudadera gris</label>
+                                        </div>
+                                        <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                <em class="fa fa-trash"></em>
+                                            </a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <input id="btn-input" type="text" class="form-control input-md" placeholder="Añadir nueva prenda" /><span class="input-group-btn">
+                                        <button class="btn btn-primary btn-md" id="btn-todo">Añadir</button>
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div><!--/.col-->
+
+
+                    <div class="col-md-6">
+                        <div class="panel panel-default ">
+                            <div class="panel-heading">
+                                Recordatorios
+                                <ul class="pull-right panel-settings panel-button-tab-right">
+                                    <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <em class="fa fa-cogs"></em>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <ul class="dropdown-settings">
+                                                    <li><a href="#">
+                                                            <em class="fa fa-cog"></em> Ir a inventario
+                                                        </a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">
+                                                            <em class="fa fa-cog"></em> Ir a ventas
+                                                        </a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">
+                                                            <em class="fa fa-cog"></em> Ir a compras
+                                                        </a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">
+                                                            <em class="fa fa-cog"></em> Ir a fidelización
+                                                        </a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+                            <div class="panel-body timeline-container">
+                                <ul class="timeline">
+                                    <li>
+                                        <div class="timeline-badge"><em class="glyphicon glyphicon-warning-sign"></em></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">¡Alerta de inventario!</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>La categoria de camisas se esta agotando, se recomienda tomar acciones.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="timeline-badge primary"><em class="glyphicon glyphicon-plus"></em></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">¡Alerta de ventas!</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>Se evidencia un aumento importante en las ventas.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="timeline-badge"><em class="glyphicon glyphicon-floppy-saved"></em></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">¡Alerta de fidelización!</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>Un cliente a puesto una nueva solicitud, se recomiendo revisarla.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="timeline-badge"><em class="glyphicon glyphicon-piggy-bank"></em></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">¡Alerta de compras!</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>Hay un nuevo proveedor disponible, por favor verifique la información.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!--/.col-->
+                    
+                </div><!--/.row-->
+
+
+
+
+            </div>
+        </section>
+        <!--main content end-->
+    </ui:composition>
+</html>
+

@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
@@ -15,20 +16,20 @@
                             <div class="col-md-6 login-right">
                                 <h3>INGRESE USUARIO</h3>
                                 <p>Si tiene una cuenta con nosotros, por favor inicia sesión.</p>
-                                <form>
+                                <h:form>
                                     <div>
-                                        <span>Correo<label>*</label></span>
-                                        <input type="text" id="correo"    placeholder="example@hotmail.com"/> 
+                                        <span>Usuario<label>*</label></span>
+                                        <h:inputText  value="#{usuarioSesion.usuarioIn}" class="form-control" html5:placeholder="usuario" html5:autofocus="true" />
                                     </div>
                                     <div>
                                         <span>Contraseña<label>*</label></span>
-                                        <input type="password" id="clave"   placeholder="12345678"/> 
+                                        <h:inputSecret  value="#{usuarioSesion.contraseña}" class="form-control" html5:placeholder="Contraseña"/>
+                                         
                                     </div>
                                     <a class="forgot" href="contactenos.xhtml">¿Olvidaste la contraseña?</a>
-                                    <button  class="btn btn-danger" type="button" style="width: 200px; height: 40px;" onclick="validar();">
-                                        Ingresar
-                                    </button>
-                                </form>
+                                    <h:commandButton action="#{usuarioSesion.inicioSession()}" class="btn btn-danger" value="Iniciar Sesión" style="width: 200px; height: 40px;"  />
+                                    
+                                </h:form>
                             </div>
                             <div class="col-md-6 login-left">
                                 <h3>¿USUARIO NUEVO?</h3>

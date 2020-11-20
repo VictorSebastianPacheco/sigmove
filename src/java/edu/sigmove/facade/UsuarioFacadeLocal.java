@@ -29,5 +29,7 @@ public interface UsuarioFacadeLocal {
     List<Usuario> findRange(int[] range);
 
     int count();
+
+    public Usuario loginUsuario(String usuarioIn, String contraseñaIn);
     
 }
