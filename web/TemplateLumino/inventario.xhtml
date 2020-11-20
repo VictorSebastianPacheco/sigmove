@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<xhtml xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <h:outputStylesheet name="/css/bootstrap.css"/>
+
+        <title>Sigmove - Dashboard</title>
+        <link href="../resources/css.lumino/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css.lumino/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css.lumino/datepicker3.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css.lumino/styles2.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+        <script src="../resources/js2/html5shiv.min.js" type="text/javascript"></script>
+        <script src="../resources/js2/respond.min.js" type="text/javascript"></script>
+
+        <script src="../resources/js2/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../resources/js2/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../resources/js2/bootstrap.js" type="text/javascript"></script>
+        <script src="../resources/js2/chart.min.js" type="text/javascript"></script>
+        <script src="../resources/js2/chart-data.js" type="text/javascript"></script>
+        <script src="../resources/js2/easypiechart.js" type="text/javascript"></script>
+        <script src="../resources/js2/easypiechart-data.js" type="text/javascript"></script>
+        <script src="../resources/js2/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="../resources/js2/custom.js" type="text/javascript"></script>
+
+        <script>
+            window.onload = function () {
+                var chart5 = document.getElementById("radar-chart").getContext("2d");
+                window.myRadarChart = new Chart(chart5).Radar(radarData, {
+                    responsive: true,
+                    scaleLineColor: "rgba(0,0,0,.05)",
+                    angleLineColor: "rgba(0,0,0,.2)"
+                });
+            };
+        </script>
+        <script>
+            function alerta() {
+                alert("Estadisticas actualizadas con exito");
+            }
+        </script>
+        <script>
+            function alerta2() {
+                alert("Envio exitoso");
+            }
+        </script>
+        <script>
+            function alerta3() {
+                alert("Registro exitoso");
+            }
+        </script>
+
+
+    </h:head>
+    <body>
+
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Menu de Navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="#"><span>Sig</span>move</a>
+                    <img src="../resources/img.lum/SIGMOVE.png" style="width: 55px;" height="62px"/>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <em class="fa fa-envelope"></em><span class="label label-danger">2</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="../resources/img.lum/fff.png"/>
+                                        </a>
+                                        <div class="message-body"><small class="pull-right">Hace 3 minutos</small>
+                                            <a href="#"><strong>William Lopez</strong> envio una <strong>felicitación</strong>.</a>
+                                            <small class="text-muted">1:24 pm - 15/06/2020</small></div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="../resources/img.lum/fff.png"/>
+                                        </a>
+                                        <div class="message-body"><small class="pull-right">Hace 4 días</small>
+                                            <a href="#"><strong>Daniela Ramirez</strong> envio una <strong>sugerencia</strong>.</a>
+                                            <small class="text-muted">12:27 pm - 11/06/2020</small></div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="all-button"><a href="#">
+                                            <em class="fa fa-inbox"></em> <strong>Todos los Mensajes</strong>
+                                        </a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <em class="fa fa-bell"></em><span class="label label-info">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li><a href="#">
+                                        <div><em class="fa fa-envelope"></em> 1 Nueva PQR
+                                            <span class="pull-right text-muted small">Hace 6 minutos</span></div>
+                                    </a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">
+                                        <div><em class="fa fa-heart"></em> 12 Nuevas Prendas
+                                            <span class="pull-right text-muted small">Hace 10 minutos</span></div>
+                                    </a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">
+                                        <div><em class="fa fa-user"></em> 5 Nuevos usuarios
+                                            <span class="pull-right text-muted small">Hace 2 minutos</span></div>
+                                    </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+            <div class="profile-sidebar">
+                <div class="profile-userpic">
+                    <img src="../resources/img.lum/usuario4.png" class="img-responsive" alt=""/>
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">Administrador</div>
+                    <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="divider"></div>
+            <form role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscar"/>
+                </div>
+            </form>
+            <ul class="nav menu">
+                <li class=""><a href="inicio.lum.xhtml"><em class="fa fa-dashboard"></em> Inicio</a></li>
+                <li><a href="inicio.lum.xhtml"><em class="fa fa-bar-chart"></em> Reportes</a></li>
+                <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+                        <em class="fa fa-navicon"></em> Fidelización <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-1">
+                        <li><a class="" href="Beneficio.lum.xhtml">
+                                <span class="fa fa-arrow-right"></span> Beneficio
+                            </a></li>
+                        <li><a class="" href="ClientesFidelizados.xhtml">
+                                <span class="fa fa-arrow-right"></span> Clientes Fidelizados
+                            </a></li>
+
+                        <li><a class="" href="ConsultaPQR.xhtml">
+                                <span class="fa fa-arrow-right"></span> Consultar PQR
+                            </a></li>
+                    </ul>
+                </li>
+                <li><a href="elements.html"><em class="fa fa-usd"></em> Compras</a></li>
+                <li><a href="ventas.lum..xhtml"><em class="fa fa-tags"></em> Ventas</a></li>
+                <li class="active"><a href="inventario.xhtml"><em class="fa fa-book"></em> Inventario</a></li>
+                <li><a href="login.xhtml"><em class="fa fa-power-off"></em> Salir</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a href="#">
+                            <em class="fa fa-home"></em>
+                        </a></li>
+                    <li class="active">Inventario</li>
+                </ol>
+            </div><!--/.row-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Inventario</h1>
+                </div>
+            </div><!--/.row-->
+
+            <div class="row">
+                <div class="col-mr-12">
+                    <div class="panel panel-default articles">
+                        <div class="panel-heading">
+                            Órdenes de compra
+                            <ul class="pull-right panel-settings panel-button-tab-right">
+                                <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <em class="fa fa-cogs"></em>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <ul class="dropdown-settings">
+                                                <li><a href="#">
+                                                        <em class="fa fa-cog"></em> Settings 1
+                                                    </a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">
+                                                        <em class="fa fa-cog"></em> Settings 2
+                                                    </a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">
+                                                        <em class="fa fa-cog"></em> Settings 3
+                                                    </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
+                        </div>
+                        <div class="panel-body articles-container">
+                            <div class="article border-bottom">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-md-2 date">
+                                            <div class="large">18</div>
+                                            <div class="text-muted">Junio</div>
+                                        </div>
+
+
+                                        <div class="panel panel-default ">
+                                            <div class="panel-heading">
+                                                Progreso de órdenes de compra
+
+
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <div class="col-md-12 no-padding">
+                                                    <div class="row progress-labels">
+                                                        <div class="col-sm-6">Nuevas</div>
+                                                        <div class="col-sm-6" style="text-align: right;">80%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div data-percentage="0%" style="width: 80%;" class="progress-bar progress-bar-blue" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <div class="row progress-labels">
+                                                        <div class="col-sm-6">En progreso</div>
+                                                        <div class="col-sm-6" style="text-align: right;">60%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div data-percentage="0%" style="width: 60%;" class="progress-bar progress-bar-orange" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <div class="row progress-labels">
+                                                        <div class="col-sm-6">Cerradas</div>
+                                                        <div class="col-sm-6" style="text-align: right;">40%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div data-percentage="0%" style="width: 40%;" class="progress-bar progress-bar-teal" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <div class="row progress-labels">
+                                                        <div class="col-sm-6">Mercancía devuelta</div>
+                                                        <div class="col-sm-6" style="text-align: right;">5%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div data-percentage="0%" style="width: 5%;" class="progress-bar progress-bar-red" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h2>Agregados recientemente</h2>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        Nuevos productos
+                                                    </div>
+
+
+                                                    <div class="panel-body">
+                                                        <ul class="todo-list">
+                                                            <li class="todo-list-item">
+                                                                <div class="checkbox">
+
+                                                                    <label for="checkbox-1">Jean Blanco</label>
+                                                                </div>
+                                                                <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                                        <em class=""></em>
+                                                                        <i class="material-icons text-danger">$69.999</i>
+                                                                    </a></div>
+                                                            </li>
+                                                            <li class="todo-list-item">
+                                                                <div class="checkbox">
+
+                                                                    <label for="checkbox-2">Leggins Negros</label>
+                                                                </div>
+                                                                <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                                        <em class=""></em>
+                                                                        <i class="material-icons text-danger">$25.000</i>
+                                                                    </a></div>
+                                                            </li>
+                                                            <li class="todo-list-item">
+                                                                <div class="checkbox">
+
+                                                                    <label for="checkbox-3">Camisa Polo Blanca</label>
+                                                                </div>
+                                                                <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                                        <em class=""></em>
+                                                                        <i class="material-icons text-danger">$25.000</i>
+                                                                    </a></div>
+                                                            </li>
+                                                            <li class="todo-list-item">
+                                                                <div class="checkbox">
+
+                                                                    <label for="checkbox-4">Camiseta Negra</label>
+                                                                </div>
+                                                                <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                                        <em class=""></em>
+                                                                        <i class="material-icons text-danger">$35.999</i>
+                                                                    </a></div>
+                                                            </li>
+                                                            <li class="todo-list-item">
+                                                                <div class="checkbox">
+
+                                                                    <label for="checkbox-5">Camisa Rayas</label>
+                                                                </div>
+                                                                <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                                        <em class=""></em>
+                                                                        <i class="material-icons text-danger">$45.999</i>
+                                                                    </a></div>
+                                                            </li>
+                                                            <li class="todo-list-item">
+                                                                <div class="checkbox">
+
+                                                                    <label for="checkbox-6">Sudadera gris</label>
+                                                                </div>
+                                                                <div class="pull-right action-buttons"><a href="#" class="trash">
+                                                                        <em class=""></em>
+                                                                        <i class="material-icons text-danger">$105.999</i>
+                                                                    </a></div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <h3 class="text-left">Buscar producto</h3>
+                                        <input class="form-control" placeholder="Codigo del producto" required="" pattern="[a-zA-Z]+" minlength="10" maxlength="30"/>
+                                        <div class="panel-body">
+                                            <table class="table">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">Código</th>
+                                                        <th scope="col">Producto</th>
+                                                        <th scope="col">Género</th>
+                                                        <th scope="col">Talla</th>
+                                                        <th scope="col">Marca</th>
+
+                                                        <th scope="col">Cantidad</th>
+                                                        <th scope="col">Costo unitario</th>
+
+
+                                                        <th>Actualizar</th>  
+                                                        <th>Borrar</th> 
+                                                    </tr>
+                                                </thead>   
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">001</th>
+                                                        <td>Camiseta</td>
+                                                        <td>Mujer</td>
+                                                        <td>S</td>
+                                                        <td>Banana Republic</td>
+
+                                                        <td>100</td>
+                                                        <td>$35.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" value="Error" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">002</th>
+                                                        <td>Jean</td>
+                                                        <td>Hombre</td>
+                                                        <td>L</td>
+                                                        <td>Lacoste</td>
+
+                                                        <td>250</td>
+                                                        <td>$150.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2"  role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Blusa</td>
+                                                        <td>Mujer</td>
+                                                        <td>M</td>
+                                                        <td>Mango</td>
+
+                                                        <td>30</td>
+                                                        <td>$80.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Shore</td>
+                                                        <td>Mujer</td>
+                                                        <td>XL</td>
+                                                        <td>Ela</td>
+
+                                                        <td>10</td>
+                                                        <td>$30.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Jean</td>
+                                                        <td>Hombre</td>
+                                                        <td>L</td>
+                                                        <td>Levis</td>
+
+                                                        <td>25</td>
+                                                        <td>$75.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Vestido</td>
+                                                        <td>Mujer</td>
+                                                        <td>XS</td>
+                                                        <td>Mango</td>
+
+                                                        <td>23</td>
+                                                        <td>$45.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Chaquetas de punto</td>
+                                                        <td>Hombre</td>
+                                                        <td>L</td>
+                                                        <td>Nike</td>
+
+                                                        <td>15</td>
+                                                        <td>$150.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Flada</td>
+                                                        <td>Mujer</td>
+                                                        <td>S</td>
+                                                        <td>New Balance</td>
+
+                                                        <td>17</td>
+                                                        <td>$32.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2"  role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Camisa manga corta</td>
+                                                        <td>Hombre</td>
+                                                        <td>XL</td>
+                                                        <td>Boss</td>
+
+                                                        <td>20</td>
+                                                        <td>$65.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Jean</td>
+                                                        <td>Mujer</td>
+                                                        <td>M</td>
+                                                        <td>Levis</td>
+
+                                                        <td>14</td>
+                                                        <td>$60.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Jean</td>
+                                                        <td>Mujer</td>
+                                                        <td>S</td>
+                                                        <td>Levis</td>
+
+                                                        <td>20</td>
+                                                        <td>$60.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Jean</td>
+                                                        <td>Mujer</td>
+                                                        <td>L</td>
+                                                        <td>Levis</td>
+
+                                                        <td>14</td>
+                                                        <td>$60.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>  
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Jean</td>
+                                                        <td>Mujer</td>
+                                                        <td>XL</td>
+                                                        <td>Levis</td>
+
+                                                        <td>11</td>
+                                                        <td>$60.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <th scope="row">003</th>
+                                                        <td>Blusa</td>
+                                                        <td>Mujer</td>
+                                                        <td>L</td>
+                                                        <td>Mango</td>
+
+                                                        <td>15</td>
+                                                        <td>$80.000</td>
+
+
+                                                        <td><a href="" class="btn btn-sm btn-success btn-block mt-2" role="button" onclick="alerta3()">Actualizar</a></td>
+                                                        <td><a href="" class="btn btn-sm btn-danger btn-block mt-2" role="button" onclick="alerta3()">Borrar</a></td>
+                                                    </tr>   
+
+                                                </tbody>
+
+
+
+
+                                            </table>
+                                            <form action="inventario2.xhtml">
+                                                <input type="submit" value="Agregar un nuevo producto" class="btn btn-sm btn-danger btn-block" role="button"/>
+                                            </form>
+                                        </div>
+                                        <br/>
+                                        <div class="col-sm-12">
+                                            <p class="back-link">Copyright © 2020 <a href="">Sigmove</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</xhtml>
