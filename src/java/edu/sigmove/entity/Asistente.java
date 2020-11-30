@@ -47,9 +47,9 @@ public class Asistente implements Serializable {
     private Usuario usuarioIDUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
     private Collection<OrdenDeCompra> ordenDeCompraCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
     private Collection<Ventas> ventasCollection;
 
     public Asistente() {

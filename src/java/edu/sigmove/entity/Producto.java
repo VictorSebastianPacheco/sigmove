@@ -81,8 +81,6 @@ public class Producto implements Serializable {
     private Collection<Proveedores> proveedoresCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
-    private Collection<Beneficio> beneficioCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
     private ProductoCantidad productoCantidad;
 
@@ -175,15 +173,6 @@ public class Producto implements Serializable {
 
     public void setRegistroDeEntradaCollection(Collection<RegistroDeEntrada> registroDeEntradaCollection) {
         this.registroDeEntradaCollection = registroDeEntradaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Beneficio> getBeneficioCollection() {
-        return beneficioCollection;
-    }
-
-    public void setBeneficioCollection(Collection<Beneficio> beneficioCollection) {
-        this.beneficioCollection = beneficioCollection;
     }
 
     public ProductoCantidad getProductoCantidad() {

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,9 +47,7 @@ public class Ventas implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_Venta")
     private Integer iDVenta;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "Nombre_Vendedor")
     private String nombreVendedor;
     @Basic(optional = false)
@@ -55,33 +55,20 @@ public class Ventas implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "Nombre_Comprador")
     private String nombreComprador;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "Fecha")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 40)
     @Column(name = "Direccion")
     private String direccion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Cantidad")
-    private int cantidad;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "Descripcion")
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Precio_Unitario")
-    private double precioUnitario;
-    @Basic(optional = false)
-    @NotNull
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Precio_Total")
-    private double precioTotal;
+    private Double precioTotal;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Pago_Total")
@@ -93,11 +80,11 @@ public class Ventas implements Serializable {
     private String metodoPago;
     @ManyToMany(mappedBy = "ventasCollection", fetch = FetchType.LAZY)
     private Collection<Producto> productoCollection;
-    @ManyToMany(mappedBy = "ventasCollection", fetch = FetchType.LAZY)
-    private Collection<Cliente> clienteCollection;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Asistente asistenteIDAsistente;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ventas", fetch = FetchType.LAZY)
+    private VentasHasCliente ventasHasCliente;
 
     public Ventas() {
     }
@@ -106,16 +93,10 @@ public class Ventas implements Serializable {
         this.iDVenta = iDVenta;
     }
 
-    public Ventas(Integer iDVenta, String nombreVendedor, String nombreComprador, Date fecha, String direccion, int cantidad, String descripcion, double precioUnitario, double precioTotal, double pagoTotal, String metodoPago) {
+    public Ventas(Integer iDVenta, String nombreComprador, String direccion, double pagoTotal, String metodoPago) {
         this.iDVenta = iDVenta;
-        this.nombreVendedor = nombreVendedor;
         this.nombreComprador = nombreComprador;
-        this.fecha = fecha;
         this.direccion = direccion;
-        this.cantidad = cantidad;
-        this.descripcion = descripcion;
-        this.precioUnitario = precioUnitario;
-        this.precioTotal = precioTotal;
         this.pagoTotal = pagoTotal;
         this.metodoPago = metodoPago;
     }
@@ -160,14 +141,6 @@ public class Ventas implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -176,19 +149,11 @@ public class Ventas implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public double getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
-
-    public double getPrecioTotal() {
+    public Double getPrecioTotal() {
         return precioTotal;
     }
 
-    public void setPrecioTotal(double precioTotal) {
+    public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
     }
 
@@ -217,21 +182,20 @@ public class Ventas implements Serializable {
         this.productoCollection = productoCollection;
     }
 
-    @XmlTransient
-    public Collection<Cliente> getClienteCollection() {
-        return clienteCollection;
-    }
-
-    public void setClienteCollection(Collection<Cliente> clienteCollection) {
-        this.clienteCollection = clienteCollection;
-    }
-
     public Asistente getAsistenteIDAsistente() {
         return asistenteIDAsistente;
     }
 
     public void setAsistenteIDAsistente(Asistente asistenteIDAsistente) {
         this.asistenteIDAsistente = asistenteIDAsistente;
+    }
+
+    public VentasHasCliente getVentasHasCliente() {
+        return ventasHasCliente;
+    }
+
+    public void setVentasHasCliente(VentasHasCliente ventasHasCliente) {
+        this.ventasHasCliente = ventasHasCliente;
     }
 
     @Override

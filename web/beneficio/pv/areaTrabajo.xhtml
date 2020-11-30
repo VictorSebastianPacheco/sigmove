@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition >
+        <!-- **********************************************************************************************************************************************************
+         MAIN CONTENT
+         *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <table class="table table-striped table-advance table-hover">
+                                <h4><i class="fa fa-angle-right"></i> Lista de Beneficios</h4>
+                                <hr/>
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa fa-bullhorn"></i>  tipo de Beneficio</th>
+                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Nombre</th>
+                                        <th><i class="fa fa-bookmark"></i> Producto</th>
+                                        <th><i class=" fa fa-edit"></i> Fecha registro</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <h:form id="listaUsuarios">
+                                        <c:forEach items="#{beneficioView.listaBeneficio}" var="ben">
+
+                                            <tr>
+                                                <td>
+                                                    #{ben.tipo} 
+                                                </td>
+                                                <td class="hidden-phone">#{ben.nombre}</td>
+                                                <td> #{ben.producto} </td>
+                                                <td><span class="label label-info label-mini">
+                                                        #{ben.fecha}
+                                                    </span></td>
+                                                <td>
+
+                                                    <h:commandButton style="display: none" id="tbl#{ben.IDBeneficio}" action="#{beneficioView.removerBeneficio(ben)}"></h:commandButton>   
+                                                    <h:commandButton style="display: none" id="benTbl#{ben.IDBeneficio}" action="#{beneficioView.beneficioSelecionado(ben)}"></h:commandButton>  
+
+
+                                                    <button type="button" onclick="$('#listaUsuarios\\:benTbl#{ben.IDBeneficio}').click()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" onclick="$('#listaUsuarios\\:tbl#{ben.IDBeneficio}').click()" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+
+
+                                                </td>
+
+                                            </tr>
+
+                                        </c:forEach>
+                                        <tr>
+                                            <td></td>
+                                            <td>Descargue listado de Beneficios</td>
+                                            <td></td>
+                                            <td>
+                                                <h:commandButton class="btn btn-primary btn-xs" action="#{beneficioView.descargaListado()}" value="lista de Beneficios"></h:commandButton>   
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success btn-xs" data-toggle="modal" href="login.html#myModal"> New User</a>
+                                            </td>
+                                        </tr>
+
+                                        
+                                    </h:form>
+
+                                </tbody>
+
+
+                            </table>
+                            <h:form >
+                                <h4>Agregue un nuevo Beneficio<a class="btn btn-success btn-xs " style="margin-left:50px" data-toggle="modal" href="login.html#myModal"> Nuevo</a></h4>
+                                <p>Descargue listado de Beneficios</p><h:commandButton class="btn btn-primary btn-xs" action="#{beneficioView.descargaListado()}" value="lista de Beneficios"></h:commandButton>
+                            </h:form>
+
+                            <hr/>
+                        </div>
+
+                        <!-- /content-panel -->
+                    </div>
+                    <div class="col-lg-8 col-lg-offset-2 detailed mt">
+
+                        <div class="center">
+                            <h1 class="page-header center">Actualizar beneficio</h1>
+                        </div>
+
+
+                        <h:form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-6 control-label">Nombre</label>
+                                <h:inputText  value="#{beneficioView.beneficioSelect.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-6 control-label">Codigo del producto</label>
+                                <h:inputTextarea  value="#{beneficioView.beneficioSelect.producto}" rows="3" class="form-control" html5:placeholder="Codigo del producto" html5:autofocus="true"/>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-6 control-label">Tipo de Beneficio</label>
+                                <h:selectOneMenu value="#{beneficioView.beneficioSelect.tipo}" class="form-control" >
+                                    <f:selectItem itemLabel="Regalo" itemValue="Regalo" ></f:selectItem>
+                                    <f:selectItem itemLabel="Promocion" itemValue="Promocion" ></f:selectItem>
+                                    <f:selectItem itemLabel="Descuento" itemValue="Descuento" ></f:selectItem>
+
+                                </h:selectOneMenu>
+                            </div>  
+                            <div class="form-group">
+                                <label class="col-6 control-label">Fecha de creacion</label>
+                                <div>
+                                    <input type="text" disabled="true"  placeholder="#{beneficioView.beneficioSelect.fecha}" id="ddr2" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <h:commandButton class="btn btn-success" action="#{beneficioView.acutalizarBeneficio()}" value="Guardar"></h:commandButton>
+
+                            </div>
+
+
+                            <br/>
+
+
+
+                        </h:form>
+
+
+                        <br></br>
+                        <br></br>
+
+                    </div>
+                </div>
+
+            </section>
+        </section>
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"> Nuevo Beneficio</h4>
+                    </div>
+                    <h:form>
+                        <div class="modal-body">
+
+
+
+                            <div class="login-wrap">
+                                <h:inputText  value="#{beneficioView.benReg.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
+                                <br/>
+                                <h:inputText value="#{beneficioView.benReg.producto}" class="form-control" html5:placeholder="Producto" html5:autofocus="true"/>
+                                <br/>
+
+                                <h:selectOneMenu value="#{beneficioView.benReg.tipo}" class="form-control">
+                                    <f:selectItem itemLabel="Regalo" itemValue="Cedula" ></f:selectItem>
+                                    <f:selectItem itemLabel="Promocion" itemValue="Cedula Ex." ></f:selectItem>
+                                    <f:selectItem itemLabel="Descuento" itemValue="Pasaporte" ></f:selectItem>
+                                </h:selectOneMenu>
+                                <br/>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-danger" type="button">Cancelar</button>
+                            <h:commandButton action="#{beneficioView.registrarNuevoBeneficio()}" class="btn btn-success" value="Crear"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <!--main content end-->
+    </ui:composition>
+</html>
+

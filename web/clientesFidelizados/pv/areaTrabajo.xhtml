@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition >
+        <!-- **********************************************************************************************************************************************************
+         MAIN CONTENT
+         *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+                    <div class="row">
+                        <ol class="breadcrumb">
+                            <li><a href="#">
+                                    <em class="fa fa-home"></em>
+                                </a></li>
+                            <li class="active">Fidelización</li>
+                        </ol>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Fidelización/Beneficios</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <table class="table table-striped table-advance table-hover">
+                                <h4><i class="fa fa-angle-right"></i> Lista de clientes fidelizados</h4>
+                                <hr/>
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa fa-bullhorn"></i>  Codigo</th>
+                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Cliente</th>
+                                        <th><i class="fa fa-bookmark"></i> Correo</th>
+                                        <th><i class=" fa fa-edit"></i> Fecha registro</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <h:form id="listaUsuarios">
+                                        <c:forEach items="#{beneficioView.listaBeneficio}" var="ben">
+
+                                            <tr>
+                                                <td>
+                                                    #{ben.tipo} 
+                                                </td>
+                                                <td class="hidden-phone">#{ben.nombre}</td>
+                                                <td> #{ben.producto} </td>
+                                                <td><span class="label label-info label-mini">
+                                                        #{ben.fecha}
+                                                    </span></td>
+                                                
+
+                                            </tr>
+
+                                        </c:forEach>
+                
+                                    </h:form>
+
+                                </tbody>
+
+
+                            </table>
+                            
+                            <hr/>
+                        </div>
+
+                        <!-- /content-panel -->
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </section>
+        </section>
+        <!--main content end-->
+    </ui:composition>
+</html>
+

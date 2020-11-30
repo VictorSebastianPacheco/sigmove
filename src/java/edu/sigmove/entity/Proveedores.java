@@ -12,6 +12,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -38,8 +40,8 @@ public class Proveedores implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_Proveedor")
     private Integer iDProveedor;
     @Basic(optional = false)
@@ -73,7 +75,7 @@ public class Proveedores implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "proveedores", fetch = FetchType.LAZY)
     private ProveedorTelefono proveedorTelefono;
     @JoinColumn(name = "Administrador_ID_Administrador", referencedColumnName = "ID_Administrador")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Administrador administradorIDAdministrador;
 
     public Proveedores() {

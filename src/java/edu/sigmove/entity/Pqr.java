@@ -80,7 +80,7 @@ public class Pqr implements Serializable {
     @Column(name = "Descripcion")
     private String descripcion;
     @ManyToMany(mappedBy = "pqrCollection", fetch = FetchType.LAZY)
-    private Collection<Cliente> clienteCollection;
+    private Collection<ClienteFidelizado> clienteFidelizadoCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
     private PqrCorreo pqrCorreo;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
@@ -169,12 +169,12 @@ public class Pqr implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Cliente> getClienteCollection() {
-        return clienteCollection;
+    public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
+        return clienteFidelizadoCollection;
     }
 
-    public void setClienteCollection(Collection<Cliente> clienteCollection) {
-        this.clienteCollection = clienteCollection;
+    public void setClienteFidelizadoCollection(Collection<ClienteFidelizado> clienteFidelizadoCollection) {
+        this.clienteFidelizadoCollection = clienteFidelizadoCollection;
     }
 
     public PqrCorreo getPqrCorreo() {

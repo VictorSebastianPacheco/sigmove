@@ -7,8 +7,8 @@ package edu.sigmove.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,11 +18,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -31,11 +34,11 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author victo
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente_fidelizado")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")})
-public class Cliente implements Serializable {
+    @NamedQuery(name = "ClienteFidelizado.findAll", query = "SELECT c FROM ClienteFidelizado c")})
+public class ClienteFidelizado implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,27 +46,40 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_Cliente")
     private Integer iDCliente;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "Nombre")
+    private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "correo")
+    private String correo;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
     @JoinTable(name = "cliente_has_pqr", joinColumns = {
         @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")}, inverseJoinColumns = {
         @JoinColumn(name = "PQR_ID_PQR", referencedColumnName = "ID_PQR")})
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Pqr> pqrCollection;
-    @JoinTable(name = "ventas_has_cliente", joinColumns = {
-        @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")}, inverseJoinColumns = {
-        @JoinColumn(name = "Ventas_ID_Venta", referencedColumnName = "ID_Venta")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Ventas> ventasCollection;
-    @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Usuario usuarioIDUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteIDCliente", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "clienteFidelizadoCollection", fetch = FetchType.LAZY)
     private Collection<Beneficio> beneficioCollection;
+    @OneToMany(mappedBy = "clienteIDCliente", fetch = FetchType.LAZY)
+    private Collection<VentasHasCliente> ventasHasClienteCollection;
 
-    public Cliente() {
+    public ClienteFidelizado() {
     }
 
-    public Cliente(Integer iDCliente) {
+    public ClienteFidelizado(Integer iDCliente) {
         this.iDCliente = iDCliente;
+    }
+
+    public ClienteFidelizado(Integer iDCliente, String nombre, String correo) {
+        this.iDCliente = iDCliente;
+        this.nombre = nombre;
+        this.correo = correo;
     }
 
     public Integer getIDCliente() {
@@ -72,6 +88,30 @@ public class Cliente implements Serializable {
 
     public void setIDCliente(Integer iDCliente) {
         this.iDCliente = iDCliente;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     @XmlTransient
@@ -84,29 +124,21 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Ventas> getVentasCollection() {
-        return ventasCollection;
-    }
-
-    public void setVentasCollection(Collection<Ventas> ventasCollection) {
-        this.ventasCollection = ventasCollection;
-    }
-
-    public Usuario getUsuarioIDUsuario() {
-        return usuarioIDUsuario;
-    }
-
-    public void setUsuarioIDUsuario(Usuario usuarioIDUsuario) {
-        this.usuarioIDUsuario = usuarioIDUsuario;
-    }
-
-    @XmlTransient
     public Collection<Beneficio> getBeneficioCollection() {
         return beneficioCollection;
     }
 
     public void setBeneficioCollection(Collection<Beneficio> beneficioCollection) {
         this.beneficioCollection = beneficioCollection;
+    }
+
+    @XmlTransient
+    public Collection<VentasHasCliente> getVentasHasClienteCollection() {
+        return ventasHasClienteCollection;
+    }
+
+    public void setVentasHasClienteCollection(Collection<VentasHasCliente> ventasHasClienteCollection) {
+        this.ventasHasClienteCollection = ventasHasClienteCollection;
     }
 
     @Override
@@ -119,10 +151,10 @@ public class Cliente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+        if (!(object instanceof ClienteFidelizado)) {
             return false;
         }
-        Cliente other = (Cliente) object;
+        ClienteFidelizado other = (ClienteFidelizado) object;
         if ((this.iDCliente == null && other.iDCliente != null) || (this.iDCliente != null && !this.iDCliente.equals(other.iDCliente))) {
             return false;
         }
@@ -131,7 +163,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.sigmove.entity.Cliente[ iDCliente=" + iDCliente + " ]";
+        return "edu.sigmove.entity.ClienteFidelizado[ iDCliente=" + iDCliente + " ]";
     }
     
 }

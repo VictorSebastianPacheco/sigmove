@@ -8,7 +8,6 @@ package edu.sigmove.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,7 +44,7 @@ public class Administrador implements Serializable {
     @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIDUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "administradorIDAdministrador", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "administradorIDAdministrador", fetch = FetchType.LAZY)
     private Collection<Proveedores> proveedoresCollection;
 
     public Administrador() {

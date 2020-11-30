@@ -6,21 +6,28 @@
 package edu.sigmove.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -67,7 +74,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Numero_Documento")
-    private int numeroDocumento;
+    private long numeroDocumento;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -81,6 +88,17 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "Direccion")
     private String direccion;
+    @Column(name = "fechaRegistro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaRegistro;
+    @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
+    private Collection<Rol> rolCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
+    private Collection<Asistente> asistenteCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
+    private Collection<Administrador> administradorCollection;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    private UsuarioTelefono usuarioTelefono;
 
     public Usuario() {
     }
@@ -89,7 +107,7 @@ public class Usuario implements Serializable {
         this.iDUsuario = iDUsuario;
     }
 
-    public Usuario(Integer iDUsuario, String usuario, String contraseña, String nombre, String apellido, String tipoDocumento, int numeroDocumento, String genero, String direccion) {
+    public Usuario(Integer iDUsuario, String usuario, String contraseña, String nombre, String apellido, String tipoDocumento, long numeroDocumento, String genero, String direccion) {
         this.iDUsuario = iDUsuario;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -149,11 +167,11 @@ public class Usuario implements Serializable {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public int getNumeroDocumento() {
+    public long getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public void setNumeroDocumento(int numeroDocumento) {
+    public void setNumeroDocumento(long numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 
@@ -179,6 +197,49 @@ public class Usuario implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    @XmlTransient
+    public Collection<Rol> getRolCollection() {
+        return rolCollection;
+    }
+
+    public void setRolCollection(Collection<Rol> rolCollection) {
+        this.rolCollection = rolCollection;
+    }
+
+    @XmlTransient
+    public Collection<Asistente> getAsistenteCollection() {
+        return asistenteCollection;
+    }
+
+    public void setAsistenteCollection(Collection<Asistente> asistenteCollection) {
+        this.asistenteCollection = asistenteCollection;
+    }
+
+    @XmlTransient
+    public Collection<Administrador> getAdministradorCollection() {
+        return administradorCollection;
+    }
+
+    public void setAdministradorCollection(Collection<Administrador> administradorCollection) {
+        this.administradorCollection = administradorCollection;
+    }
+
+    public UsuarioTelefono getUsuarioTelefono() {
+        return usuarioTelefono;
+    }
+
+    public void setUsuarioTelefono(UsuarioTelefono usuarioTelefono) {
+        this.usuarioTelefono = usuarioTelefono;
     }
 
     @Override

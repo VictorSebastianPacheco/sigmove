@@ -17,7 +17,13 @@
                     </div>
 
                     <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">Administrador</div>
+                        <div class="profile-usertitle-name">${nombreUsuario}</div>
+                        <li class="mt">
+                            <a class="active" href="#">
+                                <i class="fa fa-dashboard"></i>
+                                <span>${ruta}</span>
+                            </a>
+                        </li>
                         <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
                     </div>
                     <div class="clear"></div>
@@ -47,10 +53,16 @@
                                 </a></li>
                         </ul>
                     </li>
-                    <li><a href="elements.html"><em class="fa fa-usd"></em> Compras</a></li>
+                    <li><a href="compra/index.xhtml"><em class="fa fa-usd"></em> Compras</a></li>
                     <li><a href="ventas.lum..xhtml"><em class="fa fa-tags"></em> Ventas</a></li>
                     <li><a href="inventario.xhtml"><em class="fa fa-book"></em> Inventario</a></li>
-                    <li><a href="login.xhtml"><em class="fa fa-power-off"></em> Salir</a></li>
+
+                    <li>
+                        <h:form id="salir">  
+                            <h:commandLink id="link" action="#{usuarioSesion.cerraSesion()}" ></h:commandLink>
+                        </h:form>
+                        <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
+                    </li>
                 </ul>
 
             </div>

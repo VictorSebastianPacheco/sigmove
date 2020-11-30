@@ -8,28 +8,28 @@ package edu.sigmove.controlador;
 import edu.sigmove.entity.Usuario;
 import edu.sigmove.facade.UsuarioFacadeLocal;
 import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import org.primefaces.PrimeFaces;
 
-/**
- *
- * @author victo
- */
+
 @Named(value = "registroRequest")
 @RequestScoped
-public class RegistroRequest implements Serializable {
+public class RegistroRequest implements Serializable{
+
     @EJB
     UsuarioFacadeLocal usuarioFacadeLocal;
-    private Usuario usuReg =new Usuario();
+
+    private Usuario usuReg = new Usuario();
+    
+
     
     public RegistroRequest() {
     }
-    
-     
     public void registrarUsuario() {
-        String mensajeRequest = "";
+        String mensajeRequest="";
         try {
             usuarioFacadeLocal.create(usuReg);
             mensajeRequest = "swal('Registro', 'Exitoso !!!!', 'success');";

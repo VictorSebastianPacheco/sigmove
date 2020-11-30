@@ -6,14 +6,18 @@
 package edu.sigmove.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,6 +26,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,8 +41,8 @@ public class Beneficio implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_Beneficio")
     private Integer iDBeneficio;
     @Basic(optional = false)
@@ -45,32 +50,24 @@ public class Beneficio implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Fecha")
-    @Temporal(TemporalType.DATE)
+    @Column(name = "fecha")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Inicio_Vigencia")
-    @Temporal(TemporalType.DATE)
-    private Date inicioVigencia;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Fin_Vigencia")
-    @Temporal(TemporalType.DATE)
-    private Date finVigencia;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Tipo")
+    @Column(name = "tipo")
     private String tipo;
-    @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente clienteIDCliente;
-    @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Producto productoIDProducto;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "producto")
+    private String producto;
+    @JoinTable(name = "beneficio_has_cliente", joinColumns = {
+        @JoinColumn(name = "beneficio_ID_Beneficio", referencedColumnName = "ID_Beneficio")}, inverseJoinColumns = {
+        @JoinColumn(name = "cliente_ID_Cliente", referencedColumnName = "ID_Cliente")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<ClienteFidelizado> clienteFidelizadoCollection;
 
     public Beneficio() {
     }
@@ -79,13 +76,11 @@ public class Beneficio implements Serializable {
         this.iDBeneficio = iDBeneficio;
     }
 
-    public Beneficio(Integer iDBeneficio, String nombre, Date fecha, Date inicioVigencia, Date finVigencia, String tipo) {
+    public Beneficio(Integer iDBeneficio, String nombre, String tipo, String producto) {
         this.iDBeneficio = iDBeneficio;
         this.nombre = nombre;
-        this.fecha = fecha;
-        this.inicioVigencia = inicioVigencia;
-        this.finVigencia = finVigencia;
         this.tipo = tipo;
+        this.producto = producto;
     }
 
     public Integer getIDBeneficio() {
@@ -112,22 +107,6 @@ public class Beneficio implements Serializable {
         this.fecha = fecha;
     }
 
-    public Date getInicioVigencia() {
-        return inicioVigencia;
-    }
-
-    public void setInicioVigencia(Date inicioVigencia) {
-        this.inicioVigencia = inicioVigencia;
-    }
-
-    public Date getFinVigencia() {
-        return finVigencia;
-    }
-
-    public void setFinVigencia(Date finVigencia) {
-        this.finVigencia = finVigencia;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -136,20 +115,21 @@ public class Beneficio implements Serializable {
         this.tipo = tipo;
     }
 
-    public Cliente getClienteIDCliente() {
-        return clienteIDCliente;
+    public String getProducto() {
+        return producto;
     }
 
-    public void setClienteIDCliente(Cliente clienteIDCliente) {
-        this.clienteIDCliente = clienteIDCliente;
+    public void setProducto(String producto) {
+        this.producto = producto;
     }
 
-    public Producto getProductoIDProducto() {
-        return productoIDProducto;
+    @XmlTransient
+    public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
+        return clienteFidelizadoCollection;
     }
 
-    public void setProductoIDProducto(Producto productoIDProducto) {
-        this.productoIDProducto = productoIDProducto;
+    public void setClienteFidelizadoCollection(Collection<ClienteFidelizado> clienteFidelizadoCollection) {
+        this.clienteFidelizadoCollection = clienteFidelizadoCollection;
     }
 
     @Override

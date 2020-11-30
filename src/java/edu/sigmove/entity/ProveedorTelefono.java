@@ -32,14 +32,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ProveedorTelefono implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
+    @Size(max = 12)
     @Column(name = "Telefono")
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
+    @Size(max = 12)
     @Column(name = "Telefono2")
     private String telefono2;
     @Id
@@ -56,12 +52,6 @@ public class ProveedorTelefono implements Serializable {
 
     public ProveedorTelefono(Integer proveedoresIDProveedor) {
         this.proveedoresIDProveedor = proveedoresIDProveedor;
-    }
-
-    public ProveedorTelefono(Integer proveedoresIDProveedor, String telefono, String telefono2) {
-        this.proveedoresIDProveedor = proveedoresIDProveedor;
-        this.telefono = telefono;
-        this.telefono2 = telefono2;
     }
 
     public String getTelefono() {

@@ -18,7 +18,7 @@
                                 <h3>INFORMACIÓN PERSONAL</h3>
                                 <div>
                                     <span>Nombres<label>*</label></span>
-                                    <h:inputText  value="#{registroRequest.usuReg.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true" />
+                                    <h:inputText  value="#{registroRequest.usuReg.nombre}" class="form-control" html5:placeholder="nombre" html5:autofocus="true" />
                                 </div>
 
 
@@ -34,21 +34,23 @@
                                         <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
 
                                     </h:selectOneMenu>
-                                    
+
                                 </div>
                                 <div>
                                     <span>Número de documento<label>*</label></span>
                                     <h:inputText  value="#{registroRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Numero documento" html5:autofocus="true"/>
                                 </div>
-                                <div>
-                                    <span>Nombre de usuario<label>*</label></span>
+                                
+                                <div> 
+                                    <span> Correo<label>*</label></span>
                                     <h:inputText  value="#{registroRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/> 
                                 </div>
+
                                 <div>
                                     <span>Dirección<label>*</label></span>
                                     <h:inputText  value="#{registroRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
                                 </div>
-                                
+
                                 <div> 
                                     <span>Genero<label>*</label></span>
                                     <h:selectOneMenu value="#{registroRequest.usuReg.genero}" class="form-control ms-5">
@@ -60,6 +62,7 @@
                                 <div class="clearfix"> </div>
 
                             </div>
+                            <div class="register-top-grid">
                             <br/><br/><br/>
                             <div class="register-bottom-grid">
                                 <h3>INFORMACIÓN DE INGRESO</h3>
@@ -67,22 +70,22 @@
                                     <span>Contraseña<label>*</label></span>
                                     <h:inputSecret  value="#{registroRequest.usuReg.contraseña}" class="form-control" html5:placeholder="Clave"/>
                                 </div>
-                                
+
                                 <div class="clearfix"> </div>
                             </div>
-                        </h:form>
-
-                        <div class="clearfix"> </div>
-                        <div class="register-but">
-                            <h:form>
+                            <div class="clearfix"> </div>
+                            <div class="register-but">
                                 <h:commandButton action="#{registroRequest.registrarUsuario()}" class="btn btn-theme btn-block" value="Registrarse" style="width: 200px; height: 40px;"  />
                                 <div class="clearfix"> </div>
-                            </h:form>
+                            </div>
+                            </div>
                             
-                        </div>
+                        </h:form>
+                     
                     </div>
                 </div>
             </div>
+
 
         </section> 
 

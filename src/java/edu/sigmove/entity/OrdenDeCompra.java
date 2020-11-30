@@ -51,7 +51,7 @@ public class OrdenDeCompra implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Fecha")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     @Basic(optional = false)
     @NotNull
@@ -63,31 +63,20 @@ public class OrdenDeCompra implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "Nombre_Vendedor")
     private String nombreVendedor;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "Lugar_Emision")
     private String lugarEmision;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "Descripcion")
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Precio_Unitario")
-    private double precioUnitario;
-    @Basic(optional = false)
-    @NotNull
+    private Double precioUnitario;
     @Column(name = "Precio_Total")
-    private double precioTotal;
-    @Basic(optional = false)
-    @NotNull
+    private Double precioTotal;
     @Column(name = "Pago_Total")
-    private double pagoTotal;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    private Double pagoTotal;
+    @Size(max = 30)
     @Column(name = "Metodo_Pago")
     private String metodoPago;
     @JoinTable(name = "proveedores_has_orden_de_compra", joinColumns = {
@@ -100,7 +89,7 @@ public class OrdenDeCompra implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra", fetch = FetchType.LAZY)
     private OrdenDeCompraTelefono ordenDeCompraTelefono;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Asistente asistenteIDAsistente;
 
     public OrdenDeCompra() {
@@ -110,17 +99,11 @@ public class OrdenDeCompra implements Serializable {
         this.iDOrden = iDOrden;
     }
 
-    public OrdenDeCompra(Integer iDOrden, Date fecha, String nombreComprador, String nombreVendedor, String lugarEmision, String descripcion, double precioUnitario, double precioTotal, double pagoTotal, String metodoPago) {
+    public OrdenDeCompra(Integer iDOrden, Date fecha, String nombreComprador, String nombreVendedor) {
         this.iDOrden = iDOrden;
         this.fecha = fecha;
         this.nombreComprador = nombreComprador;
         this.nombreVendedor = nombreVendedor;
-        this.lugarEmision = lugarEmision;
-        this.descripcion = descripcion;
-        this.precioUnitario = precioUnitario;
-        this.precioTotal = precioTotal;
-        this.pagoTotal = pagoTotal;
-        this.metodoPago = metodoPago;
     }
 
     public Integer getIDOrden() {
@@ -171,27 +154,27 @@ public class OrdenDeCompra implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public double getPrecioUnitario() {
+    public Double getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
+    public void setPrecioUnitario(Double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
-    public double getPrecioTotal() {
+    public Double getPrecioTotal() {
         return precioTotal;
     }
 
-    public void setPrecioTotal(double precioTotal) {
+    public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
     }
 
-    public double getPagoTotal() {
+    public Double getPagoTotal() {
         return pagoTotal;
     }
 
-    public void setPagoTotal(double pagoTotal) {
+    public void setPagoTotal(Double pagoTotal) {
         this.pagoTotal = pagoTotal;
     }
 

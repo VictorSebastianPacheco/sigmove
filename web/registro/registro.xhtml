@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Dashboard"/>
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"/>
+
+        <title>DAW - 1966218 B</title>
+
+
+
+
+    </h:head>
+    <h:body>
+
+        <div id="login-page">
+            <div class="container">
+                <h:form id="registro" class="form-login">
+                    <h2 class="form-login-heading">Registro Usuario Nuevo</h2>
+                    <div class="login-wrap">
+
+                        <h:selectOneMenu value="#{registroRequest.usuReg.tipoDocumento}" class="form-control">
+                            <f:selectItem itemLabel="Cedula" itemValue="Cedula" ></f:selectItem>
+                            <f:selectItem itemLabel="Cedula Ex." itemValue="Cedula Ex." ></f:selectItem>
+                            <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
+                            <f:selectItem itemLabel="Tar. Identidad" itemValue="Tar. Identidad" ></f:selectItem>
+
+                        </h:selectOneMenu>
+                        <br/>
+                        <h:selectOneMenu value="#{registroRequest.usuReg.genero}" class="form-control">
+                            <f:selectItem itemLabel="masculino" itemValue="masculino" ></f:selectItem>
+                            <f:selectItem itemLabel="femenino" itemValue="femenino" ></f:selectItem>
+
+                        </h:selectOneMenu>
+                        <br/>
+
+                        <h:inputText  value="#{registroRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Numero documento" html5:autofocus="true"/>
+                        <br/>
+
+
+                        <h:inputText  value="#{registroRequest.usuReg.nombre}" class="form-control" html5:placeholder="Nombres" html5:autofocus="true"/>
+                        <br/>
+                        <h:inputText value="#{registroRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellidos" html5:autofocus="true"/>
+                        <br/>
+                        <h:inputText  value="#{registroRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/>
+                        <br/>
+                        
+                        <h:inputSecret  value="#{registroRequest.usuReg.contraseña}" class="form-control" html5:placeholder="Clave"/>
+
+                        
+                        <h:commandButton action="#{registroRequest.registrarUsuario()}" class="btn btn-theme btn-block" value="registrar"/>
+
+                        <hr/>
+                        <div class="login-social-link centered">
+                            <p>or you can sign in via your social network</p>
+                            <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
+                            <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+                        </div>
+                        
+
+                    </div>
+
+                </h:form>
+            </div>
+        </div>
+
+        <!-- js placed at the end of the document so the pages load faster -->
+        <script src="../lib/jquery/jquery.min.js"></script>
+        <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+        <!--BACKSTRETCH-->
+        <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+        <script type="text/javascript" src="../lib/jquery.backstretch.min.js"></script>
+        <script>
+            $.backstretch("img/login-bg.jpg", {
+                speed: 500
+            });
+        </script>
+
+    </h:body>
+</html>
+

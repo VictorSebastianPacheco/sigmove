@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70e6a693-ad0d-46d0-a90a-783cece6ee82">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="UsuarioReporte" class="java.lang.String"/>
+	<parameter name="RutaImagen" class="java.lang.String"/>
+	<parameter name="RutaImagen2" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     beneficio.`Nombre` AS beneficio_Nombre,
+     beneficio.`tipo` AS beneficio_tipo,
+     beneficio.`producto` AS beneficio_producto,
+     beneficio.`fecha` AS beneficio_fecha
+FROM
+     `beneficio` beneficio]]>
+	</queryString>
+	<field name="beneficio_Nombre" class="java.lang.String"/>
+	<field name="beneficio_producto" class="java.lang.String"/>
+	<field name="beneficio_tipo" class="java.lang.String"/>
+	<field name="beneficio_fecha" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="217" y="0" width="363" height="62" uuid="7530d62b-9cac-4254-8235-4e21a8047e77"/>
+				<textElement verticalAlignment="Middle">
+					<font size="36" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Listado de Beneficios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="df5689c6-85d8-44a1-b47f-fd753c7bbc41"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[FOREVERY ONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="953b898f-4fb8-460c-90c1-86244da4e4c5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aproveche los beneficios que le brindamos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="642" y="0" width="120" height="94" uuid="e6faafaf-faa0-487e-b3cc-4ce6dcab6839"/>
+			</image>
+			<image>
+				<reportElement x="1" y="0" width="202" height="136" uuid="49957737-dd98-46e3-97aa-77f82fa745de"/>
+				<imageExpression><![CDATA[$P{RutaImagen}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="555" y="94" width="245" height="20" uuid="f258badf-4750-4039-9708-907a7f9d2fc1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Generado por : "+$P{UsuarioReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="f755f74e-f70a-4186-af60-127df4f2eb82"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="200" height="15" forecolor="#736343" uuid="a214806d-8d65-42c5-b65a-8a9526d314c2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nombre del beneficio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="200" height="15" forecolor="#736343" uuid="45e2f0c6-465a-4644-acc3-fbc6b5cbb968"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Producto ofertado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="200" height="15" forecolor="#736343" uuid="3fb09cc2-ce8e-428d-9b52-a13d7708a786"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="200" height="15" forecolor="#736343" uuid="f0708031-7c5d-46fb-b04e-0a1e2ca800ee"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="41834d17-bf49-486b-8d01-4d3e515adb87"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="200" height="15" uuid="f6838d74-eb29-4cc9-b229-3a8bb0e4a8f0"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{beneficio_Nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="200" y="0" width="200" height="15" uuid="95d3a046-4a1d-4a6e-8943-3ad1091d092d"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{beneficio_producto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="200" height="15" uuid="a824fdbc-5844-4086-adc7-2b178fd32365"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{beneficio_tipo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="200" height="15" uuid="582a2ac3-14fd-4dde-b558-aede6f14c1f3"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{beneficio_fecha}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="be625f32-ca46-4f06-afec-1fea763a7c6e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="c60e0a25-1db3-4871-bcea-9932178e8629"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="ef7cb21a-6a4e-4429-ac1e-4ed8f3670a97"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="159caca5-b48d-4888-b273-d2cc2737ef83"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="6ee009b3-7bc5-4adb-b6d1-e5a49b2d968d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

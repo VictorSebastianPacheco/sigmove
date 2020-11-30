@@ -29,12 +29,11 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
     @Override
     public Usuario loginUsuario(String usuarioIn , String contraseñaIn){
         try {
-            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuario AND u.contraseña = :contraseñaIn");
-            q.setParameter("usuario",usuarioIn );
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuarioIn AND u.contraseña = :contraseñaIn");
+            q.setParameter("usuarioIn",usuarioIn );
             q.setParameter("contraseñaIn",contraseñaIn );
             return (Usuario) q.getSingleResult();            
         } catch (Exception e) {

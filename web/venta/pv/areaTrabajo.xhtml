@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition >
+        <!-- **********************************************************************************************************************************************************
+         MAIN CONTENT
+         *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                    <div class="row">
+                        <ol class="breadcrumb">
+                            <li><a href="#">
+                                    <em class="fa fa-home"></em>
+                                </a></li>
+                            <li class="active">Ventas</li>
+                        </ol>
+                    </div><!--/.row-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Ventas</h1>
+                        </div>
+                    </div><!--/.row-->
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-primary">
+                                        <h4 class="card-title ">Registros de Ventas</h4>
+                                    </div>
+                                    <table class="table table-striped table-advance table-hover">
+
+                                        <thead>
+                                            <tr>
+
+                                                <th><i class="fa fa-bookmark"></i> Codigo de Venta</th>
+                                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> Nombre del cliente</th>
+                                                <th><i class="fa fa-bullhorn"></i> Direccion</th>
+                                                <th><i class="fa fa-bookmark" style="center"></i> Fecha </th>
+                                                <th><i class="fa fa-bullhorn"></i> Precio Total</th>
+                                                <th><i class=" fa fa-edit"></i> Metodo de pago</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <h:form id="listaUsuarios">
+                                                <c:forEach items="#{ventasView.listaVentas}" var="ven">
+
+                                                    <tr>
+                                                        <td>
+                                                            #{ven.IDVenta} 
+                                                        </td>
+                                                        <td class="hidden-phone">#{ven.nombreComprador}</td>
+                                                        <td>
+                                                            #{ven.direccion}
+
+                                                        </td>
+                                                        <td> #{ven.fecha} </td>
+                                                        <td> #{ven.pagoTotal} </td>
+                                                        <td> #{ven.metodoPago} </td>
+
+                                                        <td>
+                                                            <h:commandButton class="btn btn-success btn-xs" value="factura" action="#{ventasView.descargaFactura(ven.IDVenta)}"></h:commandButton>
+                                                        </td>#{administradorView.descargaCertificado(usu.id)}
+
+                                                    </tr>
+
+                                                </c:forEach>
+
+
+
+                                            </h:form>
+
+                                        </tbody>
+
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+        </section>
+        <!--main content end-->
+    </ui:composition>
+</html>
+
