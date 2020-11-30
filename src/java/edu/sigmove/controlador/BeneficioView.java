@@ -74,7 +74,7 @@ public class BeneficioView implements Serializable{
 
     public void acutalizarBeneficio() {
         String mensajeAlerta = "";
-        try {
+        try { 
             beneficioFacadeLocal.edit(beneficioSelect);
             listaBeneficio.clear();
             listaBeneficio.addAll(beneficioFacadeLocal.findAll());
