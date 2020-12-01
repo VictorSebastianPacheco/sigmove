@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -72,16 +71,16 @@ public class Producto implements Serializable {
     @JoinTable(name = "producto_has_ventas", joinColumns = {
         @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
         @JoinColumn(name = "Ventas_ID_Venta", referencedColumnName = "ID_Venta")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private Collection<Ventas> ventasCollection;
     @JoinTable(name = "producto_has_proveedores", joinColumns = {
         @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
         @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private Collection<Proveedores> proveedoresCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto")
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
     private ProductoCantidad productoCantidad;
 
     public Producto() {

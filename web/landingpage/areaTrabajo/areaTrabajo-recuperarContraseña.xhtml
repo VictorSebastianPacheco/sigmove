@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition >
+        <!--main content start-->
+
+        <section id="main-content">
+            <div class="single_top">
+                    <div class="container"> 
+                        <div class="register">
+                            <div class="col-md-6 login-right">
+                                <h3>RECUPERAR CONTRASEÑA</h3>
+                                <h3>Por favor rellenar los campos para la debidad recuperacion de su clave</h3>
+                                
+                                <h:form id="formId">
+                                    <div>
+                                        <span>Ingrese su correo<label>*</label></span>
+                                        <h:inputText  id="usuarioId" value="#{usuarioRequest.usuarioIn}" required="true"  requiredMessage="Se requiere un correo"/>
+                                        
+                                    </div>
+                                    
+                                    <p>Se le enviara la clave al correo</p>
+                                    <h:commandButton action="#{usuarioRequest.recuperarClave()}" class="btn btn-danger" value="Recuperar clave" style="width: 200px; height: 40px;"  />
+                                    
+                                </h:form>
+                            </div>
+                            	
+                         
+                        </div>
+                    </div>
+                </div>
+            
+        </section> 
+
+
+        <!--main content end--> 
+    </ui:composition>
+</html>
+

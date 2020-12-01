@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,9 +46,9 @@ public class Pqr implements Serializable {
     private Integer idPqr;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Fecha")
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
+    @Column(name = "Fecha_Radicaci\u00f3n")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaRadicación;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -79,11 +78,11 @@ public class Pqr implements Serializable {
     @Size(min = 1, max = 2000)
     @Column(name = "Descripcion")
     private String descripcion;
-    @ManyToMany(mappedBy = "pqrCollection", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "pqrCollection")
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr")
     private PqrCorreo pqrCorreo;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr")
     private PqrTelefono pqrTelefono;
 
     public Pqr() {
@@ -93,9 +92,9 @@ public class Pqr implements Serializable {
         this.idPqr = idPqr;
     }
 
-    public Pqr(Integer idPqr, Date fecha, String tipo, String nombre, String apellido, String tipoDocumento, int numeroDocumento, String descripcion) {
+    public Pqr(Integer idPqr, Date fechaRadicación, String tipo, String nombre, String apellido, String tipoDocumento, int numeroDocumento, String descripcion) {
         this.idPqr = idPqr;
-        this.fecha = fecha;
+        this.fechaRadicación = fechaRadicación;
         this.tipo = tipo;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -112,12 +111,12 @@ public class Pqr implements Serializable {
         this.idPqr = idPqr;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaRadicación() {
+        return fechaRadicación;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaRadicación(Date fechaRadicación) {
+        this.fechaRadicación = fechaRadicación;
     }
 
     public String getTipo() {

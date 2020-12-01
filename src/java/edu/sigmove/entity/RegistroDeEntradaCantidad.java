@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +48,7 @@ public class RegistroDeEntradaCantidad implements Serializable {
     @Column(name = "Registro_de_entrada_ID_Registro")
     private Integer registrodeentradaIDRegistro;
     @JoinColumn(name = "Registro_de_entrada_ID_Registro", referencedColumnName = "ID_Registro", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false)
     private RegistroDeEntrada registroDeEntrada;
 
     public RegistroDeEntradaCantidad() {

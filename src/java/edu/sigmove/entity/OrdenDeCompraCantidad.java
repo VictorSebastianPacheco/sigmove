@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +48,7 @@ public class OrdenDeCompraCantidad implements Serializable {
     @Column(name = "Orden_de_compra_ID_Orden")
     private Integer ordendecompraIDOrden;
     @JoinColumn(name = "Orden_de_compra_ID_Orden", referencedColumnName = "ID_Orden", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false)
     private OrdenDeCompra ordenDeCompra;
 
     public OrdenDeCompraCantidad() {

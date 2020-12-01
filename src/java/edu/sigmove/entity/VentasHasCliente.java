@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -38,10 +37,10 @@ public class VentasHasCliente implements Serializable {
     @Column(name = "Ventas_ID_Venta")
     private Integer ventasIDVenta;
     @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private ClienteFidelizado clienteIDCliente;
     @JoinColumn(name = "Ventas_ID_Venta", referencedColumnName = "ID_Venta", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false)
     private Ventas ventas;
 
     public VentasHasCliente() {

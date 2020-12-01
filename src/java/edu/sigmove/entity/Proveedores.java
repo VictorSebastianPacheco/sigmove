@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -68,14 +67,14 @@ public class Proveedores implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Ciudad")
     private String ciudad;
-    @ManyToMany(mappedBy = "proveedoresCollection", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "proveedoresCollection")
     private Collection<OrdenDeCompra> ordenDeCompraCollection;
-    @ManyToMany(mappedBy = "proveedoresCollection", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "proveedoresCollection")
     private Collection<Producto> productoCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "proveedores", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "proveedores")
     private ProveedorTelefono proveedorTelefono;
     @JoinColumn(name = "Administrador_ID_Administrador", referencedColumnName = "ID_Administrador")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Administrador administradorIDAdministrador;
 
     public Proveedores() {

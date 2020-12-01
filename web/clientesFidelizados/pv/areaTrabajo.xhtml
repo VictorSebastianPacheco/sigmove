@@ -37,51 +37,37 @@
                                 <hr/>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i>  Codigo</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Cliente</th>
-                                        <th><i class="fa fa-bookmark"></i> Correo</th>
-                                        <th><i class=" fa fa-edit"></i> Fecha registro</th>
+                                        <th>Codigo</th>
+                                        <th>Cliente Cliente</th>
+                                        <th>Correo</th>
+                                        <td>fecha Fidelizacion</td>
+                                        <td>ID Usuario</td>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <h:form id="listaUsuarios">
-                                        <c:forEach items="#{beneficioView.listaBeneficio}" var="ben">
+                                        <c:forEach items="#{clienteFidelizadoView.listaCliente}" var="clien">
 
                                             <tr>
-                                                <td>
-                                                    #{ben.tipo} 
-                                                </td>
-                                                <td class="hidden-phone">#{ben.nombre}</td>
-                                                <td> #{ben.producto} </td>
-                                                <td><span class="label label-info label-mini">
-                                                        #{ben.fecha}
-                                                    </span></td>
-                                                
-
+                                                <td>#{clien.IDCliente}</td>
+                                                <td>#{clien.nombre}</td>
+                                                <td> #{clien.correo} </td>
+                                                <td>#{clien.fecha}</td>
+                                                <td>#{usuarioView.listaUsuario.add(usuReg)}</td>
+                                                <td></td>
                                             </tr>
 
                                         </c:forEach>
-                
                                     </h:form>
-
                                 </tbody>
-
-
                             </table>
-                            
+
                             <hr/>
                         </div>
 
                         <!-- /content-panel -->
                     </div>
-
-
-
-
-
-
-
                 </div>
             </section>
         </section>

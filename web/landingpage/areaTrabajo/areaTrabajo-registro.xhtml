@@ -18,17 +18,17 @@
                                 <h3>INFORMACIÓN PERSONAL</h3>
                                 <div>
                                     <span>Nombres<label>*</label></span>
-                                    <h:inputText  value="#{registroRequest.usuReg.nombre}" class="form-control" html5:placeholder="nombre" html5:autofocus="true" />
+                                    <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="nombre" html5:autofocus="true" />
                                 </div>
 
 
                                 <div>
                                     <span>Apellidos<label>*</label></span>
-                                    <h:inputText  value="#{registroRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellido" html5:autofocus="true" />
+                                    <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellido" html5:autofocus="true" />
                                 </div>
                                 <div>
                                     <span>Tipo de documento<label>*</label></span>
-                                    <h:selectOneMenu value="#{registroRequest.usuReg.tipoDocumento}" class="form-control ms-5">
+                                    <h:selectOneMenu value="#{usuarioRequest.usuReg.tipoDocumento}" class="form-control ms-5">
                                         <f:selectItem itemLabel="Cedula" itemValue="Cedula" ></f:selectItem>
                                         <f:selectItem itemLabel="Cedula Ex." itemValue="Cedula Ex." ></f:selectItem>
                                         <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
@@ -38,22 +38,22 @@
                                 </div>
                                 <div>
                                     <span>Número de documento<label>*</label></span>
-                                    <h:inputText  value="#{registroRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Numero documento" html5:autofocus="true"/>
+                                    <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Numero documento" html5:autofocus="true"/>
                                 </div>
                                 
                                 <div> 
                                     <span> Correo<label>*</label></span>
-                                    <h:inputText  value="#{registroRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/> 
+                                    <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/> 
                                 </div>
 
                                 <div>
                                     <span>Dirección<label>*</label></span>
-                                    <h:inputText  value="#{registroRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
+                                    <h:inputText  value="#{usuarioRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
                                 </div>
 
                                 <div> 
                                     <span>Genero<label>*</label></span>
-                                    <h:selectOneMenu value="#{registroRequest.usuReg.genero}" class="form-control ms-5">
+                                    <h:selectOneMenu value="#{usuarioRequest.usuReg.genero}" class="form-control ms-5">
                                         <f:selectItem itemLabel="Femenino" itemValue="Femenino" ></f:selectItem>
                                         <f:selectItem itemLabel="Masculino" itemValue="Masculino" ></f:selectItem>
                                     </h:selectOneMenu>
@@ -68,14 +68,14 @@
                                 <h3>INFORMACIÓN DE INGRESO</h3>
                                 <div>
                                     <span>Contraseña<label>*</label></span>
-                                    <h:inputSecret  value="#{registroRequest.usuReg.contraseña}" class="form-control" html5:placeholder="Clave"/>
+                                    <h:inputSecret  value="#{usuarioRequest.usuReg.contraseña}" class="form-control" html5:placeholder="Clave"/>
                                 </div>
 
                                 <div class="clearfix"> </div>
                             </div>
                             <div class="clearfix"> </div>
                             <div class="register-but">
-                                <h:commandButton action="#{registroRequest.registrarUsuario()}" class="btn btn-theme btn-block" value="Registrarse" style="width: 200px; height: 40px;"  />
+                                <h:commandButton action="#{usuarioRequest.registrarUsuario()}" class="btn btn-theme btn-block" value="Registrarse" style="width: 200px; height: 40px;"  />
                                 <div class="clearfix"> </div>
                             </div>
                             </div>

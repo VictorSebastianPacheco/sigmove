@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -57,13 +56,13 @@ public class RegistroDeEntrada implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "Descripcion")
     private String descripcion;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "registroDeEntrada", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "registroDeEntrada")
     private RegistroDeEntradaCantidad registroDeEntradaCantidad;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Asistente asistenteIDAsistente;
     @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Producto productoIDProducto;
 
     public RegistroDeEntrada() {

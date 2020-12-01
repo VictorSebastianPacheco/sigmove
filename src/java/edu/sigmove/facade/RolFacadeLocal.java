@@ -5,7 +5,7 @@
  */
 package edu.sigmove.facade;
 
-import edu.sigmove.entity.Proveedores;
+import edu.sigmove.entity.Rol;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author victo
  */
 @Local
-public interface ProveedoresFacadeLocal {
+public interface RolFacadeLocal {
 
-    void create(Proveedores proveedores);
+    void create(Rol rol);
 
-    void edit(Proveedores proveedores);
+    void edit(Rol rol);
 
-    void remove(Proveedores proveedores);
+    void remove(Rol rol);
 
-    Proveedores find(Object id);
+    Rol find(Object id);
 
-    List<Proveedores> findAll();
+    List<Rol> findAll();
 
-    List<Proveedores> findRange(int[] range);
+    List<Rol> findRange(int[] range);
 
     int count();
     

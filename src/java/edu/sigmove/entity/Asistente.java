@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -43,13 +42,13 @@ public class Asistente implements Serializable {
     @Column(name = "ID_Asistente")
     private String iDAsistente;
     @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario usuarioIDUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente")
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
-    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "asistenteIDAsistente")
     private Collection<OrdenDeCompra> ordenDeCompraCollection;
-    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "asistenteIDAsistente")
     private Collection<Ventas> ventasCollection;
 
     public Asistente() {

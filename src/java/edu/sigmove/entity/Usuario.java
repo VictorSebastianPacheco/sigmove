@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -91,13 +90,13 @@ public class Usuario implements Serializable {
     @Column(name = "fechaRegistro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
-    @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "usuarioCollection")
     private Collection<Rol> rolCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario")
     private Collection<Asistente> asistenteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario")
     private Collection<Administrador> administradorCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private UsuarioTelefono usuarioTelefono;
 
     public Usuario() {

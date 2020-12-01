@@ -16,7 +16,6 @@ import javax.ejb.Local;
 @Local
 public interface UsuarioFacadeLocal {
 
- 
     void create(Usuario usuario);
 
     void edit(Usuario usuario);
@@ -31,8 +30,8 @@ public interface UsuarioFacadeLocal {
 
     int count();
 
+    public Usuario recuperarContraseña(String usuarioIn);
+
     public Usuario loginUsuario(String usuarioIn, String contraseña);
-    
-    
     
 }

@@ -11,7 +11,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,11 +61,11 @@ public class ClienteFidelizado implements Serializable {
     @JoinTable(name = "cliente_has_pqr", joinColumns = {
         @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")}, inverseJoinColumns = {
         @JoinColumn(name = "PQR_ID_PQR", referencedColumnName = "ID_PQR")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private Collection<Pqr> pqrCollection;
-    @ManyToMany(mappedBy = "clienteFidelizadoCollection", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "clienteFidelizadoCollection")
     private Collection<Beneficio> beneficioCollection;
-    @OneToMany(mappedBy = "clienteIDCliente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "clienteIDCliente")
     private Collection<VentasHasCliente> ventasHasClienteCollection;
 
     public ClienteFidelizado() {

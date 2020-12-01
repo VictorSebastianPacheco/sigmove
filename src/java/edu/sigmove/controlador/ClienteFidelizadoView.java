@@ -27,12 +27,20 @@ public class ClienteFidelizadoView implements Serializable{
     private ArrayList<ClienteFidelizado> listaCliente = new ArrayList<>();
     
     @PostConstruct
-    public void cargaUsuarios() {
+    public void cargaClienteFidelizado() {
         listaCliente.addAll(clienteFidelizadoFacadeLocal.findAll());
     }
     
     
     public ClienteFidelizadoView() {
+    }
+
+    public ArrayList<ClienteFidelizado> getListaCliente() {
+        return listaCliente;
+    }
+
+    public void setListaCliente(ArrayList<ClienteFidelizado> listaCliente) {
+        this.listaCliente = listaCliente;
     }
     
 }

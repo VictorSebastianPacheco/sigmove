@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -82,14 +81,14 @@ public class OrdenDeCompra implements Serializable {
     @JoinTable(name = "proveedores_has_orden_de_compra", joinColumns = {
         @JoinColumn(name = "Orden_de_compra_ID_Orden", referencedColumnName = "ID_Orden")}, inverseJoinColumns = {
         @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private Collection<Proveedores> proveedoresCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra")
     private OrdenDeCompraCantidad ordenDeCompraCantidad;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra")
     private OrdenDeCompraTelefono ordenDeCompraTelefono;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Asistente asistenteIDAsistente;
 
     public OrdenDeCompra() {
