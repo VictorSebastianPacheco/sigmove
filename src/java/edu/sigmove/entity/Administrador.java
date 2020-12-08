@@ -10,6 +10,7 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,9 +42,9 @@ public class Administrador implements Serializable {
     @Column(name = "ID_Administrador")
     private String iDAdministrador;
     @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIDUsuario;
-    @OneToMany(mappedBy = "administradorIDAdministrador")
+    @OneToMany(mappedBy = "administradorIDAdministrador", fetch = FetchType.LAZY)
     private Collection<Proveedores> proveedoresCollection;
 
     public Administrador() {

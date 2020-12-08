@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -77,12 +78,12 @@ public class Ventas implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "Metodo_Pago")
     private String metodoPago;
-    @ManyToMany(mappedBy = "ventasCollection")
+    @ManyToMany(mappedBy = "ventasCollection", fetch = FetchType.LAZY)
     private Collection<Producto> productoCollection;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Asistente asistenteIDAsistente;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ventas")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ventas", fetch = FetchType.LAZY)
     private VentasHasCliente ventasHasCliente;
 
     public Ventas() {

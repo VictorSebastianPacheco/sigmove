@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -90,14 +91,16 @@ public class Usuario implements Serializable {
     @Column(name = "fechaRegistro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
-    @ManyToMany(mappedBy = "usuarioCollection")
+    @ManyToMany(mappedBy = "usuarioCollection", fetch = FetchType.LAZY)
     private Collection<Rol> rolCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
     private Collection<Asistente> asistenteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
     private Collection<Administrador> administradorCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private UsuarioTelefono usuarioTelefono;
+    @OneToMany(mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
+    private Collection<ClienteFidelizado> clienteFidelizadoCollection;
 
     public Usuario() {
     }
@@ -239,6 +242,15 @@ public class Usuario implements Serializable {
 
     public void setUsuarioTelefono(UsuarioTelefono usuarioTelefono) {
         this.usuarioTelefono = usuarioTelefono;
+    }
+
+    @XmlTransient
+    public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
+        return clienteFidelizadoCollection;
+    }
+
+    public void setClienteFidelizadoCollection(Collection<ClienteFidelizado> clienteFidelizadoCollection) {
+        this.clienteFidelizadoCollection = clienteFidelizadoCollection;
     }
 
     @Override

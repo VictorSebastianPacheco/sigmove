@@ -8,21 +8,20 @@ package edu.sigmove.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -44,59 +43,56 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_Producto")
     private Integer iDProducto;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 45)
+    @Column(name = "Serial")
+    private String serial;
+    @Size(max = 20)
     @Column(name = "Nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 45)
+    @Column(name = "Imagen_ruta")
+    private String imagenruta;
+    @Size(max = 45)
+    @Column(name = "cantidad")
+    private String cantidad;
+    @Size(max = 45)
+    @Column(name = "unidad_medida")
+    private String unidadMedida;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Precio_Unitario")
-    private double precioUnitario;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    private Double precioUnitario;
+    @Column(name = "Precio_venta")
+    private Double precioventa;
+    @Size(max = 30)
     @Column(name = "Genero")
     private String genero;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "Marca")
     private String marca;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "Tipo")
     private String tipo;
     @JoinTable(name = "producto_has_ventas", joinColumns = {
         @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
         @JoinColumn(name = "Ventas_ID_Venta", referencedColumnName = "ID_Venta")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Ventas> ventasCollection;
     @JoinTable(name = "producto_has_proveedores", joinColumns = {
         @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
         @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Proveedores> proveedoresCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto")
+    @JoinColumn(name = "idcategoria", referencedColumnName = "idcategoria")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Categoria idcategoria;
+    @OneToMany(mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
-    private ProductoCantidad productoCantidad;
 
     public Producto() {
     }
 
     public Producto(Integer iDProducto) {
         this.iDProducto = iDProducto;
-    }
-
-    public Producto(Integer iDProducto, String nombre, double precioUnitario, String genero, String marca, String tipo) {
-        this.iDProducto = iDProducto;
-        this.nombre = nombre;
-        this.precioUnitario = precioUnitario;
-        this.genero = genero;
-        this.marca = marca;
-        this.tipo = tipo;
     }
 
     public Integer getIDProducto() {
@@ -107,6 +103,14 @@ public class Producto implements Serializable {
         this.iDProducto = iDProducto;
     }
 
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -115,12 +119,44 @@ public class Producto implements Serializable {
         this.nombre = nombre;
     }
 
-    public double getPrecioUnitario() {
+    public String getImagenruta() {
+        return imagenruta;
+    }
+
+    public void setImagenruta(String imagenruta) {
+        this.imagenruta = imagenruta;
+    }
+
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getUnidadMedida() {
+        return unidadMedida;
+    }
+
+    public void setUnidadMedida(String unidadMedida) {
+        this.unidadMedida = unidadMedida;
+    }
+
+    public Double getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
+    public void setPrecioUnitario(Double precioUnitario) {
         this.precioUnitario = precioUnitario;
+    }
+
+    public Double getPrecioventa() {
+        return precioventa;
+    }
+
+    public void setPrecioventa(Double precioventa) {
+        this.precioventa = precioventa;
     }
 
     public String getGenero() {
@@ -165,6 +201,14 @@ public class Producto implements Serializable {
         this.proveedoresCollection = proveedoresCollection;
     }
 
+    public Categoria getIdcategoria() {
+        return idcategoria;
+    }
+
+    public void setIdcategoria(Categoria idcategoria) {
+        this.idcategoria = idcategoria;
+    }
+
     @XmlTransient
     public Collection<RegistroDeEntrada> getRegistroDeEntradaCollection() {
         return registroDeEntradaCollection;
@@ -172,14 +216,6 @@ public class Producto implements Serializable {
 
     public void setRegistroDeEntradaCollection(Collection<RegistroDeEntrada> registroDeEntradaCollection) {
         this.registroDeEntradaCollection = registroDeEntradaCollection;
-    }
-
-    public ProductoCantidad getProductoCantidad() {
-        return productoCantidad;
-    }
-
-    public void setProductoCantidad(ProductoCantidad productoCantidad) {
-        this.productoCantidad = productoCantidad;
     }
 
     @Override

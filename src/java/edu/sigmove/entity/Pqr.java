@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -78,11 +79,11 @@ public class Pqr implements Serializable {
     @Size(min = 1, max = 2000)
     @Column(name = "Descripcion")
     private String descripcion;
-    @ManyToMany(mappedBy = "pqrCollection")
+    @ManyToMany(mappedBy = "pqrCollection", fetch = FetchType.LAZY)
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
     private PqrCorreo pqrCorreo;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
     private PqrTelefono pqrTelefono;
 
     public Pqr() {

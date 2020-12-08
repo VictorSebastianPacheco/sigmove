@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -65,7 +66,7 @@ public class Beneficio implements Serializable {
     @JoinTable(name = "beneficio_has_cliente", joinColumns = {
         @JoinColumn(name = "beneficio_ID_Beneficio", referencedColumnName = "ID_Beneficio")}, inverseJoinColumns = {
         @JoinColumn(name = "cliente_ID_Cliente", referencedColumnName = "ID_Cliente")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
 
     public Beneficio() {

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -33,14 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PqrTelefono implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
+    @Size(max = 12)
     @Column(name = "Telefono")
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
+    @Size(max = 12)
     @Column(name = "Telefono2")
     private String telefono2;
     @Id
@@ -49,7 +45,7 @@ public class PqrTelefono implements Serializable {
     @Column(name = "PQR_ID_PQR")
     private Integer pqrIdPqr;
     @JoinColumn(name = "PQR_ID_PQR", referencedColumnName = "ID_PQR", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Pqr pqr;
 
     public PqrTelefono() {
@@ -57,12 +53,6 @@ public class PqrTelefono implements Serializable {
 
     public PqrTelefono(Integer pqrIdPqr) {
         this.pqrIdPqr = pqrIdPqr;
-    }
-
-    public PqrTelefono(Integer pqrIdPqr, String telefono, String telefono2) {
-        this.pqrIdPqr = pqrIdPqr;
-        this.telefono = telefono;
-        this.telefono2 = telefono2;
     }
 
     public String getTelefono() {

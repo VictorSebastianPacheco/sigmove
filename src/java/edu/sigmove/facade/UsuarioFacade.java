@@ -25,8 +25,13 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     protected EntityManager getEntityManager() {
         return em;
     }
+
+    public UsuarioFacade() {
+        super(Usuario.class);
+    }
+    
     @Override
-     public Usuario recuperarContraseña(String usuarioIn) {
+    public Usuario recuperarContraseña(String usuarioIn) {
         try {
             Query qt = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuarioIn ");
             qt.setParameter("usuarioIn", usuarioIn);
@@ -47,9 +52,5 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         return  new Usuario();
         }
     }
-
-    public UsuarioFacade() {
-        super(Usuario.class);
-    }
-    
+  
 }

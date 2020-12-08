@@ -5,12 +5,11 @@
  */
 package edu.sigmove.controlador;
 
-
-
 import edu.sigmove.entity.Usuario;
 import edu.sigmove.facade.UsuarioFacadeLocal;
 import edu.sigmove.utilidades.Email;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,7 +27,7 @@ public class UsuarioRequest implements Serializable {
 
     private Usuario usuReg = new Usuario();
     private String usuarioIn = "";
-    
+    private ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
     public UsuarioRequest() {
     }
@@ -65,6 +64,33 @@ public class UsuarioRequest implements Serializable {
         PrimeFaces.current().executeScript(mensajeRequest);
         correoIn = "";
     }*/
+    public void correoMasivo() {
+        /*String mensaje = "los Usuarios con el correo" + listaUsuarios;
+        Usuario usuarioResultado = new Usuario();
+        
+
+        if (usuarioResultado.getUsuario() == null) {
+            mensaje += "no esta registrado";
+
+        } else {*/
+            try {
+                for (Usuario IUsuario : listaUsuarios) {
+                    Email.sendBienvenido(IUsuario.getUsuario(),
+                            "Señor " + IUsuario.getNombre() + " " + IUsuario.getApellido(),
+                            IUsuario.getUsuario(),
+                            IUsuario.getContraseña()
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Error RegistroRequest:recuperarClave " + e.getMessage());
+            }
+            //mensaje += " su clave se envio al correo registrado";
+        /*}
+        FacesMessage ms = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, ms);*/
+    }
+    
+
     
     public void recuperarClave() {
         String mensaje = "Usuario con el correo" + usuarioIn;
@@ -72,27 +98,26 @@ public class UsuarioRequest implements Serializable {
         usuarioResultado = usuarioFacadeLocal.recuperarContraseña(usuarioIn);
 
         if (usuarioResultado.getNombre() == null) {
-            mensaje+= "no esta registrado";
+            mensaje += "no esta registrado";
 
         } else {
             try {
                 Email.sendClaves(usuarioResultado.getUsuario(),
-                       "Señor "+ usuarioResultado.getNombre()+ " " +usuarioResultado.getApellido(),
-                        usuarioResultado.getUsuario(), 
+                        "Señor " + usuarioResultado.getNombre() + " " + usuarioResultado.getApellido(),
+                        usuarioResultado.getUsuario(),
                         usuarioResultado.getContraseña()
                 );
-                
 
             } catch (Exception e) {
                 System.out.println("Error RegistroRequest:recuperarClave " + e.getMessage());
 
             }
-            mensaje+= " su clave se envio al correo registrado";
+            mensaje += " su clave se envio al correo registrado";
         }
         FacesMessage ms = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, ms);
     }
-  
+
     /*public void inicioSession() {
         String mensajeAlerta = "";
         try {
@@ -110,10 +135,6 @@ public class UsuarioRequest implements Serializable {
         }
         PrimeFaces.current().executeScript(mensajeAlerta);
     }*/
-    
-    
-    
-
     public Usuario getUsuReg() {
         return usuReg;
     }
@@ -130,7 +151,7 @@ public class UsuarioRequest implements Serializable {
         this.usuarioIn = usuarioIn;
     }
 
-/*usuarioFacade
+    /*usuarioFacade
 @Override
      public Usuario recuperarContraseña(String usuarioIn) {
         try {
@@ -142,13 +163,47 @@ public class UsuarioRequest implements Serializable {
         }
 
     }
+    
+    public Usuario loginUsuario(String usuarioIn , String contraseñaIn){
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuarioIn AND u.contraseña = :contraseñaIn");
+            q.setParameter("usuarioIn",usuarioIn );
+            q.setParameter("contraseñaIn",contraseñaIn );
+            return (Usuario) q.getSingleResult();            
+        } catch (Exception e) {
+        return  new Usuario();
+        }
+    }
+    public boolean removerUsuario(int id) {
+        boolean retorno = false;
+        try {
+            Query qt = em.createQuery("DELETE FROM Usuario u WHERE u.id = :id");
+            qt.setParameter("id", id);
+            int salida = qt.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return retorno;
+        }
+    }
+   
 
-  */
-    /*UsuarioFacadeLocal
+     */
+ /*UsuarioFacadeLocal
     
     public Usuario loginUsuario(String usuarioIn, String contraseña);
 
     public Usuario recuperarContraseña(String usuarioIn);
     
-    */
+    public boolean removerUsuario(int id);
+     */
+
+    public ArrayList<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+    
 }
+

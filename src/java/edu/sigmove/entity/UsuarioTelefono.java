@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
@@ -47,7 +48,7 @@ public class UsuarioTelefono implements Serializable {
     @Column(name = "Usuario_ID_Usuario")
     private Integer usuarioIDUsuario;
     @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
 
     public UsuarioTelefono() {

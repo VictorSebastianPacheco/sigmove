@@ -41,6 +41,7 @@ public class BeneficiosRequest implements Serializable{
         PrimeFaces.current().executeScript(mensajeRequest);
         benfReg = new Beneficio();
     }
+    
     public void actualizarMisDatos(){
          String mensajeAlerta = "";
         try {

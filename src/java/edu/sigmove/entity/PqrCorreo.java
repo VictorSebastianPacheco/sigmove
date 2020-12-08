@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +50,7 @@ public class PqrCorreo implements Serializable {
     @Column(name = "PQR_ID_PQR")
     private Integer pqrIdPqr;
     @JoinColumn(name = "PQR_ID_PQR", referencedColumnName = "ID_PQR", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Pqr pqr;
 
     public PqrCorreo() {

@@ -64,7 +64,7 @@
                                         <tr>
                                             <td></td>
                                             <td>Descargue listado de Usuarios</td>
-                                            
+
                                             <td>
                                                 <h:commandButton class="btn btn-primary btn-xs" action="#{usuarioView.descargaListado()}" value="lista de Usuarios"></h:commandButton>   
                                             </td>
@@ -77,14 +77,14 @@
                                             <td></td>
                                         </tr>
 
-                                        
+
                                     </h:form>
 
                                 </tbody>
 
 
                             </table>
-                            
+
 
                             <hr/>
                         </div>
@@ -99,7 +99,7 @@
 
 
                         <h:form role="form" class="form-horizontal">
-                            
+
                             <div class="form-group">
                                 <label class="col-6 control-label">Nombre</label>
                                 <h:inputText  value="#{usuarioView.usuarioSelect.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
@@ -156,6 +156,13 @@
 
 
 
+                        </h:form>
+                        <h:form id="formId">
+
+
+                            <p>Mande un saludo a todos los usuarios registrados</p>
+                            <h:commandButton action="#{usuarioRequest.correoMasivo()}" class="btn btn-success" value="Saludar" style="width: 200px; height: 40px;"  />
+                            <h:commandButton action="#{usuarioRequest.recuperarClave()}" class="btn btn-danger" value="Recuperar clave" style="width: 200px; height: 40px;"  />
                         </h:form>
 
 

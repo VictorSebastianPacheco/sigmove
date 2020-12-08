@@ -11,12 +11,14 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -61,11 +63,14 @@ public class ClienteFidelizado implements Serializable {
     @JoinTable(name = "cliente_has_pqr", joinColumns = {
         @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")}, inverseJoinColumns = {
         @JoinColumn(name = "PQR_ID_PQR", referencedColumnName = "ID_PQR")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Pqr> pqrCollection;
-    @ManyToMany(mappedBy = "clienteFidelizadoCollection")
+    @ManyToMany(mappedBy = "clienteFidelizadoCollection", fetch = FetchType.LAZY)
     private Collection<Beneficio> beneficioCollection;
-    @OneToMany(mappedBy = "clienteIDCliente")
+    @JoinColumn(name = "usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Usuario usuarioIDUsuario;
+    @OneToMany(mappedBy = "clienteIDCliente", fetch = FetchType.LAZY)
     private Collection<VentasHasCliente> ventasHasClienteCollection;
 
     public ClienteFidelizado() {
@@ -129,6 +134,14 @@ public class ClienteFidelizado implements Serializable {
 
     public void setBeneficioCollection(Collection<Beneficio> beneficioCollection) {
         this.beneficioCollection = beneficioCollection;
+    }
+
+    public Usuario getUsuarioIDUsuario() {
+        return usuarioIDUsuario;
+    }
+
+    public void setUsuarioIDUsuario(Usuario usuarioIDUsuario) {
+        this.usuarioIDUsuario = usuarioIDUsuario;
     }
 
     @XmlTransient

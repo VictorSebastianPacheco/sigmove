@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,28 +42,22 @@ public class RegistroDeEntrada implements Serializable {
     @NotNull
     @Column(name = "ID_Registro")
     private Integer iDRegistro;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "Nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "Fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+    @Size(max = 200)
     @Column(name = "Descripcion")
     private String descripcion;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "registroDeEntrada")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "registroDeEntrada", fetch = FetchType.LAZY)
     private RegistroDeEntradaCantidad registroDeEntradaCantidad;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Asistente asistenteIDAsistente;
     @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Producto productoIDProducto;
 
     public RegistroDeEntrada() {
@@ -70,13 +65,6 @@ public class RegistroDeEntrada implements Serializable {
 
     public RegistroDeEntrada(Integer iDRegistro) {
         this.iDRegistro = iDRegistro;
-    }
-
-    public RegistroDeEntrada(Integer iDRegistro, String nombre, Date fecha, String descripcion) {
-        this.iDRegistro = iDRegistro;
-        this.nombre = nombre;
-        this.fecha = fecha;
-        this.descripcion = descripcion;
     }
 
     public Integer getIDRegistro() {

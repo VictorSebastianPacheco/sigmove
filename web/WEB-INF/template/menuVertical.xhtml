@@ -29,11 +29,7 @@
                     <div class="clear"></div>
                 </div>
                 <div class="divider"></div>
-                <form role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Buscar"/>
-                    </div>
-                </form>
+
                 <ul class="nav menu">
                     <li class=""><a href="inicio.lum.xhtml"><em class="fa fa-dashboard"></em> Inicio</a></li>
                     <li><a href="inicio.lum.xhtml"><em class="fa fa-bar-chart"></em> Reportes</a></li>
@@ -60,8 +56,9 @@
                     <li>
                         <h:form id="salir">  
                             <h:commandLink id="link" action="#{usuarioSesion.cerraSesion()}" ></h:commandLink>
+
+                            <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
                         </h:form>
-                        <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
                     </li>
                 </ul>
 

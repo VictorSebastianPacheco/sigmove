@@ -11,39 +11,40 @@
 
         <section id="main-content">
             <div class="single_top">
-                    <div class="container"> 
-                        <div class="register">
-                            <div class="col-md-6 login-right">
-                                <h3>INGRESE USUARIO</h3>
-                                <p>Si tiene una cuenta con nosotros, por favor inicia sesión.</p>
-                                <h:form>
-                                    <div>
-                                        <span>Usuario<label>*</label></span>
-                                        <h:inputText  value="#{usuarioSesion.usuarioIn}" class="form-control" html5:placeholder="usuario" html5:autofocus="true" />
-                                    </div>
-                                    <div>
-                                        <span>Contraseña<label>*</label></span>
-                                        <h:inputSecret  value="#{usuarioSesion.contraseña}" class="form-control" html5:placeholder="Contraseña"/>
-                                         
-                                    </div>
-                                    <a class="forgot" href="recuperarContraseña.xhtml">¿Olvidaste la contraseña?</a>
-                                    <h:commandButton action="#{usuarioSesion.inicioSession()}" class="btn btn-danger" value="Iniciar Sesión" style="width: 200px; height: 40px;"  />
-                                    
-                                </h:form>
-                            </div>
-                            <div class="col-md-6 login-left">
+                <div class="container"> 
+                    <div class="register">
+                        <div class="col-md-6 login-right">
+                            <h3>INGRESE USUARIO</h3>
+                            <p>Si tiene una cuenta con nosotros, por favor inicia sesión.</p>
+                            <h:form>
+                                <div>
+                                    <span>Usuario<label>*</label></span>
+                                    <h:inputText  value="#{usuarioSesion.usuarioIn}" class="form-control" html5:placeholder="usuario" html5:autofocus="true" />
+                                </div>
+                                <div>
+                                    <span>Contraseña<label>*</label></span>
+                                    <h:inputSecret  value="#{usuarioSesion.contraseña}" class="form-control" html5:placeholder="Contraseña"/>
+
+                                </div>
+                                <a class="forgot" href="recuperarContraseña.xhtml">¿Olvidaste la contraseña?</a>
+                                <h:commandButton action="#{usuarioSesion.inicioSession()}" class="btn btn-danger" value="Iniciar Sesión" style="width: 200px; height: 40px;"  />
+
+                            </h:form>
+                        </div>
+                        <div class="col-md-6 login-right">
+                            <div>
                                 <h3>¿USUARIO NUEVO?</h3>
                                 <p>Al crear una cuenta en nuestra tienda, podrá estar al tanto de las actualizaciones más rápido, crear tus peticiones, quejas, reclamos, felicitaciones y sugerencias, ver y rastrear sus solicitudes en su cuenta y mucho más.</p>
-                                <button class="btn btn-danger">
+                                <button class="btn btn-danger ">
                                     <a class="acount-	btn" href="registro.xhtml">Crear una cuenta</a>
                                 </button>
-                                
-                            </div>	
-                            <div class="clearfix"> </div>
-                        </div>
+                            </div>
+                        </div>	
+                        <div class="clearfix"> </div>
                     </div>
                 </div>
-            
+            </div>
+
         </section> 
 
 
