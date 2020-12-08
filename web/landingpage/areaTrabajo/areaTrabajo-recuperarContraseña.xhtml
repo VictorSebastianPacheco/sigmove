@@ -18,6 +18,7 @@
                                 <h3>Por favor rellenar los campos para la debidad recuperacion de su clave</h3>
                                 
                                 <h:form id="formId">
+                                    <h:messages></h:messages>
                                     <div>
                                         <span>Ingrese su correo<label>*</label></span>
                                         <h:inputText  id="usuarioId" value="#{usuarioRequest.usuarioIn}" required="true"  requiredMessage="Se requiere un correo"/>
@@ -28,6 +29,7 @@
                                     <h:commandButton action="#{usuarioRequest.recuperarClave()}" class="btn btn-danger" value="Recuperar clave" style="width: 200px; height: 40px;"  />
                                     
                                 </h:form>
+                                
                             </div>
                             	
                          

@@ -20,6 +20,8 @@
         <link href="../resources/css.lumino/styles2.css" rel="stylesheet" type="text/css"/>
         <link href="../resources/css.lumino/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
 
+
+
         <!-- <link href="../../resources/css.lumino/style-responsive.css" rel="stylesheet" type="text/css"/>-->
 
 
@@ -66,7 +68,9 @@
         <script src="../resources/js2/html5shiv.min.js" type="text/javascript"></script>
         <script src="../resources/js2/respond.min.js" type="text/javascript"></script>
 
-        <script src="../resources/js2/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <ui:insert name="myscript">
+            
+        </ui:insert>
 
         <script src="../resources/js2/bootstrap.min.js" type="text/javascript"></script>
         <script src="../resources/js2/custom.js" type="text/javascript"></script>
@@ -80,10 +84,10 @@
 
 
         <script type="text/javascript">
-    $(function () {
-        //    fancybox
-        jQuery(".fancybox").fancybox();
-    });
+            $(function () {
+                //    fancybox
+                jQuery(".fancybox").fancybox();
+            });
         </script>
 
 

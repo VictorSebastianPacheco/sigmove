@@ -74,7 +74,7 @@ public class UsuarioRequest implements Serializable {
 
         } else {*/
             try {
-                for (Usuario IUsuario : listaUsuarios) {
+                for (Usuario IUsuario : usuarioFacadeLocal.findAll()) {
                     Email.sendBienvenido(IUsuario.getUsuario(),
                             "Señor " + IUsuario.getNombre() + " " + IUsuario.getApellido(),
                             IUsuario.getUsuario(),
@@ -118,23 +118,7 @@ public class UsuarioRequest implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, ms);
     }
 
-    /*public void inicioSession() {
-        String mensajeAlerta = "";
-        try {
-            usuLogin = usuarioFacadeLocal.loginUsuario(usuarioIn, contraseña);
-            if (usuLogin.getUsuario()== null) {
-                mensajeAlerta = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
-            } else {
-                FacesContext facesContext = FacesContext.getCurrentInstance();
-                facesContext.getExternalContext().redirect("../usuario/index.xhtml?faces-redirect=true");
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error UsuarioSesion:inicioSession " + e.getMessage());
-            mensajeAlerta = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
-        }
-        PrimeFaces.current().executeScript(mensajeAlerta);
-    }*/
+    
     public Usuario getUsuReg() {
         return usuReg;
     }
