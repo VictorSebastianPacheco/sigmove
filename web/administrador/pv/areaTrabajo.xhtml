@@ -6,213 +6,176 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition >
-        <!-- **********************************************************************************************************************************************************
-         MAIN CONTENT
-         *********************************************************************************************************************************************************** -->
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
+            <!-- **********************************************************************************************************************************************************
+             MAIN CONTENT
+             *********************************************************************************************************************************************************** -->
 
 
-        <!--main content start-->
-        <section id="main-content">
-            <section class="wrapper">
+            <!--main content start-->
+            <section id="main-content">
+                <section class="wrapper">
 
-                <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-                    <div class="col-md-12">
-                        <div class="content-panel">
-                            <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Lista de usuarios</h4>
-                                <hr/>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th> Correo</th>
-                                        <th> Nombre y apellido</th>
-                                        <th> Tipo Documento</th>
-                                        <th> Documento</th>
-                                        <th> Dirreción</th>
-                                        <th> Fecha Nacimiento</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <h:form id="listaUsuarios">
-                                        <c:forEach items="#{usuarioView.listaUsuario}" var="usu">
+                    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                        <div class="col-md-12">
+                            <div class="content-panel">
+                                <table class="table table-striped table-advance table-hover">
+                                    <h4><i class="fa fa-angle-right"></i> #{msjAlumi.listadeusuarios}</h4>
+                                    <hr/>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th> #{msjAlumi.Correo}</th>
+                                            <th> #{msjAlumi.Nombre} #{msjAlumi.Apellido}</th>
+                                            <th> #{msjAlumi.TipoDocumento}</th>
+                                            <th> #{msjAlumi.Documento}</th>
+                                            <th> #{msjAlumi.Dirreción}</th>
+                                            <th> #{msjAlumi.FechaNacimiento}</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <h:form id="listaUsuarios">
+                                            <c:forEach items="#{usuarioView.listaUsuario}" var="usu">
+                                                <tr>
+                                                    <td>#{usu.IDUsuario}</td>
+                                                    <td> #{usu.usuario} </td>
+                                                    <td class="hidden-phone">#{usu.nombre} #{usu.apellido}</td>
+                                                    <td> #{usu.tipoDocumento} </td>
+                                                    <td> #{usu.numeroDocumento} </td>
+                                                    <td> #{usu.direccion} </td>
+                                                    <td> #{usu.fechaRegistro} </td>
+                                                    <td><span class="label label-info label-mini">#{ben.fecha}</span></td>
+                                                    <td>
+
+                                                        <h:commandButton style="display: none" id="tbl#{usu.IDUsuario}" action="#{usuarioView.removerUsuario(usu)}"></h:commandButton>   
+                                                        <h:commandButton style="display: none" id="usuTbl#{usu.IDUsuario}" action="#{usuarioView.UsuarioSelecionado(usu)}"></h:commandButton>  
+
+
+                                                        <button type="button" onclick="$('#listaUsuarios\\:usuTbl#{usu.IDUsuario}').click()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></button>
+                                                        <button type="button" onclick="$('#listaUsuarios\\:tbl#{usu.IDUsuario}').click()" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </c:forEach>
                                             <tr>
-                                                <td>#{usu.IDUsuario}</td>
-                                                <td> #{usu.usuario} </td>
-                                                <td class="hidden-phone">#{usu.nombre} #{usu.apellido}</td>
-                                                <td> #{usu.tipoDocumento} </td>
-                                                <td> #{usu.numeroDocumento} </td>
-                                                <td> #{usu.direccion} </td>
-                                                <td> #{usu.fechaRegistro} </td>
-                                                <td><span class="label label-info label-mini">#{ben.fecha}</span></td>
+                                                <td></td>
+                                                <td>#{msjAlumi.DescarguelistadodeUsuarios}</td>
+
                                                 <td>
-
-                                                    <h:commandButton style="display: none" id="tbl#{usu.IDUsuario}" action="#{usuarioView.removerUsuario(usu)}"></h:commandButton>   
-                                                    <h:commandButton style="display: none" id="usuTbl#{usu.IDUsuario}" action="#{usuarioView.UsuarioSelecionado(usu)}"></h:commandButton>  
-
-
-                                                    <button type="button" onclick="$('#listaUsuarios\\:usuTbl#{usu.IDUsuario}').click()" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></button>
-                                                    <button type="button" onclick="$('#listaUsuarios\\:tbl#{usu.IDUsuario}').click()" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-
-
+                                                    <h:commandButton class="btn btn-primary btn-xs" action="#{usuarioView.descargaListado()}" value="#{msjAlumi.listadeusuarios}"></h:commandButton>   
                                                 </td>
-
+                                                <td></td>
+                                                <td>
+                                                   
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
 
-                                        </c:forEach>
-                                        <tr>
-                                            <td></td>
-                                            <td>Descargue listado de Usuarios</td>
 
-                                            <td>
-                                                <h:commandButton class="btn btn-primary btn-xs" action="#{usuarioView.descargaListado()}" value="lista de Usuarios"></h:commandButton>   
-                                            </td>
-                                            <td>Nuevo Usuario</td>
-                                            <td>
-                                                <a class="btn btn-success btn-xs" data-toggle="modal" href="login.html#myModal"> New User</a>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                        </h:form>
+
+                                    </tbody>
 
 
-                                    </h:form>
-
-                                </tbody>
+                                </table>
 
 
-                            </table>
+                                <hr/>
+                            </div>
 
-
-                            <hr/>
+                            <!-- /content-panel -->
                         </div>
+                        <div class="col-lg-8 col-lg-offset-2 detailed mt">
 
-                        <!-- /content-panel -->
-                    </div>
-                    <div class="col-lg-8 col-lg-offset-2 detailed mt">
-
-                        <div class="center">
-                            <h1 class="page-header center">Actualizar Usuario</h1>
-                        </div>
-
-
-                        <h:form role="form" class="form-horizontal">
-
-                            <div class="form-group">
-                                <label class="col-6 control-label">Nombre</label>
-                                <h:inputText  value="#{usuarioView.usuarioSelect.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
-
+                            <div class="center">
+                                <h1 class="page-header center">#{msjAlumi.ActualizarUsuario}</h1>
                             </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Apellido</label>
-                                <h:inputTextarea  value="#{usuarioView.usuarioSelect.apellido}" rows="3" class="form-control" html5:placeholder="Codigo del producto" html5:autofocus="true"/>
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Correo</label>
-                                <h:inputTextarea  value="#{usuarioView.usuarioSelect.usuario}" rows="3" class="form-control" html5:placeholder="Codigo del producto" html5:autofocus="true"/>
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Contraseña</label>
-                                <h:inputTextarea  value="#{usuarioView.usuarioSelect.contraseña}" rows="3" class="form-control" html5:placeholder="Codigo del producto" html5:autofocus="true"/>
+                            <h:form role="form" class="form-horizontal">
 
-                            </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Tipo de Documento</label>
-                                <h:selectOneMenu value="#{usuarioView.usuarioSelect.tipoDocumento}" class="form-control" >
-                                    <f:selectItem itemLabel="Cedula" itemValue="Cedula" ></f:selectItem>
-                                    <f:selectItem itemLabel="Cedula Ext." itemValue="Cedula Ext." ></f:selectItem>
-                                    <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.Nombre}</label>
+                                    <h:inputText  value="#{usuarioView.usuarioSelect.nombre}" class="form-control" html5:placeholder="#{msjAlumi.Nombre}" html5:autofocus="true"/>
 
-                                </h:selectOneMenu>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Documento</label>
-                                <h:inputTextarea  value="#{usuarioView.usuarioSelect.numeroDocumento}" rows="3" class="form-control" html5:placeholder="Codigo del producto" html5:autofocus="true"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Dirreción</label>
-                                <h:inputTextarea  value="#{usuarioView.usuarioSelect.direccion}" rows="3" class="form-control" html5:placeholder="Codigo del producto" html5:autofocus="true"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label class="col-6 control-label">Fecha de naciemiento</label>
-                                <div>
-                                    <input type="text" disabled="true"  placeholder="#{usuarioView.usuarioSelect.fechaNacimiento}" id="ddr2" class="form-control"/>
                                 </div>
-                            </div>
-                            <div class="form-group">
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.Apellido}</label>
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.apellido}" rows="3" class="form-control" html5:placeholder="#{msjAlumi.Apellido}" html5:autofocus="true"/>
 
-                                <h:commandButton class="btn btn-success" action="#{usuarioView.actualizarUsuario()}" value="Guardar"></h:commandButton>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.Correo}</label>
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.usuario}" rows="3" class="form-control" html5:placeholder="#{msjAlumi.Correo}" html5:autofocus="true"/>
 
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.Contraseña}</label>
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.contraseña}" rows="3" class="form-control" html5:placeholder="#{msjAlumi.Contraseña}" html5:autofocus="true"/>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.TipodeDocumento}</label>
+                                    <h:selectOneMenu value="#{usuarioView.usuarioSelect.tipoDocumento}" class="form-control" >
+                                        <f:selectItem itemLabel="#{msjAlumi.cedula}" itemValue="Cedula" ></f:selectItem>
+                                        <f:selectItem itemLabel="#{msjAlumi.Ceduladeextranjeria} " itemValue="Cedula Ext." ></f:selectItem>
+                                        <f:selectItem itemLabel="#{msjAlumi.Pasaporte}" itemValue="Pasaporte" ></f:selectItem>
+
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.Documento}</label>
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.numeroDocumento}" rows="3" class="form-control" html5:placeholder="#{msjAlumi.Numerodeidentificacion}" html5:autofocus="true"/>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.Dirreción}</label>
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.direccion}" rows="3" class="form-control" html5:placeholder="#{msjAlumi.Dirreción}" html5:autofocus="true"/>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-6 control-label">#{msjAlumi.FechaNacimiento}</label>
+                                    <div>
+                                        <input type="text" disabled="true"  placeholder="#{usuarioView.usuarioSelect.fechaNacimiento}" id="ddr2" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <h:commandButton class="btn btn-success" action="#{usuarioView.actualizarUsuario()}" value="#{msjAlumi.Guardar}"></h:commandButton>
+
+                                </div>
 
 
-                            <br/>
+                                <br/>
 
 
 
-                        </h:form>
-                        <h:form id="formId">
+                            </h:form>
+                            <h:form id="formId">
+
+                                <p>#{msjAlumi.Saludar}</p>
+                                <h:commandButton action="#{usuarioRequest.correoMasivo()}" class="btn btn-success" value="#{msjAlumi.Saludar}" style="width: 200px; height: 40px;"  />
+                            </h:form>
 
 
-                            <p>Mande un saludo a todos los usuarios registrados</p>
-                            <h:commandButton action="#{usuarioRequest.correoMasivo()}" class="btn btn-success" value="Saludar" style="width: 200px; height: 40px;"  />
-                            <h:commandButton action="#{usuarioRequest.recuperarClave()}" class="btn btn-danger" value="Recuperar clave" style="width: 200px; height: 40px;"  />
-                        </h:form>
+                            <br></br>
+                            <br></br>
 
-
-                        <br></br>
-                        <br></br>
-
+                        </div>
                     </div>
-                </div>
 
+                </section>
             </section>
-        </section>
-        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"> Nuevo Beneficio</h4>
-                    </div>
-                    <h:form>
-                        <div class="modal-body">
-
-
-
-                            <div class="login-wrap">
-                                <h:inputText  value="#{beneficioView.benReg.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
-                                <br/>
-                                <h:inputText value="#{beneficioView.benReg.producto}" class="form-control" html5:placeholder="Producto" html5:autofocus="true"/>
-                                <br/>
-
-                                <h:selectOneMenu value="#{beneficioView.benReg.tipo}" class="form-control">
-                                    <f:selectItem itemLabel="Regalo" itemValue="Cedula" ></f:selectItem>
-                                    <f:selectItem itemLabel="Promocion" itemValue="Cedula Ex." ></f:selectItem>
-                                    <f:selectItem itemLabel="Descuento" itemValue="Pasaporte" ></f:selectItem>
-                                </h:selectOneMenu>
-                                <br/>
-
-                            </div>
-
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button data-dismiss="modal" class="btn btn-danger" type="button">Cancelar</button>
-                            <h:commandButton action="#{beneficioView.registrarNuevoBeneficio()}" class="btn btn-success" value="Crear"/>
-                        </div>
-                    </h:form>
-                </div>
-            </div>
-        </div>
-        <!--main content end-->
-    </ui:composition>
+            
+            <!--main content end-->
+        </ui:composition>
+    </f:view>
 </html>
 

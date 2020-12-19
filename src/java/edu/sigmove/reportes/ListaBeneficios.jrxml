@@ -56,9 +56,6 @@ FROM
 				<text><![CDATA[Aproveche los beneficios que le brindamos]]></text>
 			</staticText>
 			<image>
-				<reportElement x="642" y="0" width="120" height="94" uuid="e6faafaf-faa0-487e-b3cc-4ce6dcab6839"/>
-			</image>
-			<image>
 				<reportElement x="1" y="0" width="202" height="136" uuid="49957737-dd98-46e3-97aa-77f82fa745de"/>
 				<imageExpression><![CDATA[$P{RutaImagen}]]></imageExpression>
 			</image>
@@ -69,6 +66,10 @@ FROM
 				</textElement>
 				<textFieldExpression><![CDATA["Generado por : "+$P{UsuarioReporte}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="600" y="0" width="200" height="95" uuid="9765ea40-62fb-4b43-bd25-8a1f228956fc"/>
+				<imageExpression><![CDATA[$P{RutaImagen2}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

@@ -6,91 +6,91 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition >
-        <!--main content start-->
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
+            <!--main content start-->
 
-        <section id="main-content">
-            <div class="single_top">
-                <div class="container"> 
-                    <div class="register">
-                        <h:form> 
-                            <div class="register-top-grid">
-                                <h3>INFORMACIÓN PERSONAL</h3>
-                                <div>
-                                    <span>Nombres<label>*</label></span>
-                                    <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="nombre" html5:autofocus="true" />
-                                </div>
-
-
-                                <div>
-                                    <span>Apellidos<label>*</label></span>
-                                    <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellido" html5:autofocus="true" />
-                                </div>
-                                <div>
-                                    <span>Tipo de documento<label>*</label></span>
-                                    <h:selectOneMenu value="#{usuarioRequest.usuReg.tipoDocumento}" class="form-control ">
-                                        <f:selectItem itemLabel="Cedula" itemValue="Cedula" ></f:selectItem>
-                                        <f:selectItem itemLabel="Cedula Ex." itemValue="Cedula Ex." ></f:selectItem>
-                                        <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
-
-                                    </h:selectOneMenu>
-
-                                </div>
-                                <div>
-                                    <span>Número de documento<label>*</label></span>
-                                    <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Numero documento" html5:autofocus="true"/>
-                                </div>
-
-                                <div> 
-                                    <span> Correo<label>*</label></span>
-                                    <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/> 
-                                </div>
-
-                                <div>
-                                    <span>Dirección<label>*</label></span>
-                                    <h:inputText  value="#{usuarioRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
-                                </div>
-
-                                <div> 
-                                    <span>Genero<label>*</label></span>
-                                    <h:selectOneMenu value="#{usuarioRequest.usuReg.genero}" class="form-control">
-                                        <f:selectItem itemLabel="Femenino" itemValue="Femenino" ></f:selectItem>
-                                        <f:selectItem itemLabel="Masculino" itemValue="Masculino" ></f:selectItem>
-                                    </h:selectOneMenu>
-                                </div>
-                            </div>
-                        </h:form>
-                    </div>
-
-                </div>
-                <div class="container">
-                    <div class="register">
-                        <h:form>
-                            <div class="register-top-grid">
-                                <br/><br/><br/>
-                                <div class="register-bottom-grid">
-                                    <h3>INFORMACIÓN DE INGRESO</h3>
+            <section id="main-content">
+                <div class="single_top">
+                    <div class="container"> 
+                        <div class="register">
+                            <h:form> 
+                                <div class="register-top-grid">
+                                    <h3>#{msjAreaTrabajo.INFORMACIÓNPERSONAL}</h3>
                                     <div>
-                                        <span>Contraseña<label>*</label></span>
-                                        <h:inputSecret  value="#{usuarioRequest.usuReg.contraseña}" class="form-control col-md-6 " html5:placeholder="Clave"/>
+                                        <span>#{msjAreaTrabajo.Nombres}<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Nombre}" html5:autofocus="true" />
                                     </div>
 
-                                </div>
-                                <br/><br/>
-                                <div class="register-but ">
-                                    <h:commandButton action="#{usuarioRequest.registrarUsuario()}" class="btn btn-theme btn-block acount-btn" value="Registrarse" style="width: 200px; height: 40px;"  />
 
+                                    <div>
+                                        <span>#{msjAreaTrabajo.Apellidos}<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Apellidos}" html5:autofocus="true" />
+                                    </div>
+                                    <div>
+                                        <span>#{msjAreaTrabajo.Tipodedocumento}<label>*</label></span>
+                                        <h:selectOneMenu value="#{usuarioRequest.usuReg.tipoDocumento}" class="form-control ">
+                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Cedula}" itemValue="Cedula" ></f:selectItem>
+                                            <f:selectItem itemLabel="#{msjAreaTrabajo.CedulaEx}" itemValue="Cedula Ex." ></f:selectItem>
+                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Pasaporte}" itemValue="Pasaporte" ></f:selectItem>
+                                        </h:selectOneMenu>
+
+                                    </div>
+                                    <div>
+                                        <span>#{msjAreaTrabajo.Númerodedocumento}<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Numerodocumento}" html5:autofocus="true"/>
+                                    </div>
+
+                                    <div> 
+                                        <span> #{msjAreaTrabajo.Correo}<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Usuario}" html5:autofocus="true"/> 
+                                    </div>
+
+                                    <div>
+                                        <span>#{msjAreaTrabajo.Dirección}<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
+                                    </div>
+
+                                    <div> 
+                                        <span>#{msjAreaTrabajo.Genero}<label>*</label></span>
+                                        <h:selectOneMenu value="#{usuarioRequest.usuReg.genero}" class="form-control">
+                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Femenino}" itemValue="Femenino" ></f:selectItem>
+                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Masculino}" itemValue="Masculino" ></f:selectItem>
+                                        </h:selectOneMenu>
+                                    </div>
                                 </div>
-                            </div>
-                        </h:form>
+                            </h:form>
+                        </div>
+
                     </div>
+                    <div class="container">
+                        <div class="register">
+                            <h:form>
+                                <div class="register-top-grid">
+                                    <br/><br/><br/>
+                                    <div class="register-bottom-grid">
+                                        <h3>#{msjAreaTrabajo.INFORMACIÓNDEINGRESO}</h3>
+                                        <div>
+                                            <span>#{msjAreaTrabajo.Contraseña}<label>*</label></span>
+                                            <h:inputSecret  value="#{usuarioRequest.usuReg.contraseña}" class="form-control col-md-6 " html5:placeholder="Clave"/>
+                                        </div>
+
+                                    </div>
+                                    <br/><br/>
+                                    <div class="register-but ">
+                                        <h:commandButton action="#{usuarioRequest.registrarUsuario()}" class="btn btn-theme btn-block acount-btn" value="#{msjAreaTrabajo.Registrarse}" style="width: 200px; height: 40px;"  />
+
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+
                 </div>
+            </section> 
 
-            </div>
-        </section> 
-
-
-        <!--main content end--> 
-    </ui:composition>
+            <!--main content end--> 
+        </ui:composition>
+    </f:view>
 </html>
 

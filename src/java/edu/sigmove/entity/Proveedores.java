@@ -63,9 +63,7 @@ public class Proveedores implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "Direccion")
     private String direccion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "Ciudad")
     private String ciudad;
     @ManyToMany(mappedBy = "proveedoresCollection", fetch = FetchType.LAZY)
@@ -85,13 +83,12 @@ public class Proveedores implements Serializable {
         this.iDProveedor = iDProveedor;
     }
 
-    public Proveedores(Integer iDProveedor, String nombre, String tipoDocumento, int numeroDocumento, String direccion, String ciudad) {
+    public Proveedores(Integer iDProveedor, String nombre, String tipoDocumento, int numeroDocumento, String direccion) {
         this.iDProveedor = iDProveedor;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.direccion = direccion;
-        this.ciudad = ciudad;
     }
 
     public Integer getIDProveedor() {

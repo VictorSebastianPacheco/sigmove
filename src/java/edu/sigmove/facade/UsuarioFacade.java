@@ -29,7 +29,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+
     @Override
     public Usuario recuperarContraseña(String usuarioIn) {
         try {
@@ -41,16 +41,17 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         }
 
     }
-     @Override
-    public Usuario loginUsuario(String usuarioIn , String contraseñaIn){
+
+    @Override
+    public Usuario loginUsuario(String usuarioIn, String contraseñaIn) {
         try {
             Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuarioIn AND u.contraseña = :contraseñaIn");
-            q.setParameter("usuarioIn",usuarioIn );
-            q.setParameter("contraseñaIn",contraseñaIn );
-            return (Usuario) q.getSingleResult();            
+            q.setParameter("usuarioIn", usuarioIn);
+            q.setParameter("contraseñaIn", contraseñaIn);
+            return (Usuario) q.getSingleResult();
         } catch (Exception e) {
-        return  new Usuario();
+            return new Usuario();
         }
     }
-  
+
 }

@@ -8,6 +8,7 @@ package edu.sigmove.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,7 +45,7 @@ public class Asistente implements Serializable {
     @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIDUsuario;
-    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
     @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
     private Collection<OrdenDeCompra> ordenDeCompraCollection;

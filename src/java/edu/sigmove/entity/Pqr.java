@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,12 +77,14 @@ public class Pqr implements Serializable {
     @Size(min = 1, max = 2000)
     @Column(name = "Descripcion")
     private String descripcion;
+    @Size(max = 25)
+    @Column(name = "Telefono")
+    private String telefono;
+    @Size(max = 65)
+    @Column(name = "Correo")
+    private String correo;
     @ManyToMany(mappedBy = "pqrCollection", fetch = FetchType.LAZY)
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
-    private PqrCorreo pqrCorreo;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pqr", fetch = FetchType.LAZY)
-    private PqrTelefono pqrTelefono;
 
     public Pqr() {
     }
@@ -168,6 +168,22 @@ public class Pqr implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     @XmlTransient
     public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
         return clienteFidelizadoCollection;
@@ -175,22 +191,6 @@ public class Pqr implements Serializable {
 
     public void setClienteFidelizadoCollection(Collection<ClienteFidelizado> clienteFidelizadoCollection) {
         this.clienteFidelizadoCollection = clienteFidelizadoCollection;
-    }
-
-    public PqrCorreo getPqrCorreo() {
-        return pqrCorreo;
-    }
-
-    public void setPqrCorreo(PqrCorreo pqrCorreo) {
-        this.pqrCorreo = pqrCorreo;
-    }
-
-    public PqrTelefono getPqrTelefono() {
-        return pqrTelefono;
-    }
-
-    public void setPqrTelefono(PqrTelefono pqrTelefono) {
-        this.pqrTelefono = pqrTelefono;
     }
 
     @Override

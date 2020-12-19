@@ -54,10 +54,10 @@ public class RegistroDeEntrada implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "registroDeEntrada", fetch = FetchType.LAZY)
     private RegistroDeEntradaCantidad registroDeEntradaCantidad;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Asistente asistenteIDAsistente;
-    @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_ID_Producto", referencedColumnName = "ID_Producto")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Producto productoIDProducto;
 
     public RegistroDeEntrada() {

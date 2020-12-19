@@ -31,7 +31,7 @@ public interface UsuarioFacadeLocal {
     int count();
 
     public Usuario recuperarContraseña(String usuarioIn);
-    
+
     public Usuario loginUsuario(String usuarioIn, String contraseña);
-    
+
 }

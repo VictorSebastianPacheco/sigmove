@@ -45,34 +45,9 @@ public class UsuarioRequest implements Serializable {
         usuReg = new Usuario();
     }
 
-    /*public void recuperarClave() {
-        String mensajeRequest = "";
-        Usuario usuRec = new Usuario();
-        try {
-            usuRec = usuarioFacadeLocal.recuperarContraseña(correoIn);
-            int claveNew = (int) (Math.random() * 100000);
-            usuRec.setContraseña("RC-" + claveNew);
-            usuarioFacadeLocal.edit(usuRec);
-            mensajeRequest = "swal('Su clave', 'Se envio al correo registrado !!!!', 'success');";
-            Email.sendClaves(usuRec.getUsuario(),
-                    usuRec.getNombre() + " " + usuRec.getApellido(),
-                    correoIn, "RC-" + claveNew);
-        } catch (Exception e) {
-            System.out.println("Error RegistroRequest:recuperarClave " + e.getMessage());
-            mensajeRequest = "swal('Correo NO', 'registrado', 'error');";
-        }
-        PrimeFaces.current().executeScript(mensajeRequest);
-        correoIn = "";
-    }*/
+    
     public void correoMasivo() {
-        /*String mensaje = "los Usuarios con el correo" + listaUsuarios;
-        Usuario usuarioResultado = new Usuario();
         
-
-        if (usuarioResultado.getUsuario() == null) {
-            mensaje += "no esta registrado";
-
-        } else {*/
             try {
                 for (Usuario IUsuario : usuarioFacadeLocal.findAll()) {
                     Email.sendBienvenido(IUsuario.getUsuario(),
@@ -82,14 +57,27 @@ public class UsuarioRequest implements Serializable {
                     );
                 }
             } catch (Exception e) {
-                System.out.println("Error RegistroRequest:recuperarClave " + e.getMessage());
+                System.out.println("Error al enviar mensajes " + e.getMessage());
             }
             //mensaje += " su clave se envio al correo registrado";
         /*}
         FacesMessage ms = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, ms);*/
     }
-    
+    public void correoNotificarPromociones() {
+        
+            try {
+                for (Usuario IUsuario : usuarioFacadeLocal.findAll()) {
+                    Email.sendPromocionesSigmove(IUsuario.getUsuario(),
+                            "Señor " + IUsuario.getNombre() + " " + IUsuario.getApellido(),
+                            IUsuario.getUsuario()
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Error al enviar mensajes " + e.getMessage());
+            }
+
+    }
 
     
     public void recuperarClave() {

@@ -49,4 +49,19 @@ public class ProductoSession implements Serializable {
         this.prodLogin = prodLogin;
     }
     
+    /*@Override
+    public List<Producto> listaProdutosporcategoria(int fk_categoria){
+        try {
+            Query qt = em.createQuery("SELECT p FROM Producto p WHERE p.idcategoria.idcategoria = :fk_categoria");
+            qt.setParameter("fk_categoria", fk_categoria);
+            return   qt.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+    }*/
+    
+    /*
+    public List<Producto> listaProdutosporcategoria(int fk_categoria);
+    */
+    
 }

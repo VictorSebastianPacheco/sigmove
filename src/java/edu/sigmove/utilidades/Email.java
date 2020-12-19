@@ -20,9 +20,10 @@ import javax.mail.internet.MimeMessage;
  * @author SENA
  */
 public class Email {
+
     public static void sendModificacion(String para, String Nombres, String nombUsu, String clave) {
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "victorsebapb@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "73660187Vspb";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -76,8 +77,8 @@ public class Email {
     }
 
     public static void sendClaves(String para, String Nombres, String nombUsu, String clave) {
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "victorsebapb@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "73660187Vspb";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -127,10 +128,10 @@ public class Email {
     }
 
     public static void sendBienvenido(String para, String Nombres, String nombUsu, String clave) {
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "victorsebapb@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "73660187Vspb";
 
-//1st paso) Obtener el objeto de sesión
+        //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
         props.setProperty("mail.smtp.host", "smtp.gmail.com"); // envia 
         props.setProperty("mail.smtp.starttls.enable", "true");
@@ -164,6 +165,56 @@ public class Email {
                     + "</h4>"
                     + "<h4> Documento Usuario : "
                     + clave
+                    + " </h4>", "text/html");
+
+            //3rd paso)send message
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void sendPromocionesSigmove(String para, String Nombres, String nombUsu) {
+        final String user = "victorsebapb@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "73660187Vspb";
+
+        //1st paso) Obtener el objeto de sesión
+        Properties props = new Properties();
+        props.setProperty("mail.smtp.host", "smtp.gmail.com"); // envia 
+        props.setProperty("mail.smtp.starttls.enable", "true");
+        props.setProperty("mail.smtp.port", "25");
+        props.setProperty("mail.smtp.starttls.required", "false");
+        props.setProperty("mail.smtp.auth", "true");
+        props.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, pass);
+            }
+        });
+
+//2nd paso)compose message
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
+            message.setSubject("APROVECHA NUESTRAS PROMOCIONES");
+
+            message.setContent(
+                    "<h3> Saludos, "
+                    + Nombres
+                    + "</h3>"
+                    +   "<h3>Te invitamos a pasar a nuestra tienda a ver los descuentos que tenemos para ti."
+                    + "<h4> Correo Usuario : "
+                    + nombUsu
+                    + "</h4>"
+                    + "<center><img src='https://i.imgur.com/dRKAoXm.jpeg' title='img promo'></center>"
+                    + "<h4> No deje pasar la oportunidad,Aprovecha estos increibles descuentos"
                     + " </h4>", "text/html");
 
             //3rd paso)send message
@@ -215,5 +266,5 @@ public class Email {
         }
 
     }
-    
+
 }

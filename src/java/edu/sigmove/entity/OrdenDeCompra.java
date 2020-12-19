@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +21,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,15 +77,19 @@ public class OrdenDeCompra implements Serializable {
     @Size(max = 30)
     @Column(name = "Metodo_Pago")
     private String metodoPago;
+    @Size(max = 25)
+    @Column(name = "Telefono")
+    private String telefono;
+    @Column(name = "Cantidad")
+    private Integer cantidad;
+    @Size(max = 5)
+    @Column(name = "Unidad_de_medida")
+    private String unidaddemedida;
     @JoinTable(name = "proveedores_has_orden_de_compra", joinColumns = {
         @JoinColumn(name = "Orden_de_compra_ID_Orden", referencedColumnName = "ID_Orden")}, inverseJoinColumns = {
         @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Proveedores> proveedoresCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra", fetch = FetchType.LAZY)
-    private OrdenDeCompraCantidad ordenDeCompraCantidad;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordenDeCompra", fetch = FetchType.LAZY)
-    private OrdenDeCompraTelefono ordenDeCompraTelefono;
     @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
     @ManyToOne(fetch = FetchType.LAZY)
     private Asistente asistenteIDAsistente;
@@ -186,6 +188,30 @@ public class OrdenDeCompra implements Serializable {
         this.metodoPago = metodoPago;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getUnidaddemedida() {
+        return unidaddemedida;
+    }
+
+    public void setUnidaddemedida(String unidaddemedida) {
+        this.unidaddemedida = unidaddemedida;
+    }
+
     @XmlTransient
     public Collection<Proveedores> getProveedoresCollection() {
         return proveedoresCollection;
@@ -193,22 +219,6 @@ public class OrdenDeCompra implements Serializable {
 
     public void setProveedoresCollection(Collection<Proveedores> proveedoresCollection) {
         this.proveedoresCollection = proveedoresCollection;
-    }
-
-    public OrdenDeCompraCantidad getOrdenDeCompraCantidad() {
-        return ordenDeCompraCantidad;
-    }
-
-    public void setOrdenDeCompraCantidad(OrdenDeCompraCantidad ordenDeCompraCantidad) {
-        this.ordenDeCompraCantidad = ordenDeCompraCantidad;
-    }
-
-    public OrdenDeCompraTelefono getOrdenDeCompraTelefono() {
-        return ordenDeCompraTelefono;
-    }
-
-    public void setOrdenDeCompraTelefono(OrdenDeCompraTelefono ordenDeCompraTelefono) {
-        this.ordenDeCompraTelefono = ordenDeCompraTelefono;
     }
 
     public Asistente getAsistenteIDAsistente() {

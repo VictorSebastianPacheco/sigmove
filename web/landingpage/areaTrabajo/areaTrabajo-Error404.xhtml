@@ -2,28 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
+            <!--main content start-->
 
-    <ui:composition >
-        <!--main content start-->
+            <section id="main-content">
 
-        <section id="main-content">
+                <div class="single_top">
+                    <div class="container"> 
+                        <div class="error-404 text-center">
+                            <h1>404</h1>
+                            <p>#{msjAreaTrabajo.Ups}</p>
+                            <a class="b-home" href="principal2.xhtml">#{msjAreaTrabajo.VolveralMenuPrincipal}</a>
+                        </div>
 
-            <div class="single_top">
-                <div class="container"> 
-                    <div class="error-404 text-center">
-                        <h1>404</h1>
-                        <p>¡Ups! Pagina no encontrada.</p>
-                        <a class="b-home" href="principal2.xhtml">Volver al Menu Principal</a>
                     </div>
-                    
-                </div>
-            </div>   
+                </div>   
 
-        </section> 
+            </section> 
 
 
-        <!--main content end--> 
-    </ui:composition>
+            <!--main content end--> 
+        </ui:composition>
+    </f:view>
 </html>
 

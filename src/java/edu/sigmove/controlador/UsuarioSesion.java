@@ -16,6 +16,7 @@ import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 import org.primefaces.PrimeFaces;
 
@@ -105,5 +106,36 @@ public class UsuarioSesion implements Serializable {
     public void setUsuLogin(Usuario usuLogin) {
         this.usuLogin = usuLogin;
     }
+    
+    /*
+    @Override
+    public Usuario recuperarContraseña(String usuarioIn) {
+        try {
+            Query qt = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuarioIn ");
+            qt.setParameter("usuarioIn", usuarioIn);
+            return (Usuario) qt.getSingleResult();
+        } catch (Exception e) {
+            return new Usuario();
+        }
+
+    }
+     @Override
+    public Usuario loginUsuario(String usuarioIn , String contraseñaIn){
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = :usuarioIn AND u.contraseña = :contraseñaIn");
+            q.setParameter("usuarioIn",usuarioIn );
+            q.setParameter("contraseñaIn",contraseñaIn );
+            return (Usuario) q.getSingleResult();            
+        } catch (Exception e) {
+        return  new Usuario();
+        }
+    }
+    */
+    
+       /* public Usuario recuperarContraseña(String usuarioIn);
+    
+        public Usuario loginUsuario(String usuarioIn, String contraseña);*/
+    
+    
     
 }

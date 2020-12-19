@@ -86,6 +86,68 @@ public class ProductoView implements Serializable {
 
     }
 
+    /*public void insertarXLS(List cellDataList) {
+        try {
+            int filasContador = 0;
+            for (int i = 0; i < cellDataList.size(); i++) {
+                List cellTemp = (List) cellDataList.get(i);
+                Producto newP = new Producto();
+                for (int j = 0; j < cellTemp.size(); j++) {
+                    XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
+                    switch (filasContador) {
+                        case 0:
+                            
+                            Producto f = productoFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newP.setIDProducto(f.getIDProducto());
+                            filasContador++;
+                            break;
+                        case 1:
+                            newP.setSerial(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 2:
+                            newP.setNombre(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 3:
+                            newP.setImagenruta(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 4:
+                            newP.setCantidad(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 5:
+                            newP.setPrecioUnitario((Double) Math.floor(hssfCell.getNumericCellValue())); 
+                            filasContador++;
+                            break;
+                        case 6:
+                            newP.setPrecioventa((Double) Math.floor(hssfCell.getNumericCellValue()));
+                            filasContador++;
+                            break;
+                        case 7:
+                            newP.setGenero(hssfCell.toString());
+                            filasContador++;
+                        case 8:
+                            newP.setMarca(hssfCell.toString());
+                            filasContador++;
+                        case 9:
+                            newP.setTipo(hssfCell.toString());
+                            filasContador++;
+                        case 10:
+                            Categoria nueva = categoriaFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newP.setIdcategoria(nueva);
+                            productoFacadeLocal.create(newP);
+                            filasContador++;
+                            break;
+                    }
+
+                }
+            }
+
+        } catch (Exception e) {
+        }
+    }*/
     public void insertarXLS(List cellDataList) {
         try {
             int filasContador = 0;
@@ -112,30 +174,38 @@ public class ProductoView implements Serializable {
                             filasContador++;
                             break;
                         case 4:
-                            newP.setPrecioUnitario(hssfCell.getNumericCellValue());
+                            newP.setUnidadMedida(hssfCell.toString());
                             filasContador++;
                             break;
                         case 5:
-                            newP.setPrecioventa(hssfCell.getNumericCellValue());
+                            newP.setPrecioUnitario(hssfCell.getNumericCellValue());
+                            filasContador++;
+                             break;
+                        case 6:
+                            newP.setPrecioventa((Double) Math.floor(hssfCell.getNumericCellValue()));
                             filasContador++;
                             break;
-                        case 6:
+                        case 7:
                             newP.setGenero(hssfCell.toString());
                             filasContador++;
-                        case 7:
+                            break;
+                        case 8:
                             newP.setMarca(hssfCell.toString());
                             filasContador++;
-                        case 8:
+                            break;
+                        case 9:
                             newP.setTipo(hssfCell.toString());
                             filasContador++;
-                        case 9:
+                            break;
+                        case 10:
                             Categoria nueva = categoriaFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
                             newP.setIdcategoria(nueva);
                             productoFacadeLocal.create(newP);
                             filasContador = 0;
                             break;
+                            
+                            
                     }
-
                 }
             }
 
@@ -168,10 +238,8 @@ public class ProductoView implements Serializable {
             PrimeFaces.current().executeScript("swal('Problemas ingresando el archivo' , 'error');");
         }
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-        context.redirect("inventario.xhtml");
+        context.redirect("index.xhtml");
     }
-
-   
 
     public ArrayList<Producto> getListaProductos() {
         return listaProductos;

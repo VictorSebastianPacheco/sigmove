@@ -60,7 +60,7 @@ public class BeneficioView implements Serializable{
         try {
             beneficioFacadeLocal.remove(benRemov);
             listaBeneficio.remove(benRemov);
-            mensajeAlerta = "swal('Removido el usuario', '" + benRemov.getNombre() + ' ' + benRemov.getProducto() + "', 'success');";
+            mensajeAlerta = "swal('Removido el Beneficio', '" + benRemov.getNombre() + ' ' + benRemov.getProducto() + "', 'success');";
         } catch (Exception e) {
             mensajeAlerta = "swal('Problemas eliminando a ', '" + benRemov.getNombre() + ' ' + benRemov.getProducto() + "', 'error');";
         }
@@ -114,7 +114,8 @@ public class BeneficioView implements Serializable{
             Map parametro = new HashMap();
             parametro.put("UsuarioReporte", usuarioSesion.getUsuLogin().getNombre() + " " +usuarioSesion.getUsuLogin().getApellido());
             parametro.put("RutaImagen", context.getRealPath("/resources/img.lum/blackfriday.png"));
-            parametro.put("RutaImagen2", context.getRealPath("/resources/img.lum/SIGMOVE.png"));
+            parametro.put("RutaImagen2", context.getRealPath("/resources/img.lum/Mars.png"));
+            //"C:\\LIBRERIA\\sigmovefase4\\web\\imagenes\\Mars.png"
             Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bdsigmovenew", "root", "");
            //C:\LIBRERIA\WebApp1966781B2\src\java\edu\webapp1966781b\reportes\ListaUsuarios.jrxml
             File jasper = new File(context.getRealPath("/WEB-INF/classes/edu/sigmove/reportes/ListaBeneficios.jasper"));

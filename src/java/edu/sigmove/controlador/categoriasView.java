@@ -157,4 +157,21 @@ public class categoriasView implements Serializable {
         this.rutaImg = rutaImg;
     }
 
+    
+    /*
+    @Override
+    public int catidadProductoCategoria( int categoria){
+        try {
+            Query qt = em.createNativeQuery("SELECT COUNT(*) FROM producto WHERE Idcategoria = ?1");
+            qt.setParameter(1, categoria);
+            return ((Number)qt.getSingleResult()).intValue();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    */
+    /*
+    public int catidadProductoCategoria(int fk_produto);
+    */
+    
 }

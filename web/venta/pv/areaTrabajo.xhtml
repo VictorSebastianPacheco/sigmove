@@ -2,8 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition >
         <!-- **********************************************************************************************************************************************************
          MAIN CONTENT
@@ -20,33 +22,136 @@
                             <li><a href="#">
                                     <em class="fa fa-home"></em>
                                 </a></li>
-                            <li class="active">Ventas</li>
+                            <li class="active">#{msjAlumi.Ventas}</li>
                         </ol>
                     </div><!--/.row-->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Ventas</h1>
+                            <h1 class="page-header">#{msjAlumi.Ventas}</h1>
                         </div>
                     </div><!--/.row-->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>#{msjAlumi.FormatoDeVenta}</h2>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    #{msjAlumi.IngreseDatosDeVentaCliente}
+                                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <br></br>
+                                    <h:form class="needs-validation">
+                                        <div class="row">
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="firstName">#{msjAlumi.NombreVendedor}</label>
+                                                <i class="glyphicon glyphicon-user"></i>
+                                                <h:inputText html5:type="text" class="form-control" html5:placeholder="Vendedor" value="#{ventaRequest.newVen.nombreVendedor}" required=""/>
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="firstName">#{msjAlumi.NombreCliente}</label>
+                                                <i class="glyphicon glyphicon-user"></i>
+                                                <h:inputText html5:type="text" class="form-control" html5:placeholder="#{msjAlumi.Cliente}" value="#{ventaRequest.newVen.nombreComprador}" required=""/>
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="firstName">#{msjAlumi.Dirreción}</label>
+                                                <i class="glyphicon glyphicon-home"></i>
+                                                <h:inputText html5:type="text" class="form-control" html5:placeholder="#{msjAlumi.Dirreción}" value="#{ventaRequest.newVen.direccion}" required=""/>
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="address">#{msjAlumi.Descripción}</label>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                                <h:inputText html5:type="text" class="form-control" html5:placeholder="#{msjAlumi.Descripcióndelproducto}" value="#{ventaRequest.newVen.descripcion}" required=""/>
+                                            </div>
+                                            <div class="col-lg-6 mb-3 custom-control custom-checkbox">
+                                                <h:inputText html5:type="checkbox" class="custom-control-input" id="save-info"/>
+                                                <label class="custom-control-label" for="save-info">#{msjAlumi.Guardarestainformaciónparalapróxima}</label>
+                                            </div>
+                                        </div>
+                                        <br></br>
+                                        <div class="col-lg-3 mb-3">
+                                            <label for="firstName">#{msjAlumi.PrecioTotal}</label>
+                                            <i class="glyphicon glyphicon-usd"></i>
+                                            <h:inputText html5:type="number" class="form-control" html5:placeholder="#{msjAlumi.Preciototal}" value="#{ventaRequest.newVen.precioTotal}" required=""/>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <label for="firstName">#{msjAlumi.Pagototal}</label>
+                                            <i class="glyphicon glyphicon-usd"></i>
+                                            <h:inputText html5:type="number" class="form-control" html5:placeholder="#{msjAlumi.Pagototal}" value="#{ventaRequest.newVen.pagoTotal}" required=""/>
+                                        </div>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <div class="d-block my-3">
+                                            <h4 class="mb-3">#{msjAlumi.Metododepago}</h4>
+                                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                                            <div class="col-md-4">
+                                                <h:selectOneMenu class="form-control" value="#{ventaRequest.newVen.metodoPago}">
+                                                    <f:selectItem itemLabel="#{msjAlumi.Efectivo}" itemValue="Efectivo"></f:selectItem>
+                                                    <f:selectItem itemLabel="#{msjAlumi.Tarjetacredito}" itemValue="Tarjeta credito"></f:selectItem>
+                                                    <f:selectItem itemLabel="#{msjAlumi.Tarjetadebito}" itemValue="Tarjeta debito"></f:selectItem>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <br></br>
+                                        <br></br>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cc-name">#{msjAlumi.Nombretitulardetarjeta}</label>
+                                                <i class="glyphicon glyphicon-user"></i>
+                                                <h:inputText html5:type="text" class="form-control" html5:placeholder="#{msjAlumi.Nombretitulardetarjeta}" required=""/>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cc-number">#{msjAlumi.Nombretarjeta}</label>
+                                                <i class="glyphicon glyphicon-credit-card"></i>
+                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="#{msjAlumi.Nombretarjeta}" required=""/>
+                                            </div>
+                                        </div>
+                                        <br></br>
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="cc-expiration">#{msjAlumi.Fechadeexpiración}</label>
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                <h:inputText html5:type="date" class="form-control" html5:placeholder="" required=""/>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="cc-cvv">CVV</label>
+                                                <i class="glyphicon glyphicon-lock"></i>
+                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="CVV" required=""/>
+                                            </div>
+                                        </div>
+                                        <br></br>
+                                        <h:commandButton class="btn btn-primary btn-block" type="submit" value="#{msjAlumi.ConfirmarCompra}" action="#{ventaRequest.registrarVenta()}" style="width: 170px; text-align: center;"/>
+                                        <h:commandButton class="btn btn-danger btn-block" type="submit" value="#{msjAlumi.Cancelarcompra}" style="width: 170px; text-align: center;"/>
+                                    </h:form>
+                                </div>
+
+
+                            </div>  
+                        </div>
+                    </div>
 
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header card-header-primary">
-                                        <h4 class="card-title ">Registros de Ventas</h4>
+                                        <h4 class="card-title ">#{msjAlumi.RegistrosdeVentas}</h4>
                                     </div>
                                     <table class="table table-striped table-advance table-hover">
 
                                         <thead>
                                             <tr>
 
-                                                <th><i class="fa fa-bookmark"></i> Codigo de Venta</th>
-                                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> Nombre del cliente</th>
-                                                <th><i class="fa fa-bullhorn"></i> Direccion</th>
-                                                <th><i class="fa fa-bookmark" style="center"></i> Fecha </th>
-                                                <th><i class="fa fa-bullhorn"></i> Precio Total</th>
-                                                <th><i class=" fa fa-edit"></i> Metodo de pago</th>
+                                                <th><i class="fa fa-bookmark"></i> #{msjAlumi.CodigodeVenta}</th>
+                                                <th class="hidden-phone"><i class="fa fa-question-circle"></i>  #{msjAlumi.NombreCliente}</th>
+                                                <th><i class="fa fa-bullhorn"></i>  #{msjAlumi.Dirreción}</th>
+                                                <th><i class="fa fa-bookmark" style="center"></i>  #{msjAlumi.Fecha} </th>
+                                                <th><i class="fa fa-bullhorn"></i>  #{msjAlumi.PrecioTotal}</th>
+                                                <th><i class=" fa fa-edit"></i>  #{msjAlumi.Metododepago}</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -68,7 +173,7 @@
                                                         <td> #{ven.metodoPago} </td>
 
                                                         <td>
-                                                            <h:commandButton class="btn btn-success btn-xs" value="factura" action="#{ventasView.descargaFactura(ven.IDVenta)}"></h:commandButton>
+                                                            <h:commandButton class="btn btn-success btn-xs" value=" #{msjAlumi.factura}" action="#{ventasView.descargaFactura(ven.IDVenta)}"></h:commandButton>
                                                         </td>#{administradorView.descargaCertificado(usu.id)}
 
                                                     </tr>

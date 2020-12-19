@@ -2,25 +2,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:composition >
-        <header class="header black-bg">
-            <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Menu de Navegación</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span></button>
-                        <a class="navbar-brand" href="#"><span>Sig</span>move</a>
-                        <img src="../resources/img.lum/SIGMOVE.png" style="width: 55px;" height="62px"/>
-                        
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <!--header end-->
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
+            <header class="header black-bg">
+                <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
 
-    </ui:composition>
+                            <a class="navbar-brand" href="#"><span>Sig</span>move</a>
+                            <img src="../resources/img.lum/SIGMOVE.png" style="width: 55px;" height="62px"/>
+                            
+                            <ul class=" navbar-right">
+                                
+                                    <h:form prependId="false">
+                                        <div class="one-fifth column row_1 " >
+                                            <span class="selection-box">
+                                                <h:selectOneMenu class="domains valid " style="margin-left:130px;"  value="#{lenguageSession.lang}"
+                                                                 onchange="submit();" >
+                                                    <f:selectItems value="#{lenguageSession.locales}"
+                                                                   var="l" itemLabel="#{l.language}"/>
+                                                </h:selectOneMenu>
+                                            </span>
+
+                                        </div>
+                                    </h:form>
+
+                                
+                               
+                            </ul>
+
+                        </div>
+
+
+                    </div>
+
+                </nav>
+            </header>
+            <!--header end-->
+
+        </ui:composition>
+    </f:view>
 </html>
 

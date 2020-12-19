@@ -3,147 +3,149 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
+            <!--main content start-->
 
-    <ui:composition >
-        <!--main content start-->
+            <section id="main-content">
 
-        <section id="main-content">
+                <div class="single_top">
+                    <div class="container"> 
+                        <div class="single_grid">
+                            <div class="grid images_3_of_2">
+                                <ul id="etalage">
+                                    <li>
+                                        <a href="optionallink.html">
+                                            <img class="etalage_thumb_image img-responsive" src="../resources/img/s1.jpg" />
+                                            <img class="etalage_source_image img-responsive" src="../resources/img/s1.jpg"/>
+                                        </a>
 
-            <div class="single_top">
-                <div class="container"> 
-                    <div class="single_grid">
-                        <div class="grid images_3_of_2">
-                            <ul id="etalage">
-                                <li>
-                                    <a href="optionallink.html">
-                                        <img class="etalage_thumb_image img-responsive" src="../resources/img/s1.jpg" />
-                                        <img class="etalage_source_image img-responsive" src="../resources/img/s1.jpg"/>
-                                    </a>
-
-                                </li>
-                                <li>
-                                    <img class="etalage_thumb_image img-responsive" src="../resources/img/s2.jpg"  />
-                                    <img class="etalage_source_image img-responsive" src="../resources/img/s2.jpg" />
-                                </li>
-                                <li>
-                                    <img class="etalage_thumb_image img-responsive" src="../resources/img/s3.jpg" />
-                                    <img class="etalage_source_image img-responsive" src="../resources/img/s3.jpg"/>
-                                </li>
-                                <li>
-                                    <img class="etalage_thumb_image img-responsive" src="../resources/img/s4.jpg" />
-                                    <img class="etalage_source_image img-responsive" src="../resources/img/s4.jpg"/>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>		
-                        </div> 
-                        <div class="desc1 span_3_of_2">
-                            <ul class="back">
-                                <li><i class="back_arrow"> </i>Regresar a <a href="index.xhtml">Menu Principal</a></li>
-                            </ul>
-                            <h1>Blusa Roja</h1>
-                            <p>Recibe muchos nombres, pero al final se trata de un elemento común en la mayoría de los looks. Se le conoce como canesú o guerrera especialmente en Latinoamérica. Te pueden hablar incluso de un corpiño rojo y no referirse a nada de ropa interior, sino a una camisa o blusa roja.</p>
-                            <div class="dropdown_top">
-                                <div class="dropdown_left">
-                                    <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro1"}'>
-                                        <option value="0">Selecciona una talla</option>	
-                                        <option value="1">M</option>
-                                        <option value="2">L</option>
-                                        <option value="3">XL </option>
-                                        <option value="4">XS</option>
-                                        <option value="5">S </option>
-                                    </select>
-                                </div>
-                                <ul class="color_list">
-                                    <li><a href="#"> <span class="color1"> </span></a></li>
-                                    <li><a href="#"> <span class="color2"> </span></a></li>
-                                    <li><a href="#"> <span class="color3"> </span></a></li>
-                                    <li><a href="#"> <span class="color4"> </span></a></li>
-                                    <li><a href="#"> <span class="color5"> </span></a></li>
+                                    </li>
+                                    <li>
+                                        <img class="etalage_thumb_image img-responsive" src="../resources/img/s2.jpg"  />
+                                        <img class="etalage_source_image img-responsive" src="../resources/img/s2.jpg" />
+                                    </li>
+                                    <li>
+                                        <img class="etalage_thumb_image img-responsive" src="../resources/img/s3.jpg" />
+                                        <img class="etalage_source_image img-responsive" src="../resources/img/s3.jpg"/>
+                                    </li>
+                                    <li>
+                                        <img class="etalage_thumb_image img-responsive" src="../resources/img/s4.jpg" />
+                                        <img class="etalage_source_image img-responsive" src="../resources/img/s4.jpg"/>
+                                    </li>
                                 </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem">
-                                <div class="price_single">
-                                    <div class="head"><h2><span class="amount item_price">$45.000</span></h2></div>
-                                    <div class="head_desc"><a href="#">12 vistas</a><img src="../resources/img/review.png" alt=""/></div>
+                                <div class="clearfix"></div>		
+                            </div> 
+                            <div class="desc1 span_3_of_2">
+                                <ul class="back">
+                                    <li><i class="back_arrow"> </i>#{msjAreaTrabajo.Regresara} <a href="index.xhtml">Menu Principal</a></li>
+                                </ul>
+                                <h1>#{msjAreaTrabajo.BlusaRoja}</h1>
+                                <p>#{msjAreaTrabajo.Recibemuchosnombres}.</p>
+                                <div class="dropdown_top">
+                                    <div class="dropdown_left">
+                                        <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro1"}'>
+                                            <option value="0">#{msjAreaTrabajo.Seleccionaunatalla}</option>	
+                                            <option value="1">M</option>
+                                            <option value="2">L</option>
+                                            <option value="3">XL </option>
+                                            <option value="4">XS</option>
+                                            <option value="5">S </option>
+                                        </select>
+                                    </div>
+                                    <ul class="color_list">
+                                        <li><a href="#"> <span class="color1"> </span></a></li>
+                                        <li><a href="#"> <span class="color2"> </span></a></li>
+                                        <li><a href="#"> <span class="color3"> </span></a></li>
+                                        <li><a href="#"> <span class="color4"> </span></a></li>
+                                        <li><a href="#"> <span class="color5"> </span></a></li>
+                                    </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="size_2-right"><a href="#" class="item_add item_add1 btn_5" value="" >Añadir a Cuenta </a></div>
+                                <div class="simpleCart_shelfItem">
+                                    <div class="price_single">
+                                        <div class="head"><h2><span class="amount item_price">$45.000</span></h2></div>
+                                        <div class="head_desc"><a href="#">12 vistas</a><img src="../resources/img/review.png" alt=""/></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="size_2-right"><a href="#" class="item_add item_add1 btn_5" value="" >#{msjAreaTrabajo.AñadiraCuenta} </a></div>
 
+                                </div>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="single_social_top">   
-                        <ul class="single_social">
-                            <li><a href="#"> <i class="s_fb"> </i> <div class="social_desc">Comparte en Facebook</div><div class="clearfix"> </div></a></li>
-                            <li><a href="#"> <i class="s_twt"> </i> <div class="social_desc">Tweetea este Producto</div><div class="clearfix"> </div></a></li>
-                            <li><a href="#"> <i class="s_google"> </i><div class="social_desc">Comparte en Google+</div><div class="clearfix"> </div></a></li>
-                            <li class="last"><a href="#"> <i class="s_email"> </i><div class="social_desc">Enviar a un amigo</div><div class="clearfix"> </div></a></li>
+                        <div class="single_social_top">   
+                            <ul class="single_social">
+                                <li><a href="#"> <i class="s_fb"> </i> <div class="social_desc">#{msjAreaTrabajo.ComparteenFacebook}</div><div class="clearfix"> </div></a></li>
+                                <li><a href="#"> <i class="s_twt"> </i> <div class="social_desc">#{msjAreaTrabajo.TweeteaesteProducto}</div><div class="clearfix"> </div></a></li>
+                                <li><a href="#"> <i class="s_google"> </i><div class="social_desc">#{msjAreaTrabajo.Comparteen} Google+</div><div class="clearfix"> </div></a></li>
+                                <li class="last"><a href="#"> <i class="s_email"> </i><div class="social_desc">#{msjAreaTrabajo.Enviaraunamigo}</div><div class="clearfix"> </div></a></li>
+                            </ul>
+                        </div>
+                        <ul class="menu_drop">
+                            <li class="item1"><a href="#"><img src="../resources/img/product_arrow.png"/>#{msjAreaTrabajo.Descripción}</a>
+                                <ul>
+                                    <li class="subitem2"><a href="#">#{msjAreaTrabajo.Blusarealizadaentelachifon}.</a></li>
+                                </ul>
+                            </li>
+                            <li class="item2"><a href="#"><img src="../resources/img/product_arrow.png"/>#{msjAreaTrabajo.InformaciónAdicional}</a>
+                                <ul>
+                                    <li class="subitem2"><a href="#"> #{msjAreaTrabajo.Comunicateconnosotrosparabrindarte}.</a></li>
+                                </ul>
+                            </li>
+                            <li class="item5"><a href="#"><img src="../resources/img/product_arrow.png"/>#{msjAreaTrabajo.HacerunRegalo}</a>
+                                <ul>
+                                    <li class="subitem2"><a href="#"> #{msjAreaTrabajo.Preguntanoscomomejorartu}.</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
-                    <ul class="menu_drop">
-                        <li class="item1"><a href="#"><img src="../resources/img/product_arrow.png"/>Descripción</a>
-                            <ul>
-                                <li class="subitem2"><a href="#">Blusa realizada en tela chifon, estampado color rojo con detalles en la cadera, en tiras y con una pequeña abertura en la espalda, ideal para uso informal.</a></li>
-                            </ul>
-                        </li>
-                        <li class="item2"><a href="#"><img src="../resources/img/product_arrow.png"/>Información Adicional</a>
-                            <ul>
-                                <li class="subitem2"><a href="#"> Comunicate con nosotros para brindarte mas asesoria.</a></li>
-                            </ul>
-                        </li>
-                        <li class="item5"><a href="#"><img src="../resources/img/product_arrow.png"/>Hacer un Regalo</a>
-                            <ul>
-                                <li class="subitem2"><a href="#"> Preguntanos como mejorar tu experiencia, te ayudaremos para dar un mejor servicio a tu producto.</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <h3 class="m_2">Productos Relacionados</h3>
-                <div class="container">
-                    <div class="box_3">
-                        <div class="col-md-3">
-                            <div class="content_box"><a href="index.xhtml">
-                                    <img src="../resources/img/pic6.jpg" class="img-responsive" alt=""/>
-                                </a>
+                    <h3 class="m_2">#{msjAreaTrabajo.ProductosRelacionados}</h3>
+                    <div class="container">
+                        <div class="box_3">
+                            <div class="col-md-3">
+                                <div class="content_box"><a href="index.xhtml">
+                                        <img src="../resources/img/pic6.jpg" class="img-responsive" alt=""/>
+                                    </a>
+                                </div>
+                                <h4><a href="Tempalte.xhtml">#{msjAreaTrabajo.BlusaRojaTipoCountry}</a></h4>
+                                <p>$ 32.000</p>
                             </div>
-                            <h4><a href="Tempalte.xhtml">Blusa Roja Tipo Country</a></h4>
-                            <p>$ 32.000</p>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="content_box"><a href="index.xhtml">
-                                    <img src="../resources/img/pic2.jpg" class="img-responsive" alt=""/>
-                                </a>
+                            <div class="col-md-3">
+                                <div class="content_box"><a href="index.xhtml">
+                                        <img src="../resources/img/pic2.jpg" class="img-responsive" alt=""/>
+                                    </a>
+                                </div>
+                                <h4><a href="index.xhtml">#{msjAreaTrabajo.CamisaMangaCorta}</a></h4>
+                                <p>$ 45.000</p>
                             </div>
-                            <h4><a href="index.xhtml">Camisa Manga Corta</a></h4>
-                            <p>$ 45.000</p>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="content_box"><a href="index.xhtml">
-                                    <img src="../resources/img/pic4.jpg" class="img-responsive" alt=""/>
-                                </a>
+                            <div class="col-md-3">
+                                <div class="content_box"><a href="index.xhtml">
+                                        <img src="../resources/img/pic4.jpg" class="img-responsive" alt=""/>
+                                    </a>
+                                </div>
+                                <h4><a href="single.html">#{msjAreaTrabajo.CamisaTipoPolo}</a></h4>
+                                <p>$ 25.000</p>
                             </div>
-                            <h4><a href="single.html">Camisa Tipo Polo</a></h4>
-                            <p>$ 25.000</p>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="content_box"><a href="index.xhtml">
-                                    <img src="../resources/img/pic5.jpg" class="img-responsive" alt=""/>
-                                </a>
+                            <div class="col-md-3">
+                                <div class="content_box"><a href="index.xhtml">
+                                        <img src="../resources/img/pic5.jpg" class="img-responsive" alt=""/>
+                                    </a>
+                                </div>
+                                <h4><a href="single.html">#{msjAreaTrabajo.CamisetaCuadros}</a></h4>
+                                <p>$ 55.000</p>
                             </div>
-                            <h4><a href="single.html">Camiseta Cuadros</a></h4>
-                            <p>$ 55.000</p>
+                            <div class="clearfix"> </div>
                         </div>
-                        <div class="clearfix"> </div>
                     </div>
                 </div>
-            </div>
-        </section> 
+            </section> 
 
 
-        <!--main content end--> 
-    </ui:composition>
+            <!--main content end--> 
+        </ui:composition>
+    </f:view>
 </html>
 

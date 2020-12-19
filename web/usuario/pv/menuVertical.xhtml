@@ -3,57 +3,72 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    <ui:composition >
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
 
-        <!-- **********************************************************************************************************************************************************
-            MAIN SIDEBAR MENU
-            *********************************************************************************************************************************************************** -->
-        <!--sidebar start-->
-        <aside>
-            <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-                <div class="profile-sidebar">
-                    <div class="profile-userpic">
-                        <img src="../resources/img.lum/usuario4.png" class="img-responsive" alt=""/>
-                    </div>
+            <!-- **********************************************************************************************************************************************************
+                MAIN SIDEBAR MENU
+                *********************************************************************************************************************************************************** -->
+            <!--sidebar start-->
+            <aside>
+                <h:form prependId="false">
+                    <div class="one-fifth column row_1">
+                        <span class="selection-box">
+                            <h:selectOneMenu class="domains valid"  value="#{lenguageSession.lang}"
+                                             onchange="submit();" >
+                                <f:selectItems value="#{lenguageSession.locales}"
+                                               var="l" itemLabel="#{l.language}"/>
+                            </h:selectOneMenu>
+                        </span>
 
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">${nombreUsuario}</div>
-                        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
                     </div>
-                    <div class="clear"></div>
+                </h:form>
+                <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+                    <div class="profile-sidebar">
+                        <div class="profile-userpic">
+                            <img src="../resources/img.lum/usuario4.png" class="img-responsive" alt=""/>
+                        </div>
+
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">${nombreUsuario}</div>
+                            <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <ul class="nav menu">
+                        <li class="mt">
+                            <a class="active" href="#">
+                                <i class="fa fa-dashboard"></i>
+                                <span>${ruta}</span>
+                            </a>
+                        </li>
+                        <c:forEach items="#{usuarioSesion.usuLogin.rolCollection}" var="rol">
+
+                            <c:if test="#{rol.nombre != ruta}">
+
+                                <li><a href="#{rol.ruta}"><em class="#{rol.icono}"></em> #{rol.nombre}</a></li>
+
+                            </c:if>
+
+                        </c:forEach>
+
+                        <li>
+                            <h:form id="salir">  
+                                <h:commandLink id="link" action="#{usuarioSesion.cerraSesion()}" ></h:commandLink>
+                            </h:form>
+                            <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
+                        </li>
+                    </ul>
+
                 </div>
-                <div class="divider"></div>
+            </aside>
+            <!--sidebar end-->
 
-                <ul class="nav menu">
-                    <li class="mt">
-                        <a class="active" href="#">
-                            <i class="fa fa-dashboard"></i>
-                            <span>${ruta}</span>
-                        </a>
-                    </li>
-                    <c:forEach items="#{usuarioSesion.usuLogin.rolCollection}" var="rol">
-
-                        <c:if test="#{rol.nombre != ruta}">
-                            
-                            <li><a href="#{rol.ruta}"><em class="#{rol.icono}"></em> #{rol.nombre}</a></li>
-
-                        </c:if>
-
-                    </c:forEach>
-
-                    <li>
-                        <h:form id="salir">  
-                            <h:commandLink id="link" action="#{usuarioSesion.cerraSesion()}" ></h:commandLink>
-                        </h:form>
-                        <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
-                    </li>
-                </ul>
-
-            </div>
-        </aside>
-        <!--sidebar end-->
-
-    </ui:composition>
+        </ui:composition>
+    </f:view>
 </html>
 

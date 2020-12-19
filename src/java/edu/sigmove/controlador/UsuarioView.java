@@ -112,11 +112,10 @@ public class UsuarioView implements Serializable{
         try {
             Map parametro = new HashMap();
             parametro.put("UsuarioReporte", usuarioSesion.getUsuLogin().getNombre() + " " +usuarioSesion.getUsuLogin().getApellido());
-            parametro.put("RutaImagen", context.getRealPath("/resources/img.lum/blackfriday.png"));
-            parametro.put("RutaImagen2", context.getRealPath("/resources/img.lum/SIGMOVE.png"));
+            parametro.put("RutaImagen", context.getRealPath("/resources/img/mars.jpeg"));
             Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bdsigmovenew", "root", "");
            //C:\LIBRERIA\WebApp1966781B2\src\java\edu\webapp1966781b\reportes\ListaUsuarios.jrxml
-            File jasper = new File(context.getRealPath("/WEB-INF/classes/edu/sigmove/reportes/ListaBeneficios.jasper"));
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/edu/sigmove/reportes/ListaUsuarios.jasper"));
 
             JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
 
@@ -129,11 +128,11 @@ public class UsuarioView implements Serializable{
             facesContext.responseComplete();
 
         } catch (JRException e) {
-            System.out.println("edu.sigmove.controlador.BeneficioView.descargaListado() " + e.getMessage());
+            System.out.println("edu.sigmove.controlador.UsuarioView.descargaListado() " + e.getMessage());
         } catch (IOException i) {
-            System.out.println("edu.sigmove.controlador.BeneficioView.descargaListado()  " + i.getMessage());
+            System.out.println("edu.sigmove.controlador.UsuarioView.descargaListado()  " + i.getMessage());
         } catch (SQLException q) {
-            System.out.println("edu.sigmove.controlador.BeneficioView.descargaListado()  " + q.getMessage());
+            System.out.println("edu.sigmove.controlador.UsuarioView.descargaListado()  " + q.getMessage());
         }
 
     }
@@ -172,5 +171,9 @@ public class UsuarioView implements Serializable{
     public void setUsuarioSesion(UsuarioSesion usuarioSesion) {
         this.usuarioSesion = usuarioSesion;
     }
+    
+    
+    
+    
     
 }

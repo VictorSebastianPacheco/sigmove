@@ -3,62 +3,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <f:view locale="#{lenguageSession.locale}">
+        <ui:composition >
+            <!--main content start-->
 
-    <ui:composition >
-        <!--main content start-->
+            <section id="main-content">
 
-        <section id="main-content">
-
-            <div class="single_top">
-                <div class="container"> 
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3150859.767904157!2d-96.62081048651531!3d39.536794757966845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1408111832978"> </iframe>
-                    </div>
-                    <div class="col-md-9 contact_left">
-                        <h1>Ponerse en Contacto</h1>
-                        <p>Estamos dispuestos a servirle. Permítanos conocer sus inquietudes y con gusto le daremos respuesta.</p>
-                        <form>
-                            <div class="column_2">
-                                <input type="text" class="text" id="correo" value="Correo" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Correo';
-                                    }" style="margin-left:2.7%"/>
-                                <input type="text" class="text" id="nombre" value="Nombre" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Nombre';
-                                    }"/>
-                                <input type="text" class="text" id="telefono" value="Teléfono" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Telefono';
-                                    }" style="margin-left:2.7%"/>
-                            </div>
-                            <div class="column_3">
-                                <textarea value="Mensaje" id="mensaje" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Mensaje';
-                                    }">Mensaje</textarea>
-                            </div>
-                            <div class="form-submit1">
-                                <input onclick="contacto()" type="submit" value="Enviar Solicitud"/>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </form>
-                    </div>
-                    <div class="col-md-3 contact_right">
-                        <h2>Información</h2>
-                        <address class="address">
-                            <p>Carrera 56 # 4D 12 , Bogotá D.C.</p>
-                            <dl>
-                                <dt></dt>
-                                <dd>Telefóno 1:<span> 300 249 1193</span></dd>
-                                <dd>Telefóno 2:<span> 316 836 9472</span></dd>
-                                <dd>E-mail:&nbsp; <a href="mailto@example.com">administracion@mars.com</a></dd>
-                            </dl>
-                        </address>
+                <div class="single_top">
+                    <div class="container"> 
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3150859.767904157!2d-96.62081048651531!3d39.536794757966845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1408111832978"> </iframe>
+                        </div>
+                        <div class="col-md-9 contact_left">
+                            <h1>#{msjAreaTrabajo.PonerseenContacto}</h1>
+                            <p>#{msjAreaTrabajo.Estamosdispuestos}.</p>
+                            <form>
+                                <div class="column_2">
+                                    <input type="text" class="text" id="correo" value="#{msjAreaTrabajo.Correo}" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = '#correo';
+                                            }" style="margin-left:2.7%"/>
+                                    <input type="text" class="text" id="nombre" value="#{msjAreaTrabajo.Nombre}" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = '#nombre';
+                                            }"/>
+                                    <input type="text" class="text" id="telefono" value="#{msjAreaTrabajo.Telefono}" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = 'telefono';
+                                            }" style="margin-left:2.7%"/>
+                                </div>
+                                <div class="column_3">
+                                    <textarea value="Mensaje" id="mensaje" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = 'Mensaje';
+                                            }">#{msjAreaTrabajo.Mensaje}</textarea>
+                                </div>
+                                <div class="form-submit1">
+                                    <input onclick="contacto()" type="submit" value="#{msjAreaTrabajo.EnviarSolicitud}"/>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3 contact_right">
+                            <h2>#{msjAreaTrabajo.Información}</h2>
+                            <address class="address">
+                                <p>Carrera 56 # 4D 12 , Bogotá D.C.</p>
+                                <dl>
+                                    <dt></dt>
+                                    <dd>#{msjAreaTrabajo.Telefono} 1:<span> 300 249 1193</span></dd>
+                                    <dd>#{msjAreaTrabajo.Telefono} 2:<span> 316 836 9472</span></dd>
+                                    <dd>E-mail:&nbsp; <a href="mailto@example.com">administracion@mars.com</a></dd>
+                                </dl>
+                            </address>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section> 
+            </section> 
 
 
-        <!--main content end--> 
-    </ui:composition>
+            <!--main content end--> 
+        </ui:composition>
+    </f:view>
 </html>
 

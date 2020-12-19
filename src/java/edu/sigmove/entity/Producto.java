@@ -8,6 +8,7 @@ package edu.sigmove.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +23,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -43,7 +45,9 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_Producto")
     private Integer iDProducto;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "Serial")
     private String serial;
     @Size(max = 20)
@@ -85,7 +89,7 @@ public class Producto implements Serializable {
     @JoinColumn(name = "idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria idcategoria;
-    @OneToMany(mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
 
     public Producto() {
@@ -93,6 +97,11 @@ public class Producto implements Serializable {
 
     public Producto(Integer iDProducto) {
         this.iDProducto = iDProducto;
+    }
+
+    public Producto(Integer iDProducto, String serial) {
+        this.iDProducto = iDProducto;
+        this.serial = serial;
     }
 
     public Integer getIDProducto() {
