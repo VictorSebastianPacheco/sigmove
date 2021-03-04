@@ -139,6 +139,42 @@ public class BeneficioView implements Serializable{
         }
 
     }
+    public void descargaEstadisticaBeneficios() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+
+        try {
+            Map parametro = new HashMap();
+            parametro.put("UsuarioReporte", usuarioSesion.getUsuLogin().getNombre() + " " +usuarioSesion.getUsuLogin().getApellido());
+            parametro.put("RutaImagen", context.getRealPath("/resources/img.lum/blackfriday.png"));
+            parametro.put("RutaImagen2", context.getRealPath("/resources/img.lum/Mars.png"));
+            //"C:\\LIBRERIA\\sigmovefase4\\web\\imagenes\\Mars.png"
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bdsigmovenew", "root", "");
+           //C:\LIBRERIA\WebApp1966781B2\src\java\edu\webapp1966781b\reportes\ListaUsuarios.jrxml
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/edu/sigmove/reportes/ListaBeneficios.jasper"));
+
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
+
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=Certificado.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+
+        } catch (JRException e) {
+            System.out.println("edu.sigmove.controlador.BeneficioView.descargaEstadisticaBeneficios() " + e.getMessage());
+        } catch (IOException i) {
+            System.out.println("edu.sigmove.controlador.BeneficioView.descargaEstadisticaBeneficios()  " + i.getMessage());
+        } catch (SQLException q) {
+            System.out.println("edu.sigmove.controlador.BeneficioView.descargaEstadisticaBeneficios()  " + q.getMessage());
+        }
+
+    }
     public BeneficioView() {
     }
 

@@ -23,8 +23,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,9 +30,18 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "pqr")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pqr.findAll", query = "SELECT p FROM Pqr p")})
+    @NamedQuery(name = "Pqr.findAll", query = "SELECT p FROM Pqr p")
+    , @NamedQuery(name = "Pqr.findByIdPqr", query = "SELECT p FROM Pqr p WHERE p.idPqr = :idPqr")
+    , @NamedQuery(name = "Pqr.findByFechaRadicaci\u00f3n", query = "SELECT p FROM Pqr p WHERE p.fechaRadicaci\u00f3n = :fechaRadicaci\u00f3n")
+    , @NamedQuery(name = "Pqr.findByTipo", query = "SELECT p FROM Pqr p WHERE p.tipo = :tipo")
+    , @NamedQuery(name = "Pqr.findByNombre", query = "SELECT p FROM Pqr p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Pqr.findByApellido", query = "SELECT p FROM Pqr p WHERE p.apellido = :apellido")
+    , @NamedQuery(name = "Pqr.findByTipoDocumento", query = "SELECT p FROM Pqr p WHERE p.tipoDocumento = :tipoDocumento")
+    , @NamedQuery(name = "Pqr.findByNumeroDocumento", query = "SELECT p FROM Pqr p WHERE p.numeroDocumento = :numeroDocumento")
+    , @NamedQuery(name = "Pqr.findByDescripcion", query = "SELECT p FROM Pqr p WHERE p.descripcion = :descripcion")
+    , @NamedQuery(name = "Pqr.findByTelefono", query = "SELECT p FROM Pqr p WHERE p.telefono = :telefono")
+    , @NamedQuery(name = "Pqr.findByCorreo", query = "SELECT p FROM Pqr p WHERE p.correo = :correo")})
 public class Pqr implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -184,7 +191,6 @@ public class Pqr implements Serializable {
         this.correo = correo;
     }
 
-    @XmlTransient
     public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
         return clienteFidelizadoCollection;
     }

@@ -26,8 +26,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,9 +33,19 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "usuario")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+    , @NamedQuery(name = "Usuario.findByIDUsuario", query = "SELECT u FROM Usuario u WHERE u.iDUsuario = :iDUsuario")
+    , @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario")
+    , @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a")
+    , @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre")
+    , @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido")
+    , @NamedQuery(name = "Usuario.findByTipoDocumento", query = "SELECT u FROM Usuario u WHERE u.tipoDocumento = :tipoDocumento")
+    , @NamedQuery(name = "Usuario.findByNumeroDocumento", query = "SELECT u FROM Usuario u WHERE u.numeroDocumento = :numeroDocumento")
+    , @NamedQuery(name = "Usuario.findByGenero", query = "SELECT u FROM Usuario u WHERE u.genero = :genero")
+    , @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento")
+    , @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion")
+    , @NamedQuery(name = "Usuario.findByFechaRegistro", query = "SELECT u FROM Usuario u WHERE u.fechaRegistro = :fechaRegistro")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,7 +56,7 @@ public class Usuario implements Serializable {
     private Integer iDUsuario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 40)
+    @Size(min = 1, max = 30)
     @Column(name = "Usuario")
     private String usuario;
     @Basic(optional = false)
@@ -83,9 +91,7 @@ public class Usuario implements Serializable {
     @Column(name = "Fecha_Nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
+    @Size(max = 40)
     @Column(name = "Direccion")
     private String direccion;
     @Column(name = "fechaRegistro")
@@ -109,7 +115,7 @@ public class Usuario implements Serializable {
         this.iDUsuario = iDUsuario;
     }
 
-    public Usuario(Integer iDUsuario, String usuario, String contraseña, String nombre, String apellido, String tipoDocumento, long numeroDocumento, String genero, String direccion) {
+    public Usuario(Integer iDUsuario, String usuario, String contraseña, String nombre, String apellido, String tipoDocumento, long numeroDocumento, String genero) {
         this.iDUsuario = iDUsuario;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -118,7 +124,6 @@ public class Usuario implements Serializable {
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.genero = genero;
-        this.direccion = direccion;
     }
 
     public Integer getIDUsuario() {
@@ -209,7 +214,6 @@ public class Usuario implements Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
-    @XmlTransient
     public Collection<Rol> getRolCollection() {
         return rolCollection;
     }
@@ -218,7 +222,6 @@ public class Usuario implements Serializable {
         this.rolCollection = rolCollection;
     }
 
-    @XmlTransient
     public Collection<Asistente> getAsistenteCollection() {
         return asistenteCollection;
     }
@@ -227,7 +230,6 @@ public class Usuario implements Serializable {
         this.asistenteCollection = asistenteCollection;
     }
 
-    @XmlTransient
     public Collection<Administrador> getAdministradorCollection() {
         return administradorCollection;
     }
@@ -244,7 +246,6 @@ public class Usuario implements Serializable {
         this.usuarioTelefono = usuarioTelefono;
     }
 
-    @XmlTransient
     public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
         return clienteFidelizadoCollection;
     }

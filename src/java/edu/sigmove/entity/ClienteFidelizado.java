@@ -27,8 +27,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,9 +34,12 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "cliente_fidelizado")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ClienteFidelizado.findAll", query = "SELECT c FROM ClienteFidelizado c")})
+    @NamedQuery(name = "ClienteFidelizado.findAll", query = "SELECT c FROM ClienteFidelizado c")
+    , @NamedQuery(name = "ClienteFidelizado.findByIDCliente", query = "SELECT c FROM ClienteFidelizado c WHERE c.iDCliente = :iDCliente")
+    , @NamedQuery(name = "ClienteFidelizado.findByNombre", query = "SELECT c FROM ClienteFidelizado c WHERE c.nombre = :nombre")
+    , @NamedQuery(name = "ClienteFidelizado.findByCorreo", query = "SELECT c FROM ClienteFidelizado c WHERE c.correo = :correo")
+    , @NamedQuery(name = "ClienteFidelizado.findByFecha", query = "SELECT c FROM ClienteFidelizado c WHERE c.fecha = :fecha")})
 public class ClienteFidelizado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,11 +63,12 @@ public class ClienteFidelizado implements Serializable {
     private Date fecha;
     @JoinTable(name = "cliente_has_pqr", joinColumns = {
         @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")}, inverseJoinColumns = {
-        @JoinColumn(name = "PQR_ID_PQR", referencedColumnName = "ID_PQR")})
+        @JoinColumn(name = "ID_PQR", referencedColumnName = "ID_PQR")})
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Pqr> pqrCollection;
-    @ManyToMany(mappedBy = "clienteFidelizadoCollection", fetch = FetchType.LAZY)
-    private Collection<Beneficio> beneficioCollection;
+    @JoinColumn(name = "beneficio_ID_Beneficio", referencedColumnName = "ID_Beneficio")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Beneficio beneficioIDBeneficio;
     @JoinColumn(name = "usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuarioIDUsuario;
@@ -118,7 +120,6 @@ public class ClienteFidelizado implements Serializable {
         this.fecha = fecha;
     }
 
-    @XmlTransient
     public Collection<Pqr> getPqrCollection() {
         return pqrCollection;
     }
@@ -127,13 +128,12 @@ public class ClienteFidelizado implements Serializable {
         this.pqrCollection = pqrCollection;
     }
 
-    @XmlTransient
-    public Collection<Beneficio> getBeneficioCollection() {
-        return beneficioCollection;
+    public Beneficio getBeneficioIDBeneficio() {
+        return beneficioIDBeneficio;
     }
 
-    public void setBeneficioCollection(Collection<Beneficio> beneficioCollection) {
-        this.beneficioCollection = beneficioCollection;
+    public void setBeneficioIDBeneficio(Beneficio beneficioIDBeneficio) {
+        this.beneficioIDBeneficio = beneficioIDBeneficio;
     }
 
     public Usuario getUsuarioIDUsuario() {
@@ -144,7 +144,6 @@ public class ClienteFidelizado implements Serializable {
         this.usuarioIDUsuario = usuarioIDUsuario;
     }
 
-    @XmlTransient
     public Collection<VentasHasCliente> getVentasHasClienteCollection() {
         return ventasHasClienteCollection;
     }

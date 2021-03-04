@@ -20,7 +20,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -28,9 +27,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "registro_de_entrada_cantidad")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RegistroDeEntradaCantidad.findAll", query = "SELECT r FROM RegistroDeEntradaCantidad r")})
+    @NamedQuery(name = "RegistroDeEntradaCantidad.findAll", query = "SELECT r FROM RegistroDeEntradaCantidad r")
+    , @NamedQuery(name = "RegistroDeEntradaCantidad.findByUnidaddemedida", query = "SELECT r FROM RegistroDeEntradaCantidad r WHERE r.unidaddemedida = :unidaddemedida")
+    , @NamedQuery(name = "RegistroDeEntradaCantidad.findByCantidad", query = "SELECT r FROM RegistroDeEntradaCantidad r WHERE r.cantidad = :cantidad")
+    , @NamedQuery(name = "RegistroDeEntradaCantidad.findByRegistrodeentradaIDRegistro", query = "SELECT r FROM RegistroDeEntradaCantidad r WHERE r.registrodeentradaIDRegistro = :registrodeentradaIDRegistro")})
 public class RegistroDeEntradaCantidad implements Serializable {
 
     private static final long serialVersionUID = 1L;

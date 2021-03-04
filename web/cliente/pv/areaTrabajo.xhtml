@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lenguageSession.locale}"> 
+
+        <ui:composition >
+
+            <section id="main-content">
+                <section class="wrapper">
+                    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                        <div class="col-md-12">
+
+                            <h:form>
+                                <div class="row" style="margin-top: 15px;">
+                                    <c:forEach items="#{categoriasView.listaCategorias}" var="cate">
+                                        <h:commandLink action="#{categoriasView.seleccionCategoria(cate.idcategoria)}"   >
+                                            <div class="col-lg-2 col-md-2 col-sm-2 mb">
+                                                <div class="weather-3 pn centered" style="background: ##{cate.color} !important;">
+                                                    <i class="fa #{cate.icono}"></i>
+                                                    <br/>
+                                                    <br/>
+                                                    <div class="info">
+                                                        <div class="row">
+                                                            <h4 class="centered">#{cate.nombre}</h4>
+                                                            <div class="col-sm-12 col-xs-12 pull-right">
+                                                                <p class="goright"><i class="fa fa-flag"></i> #{categoriasView.catidadproductoscategoria(cate.idcategoria)} Productos</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </h:commandLink>
+                                    </c:forEach>            
+                                </div>
+                            </h:form>
+
+                            <div class="row">
+                                <h1> #{msjAlumi.Categoria} -> #{categoriasView.categoriaSelect.nombre} </h1>
+                            </div>
+
+
+                            <div class="row">
+
+                                <h:panelGroup id="tabla">
+                                    <h:form id="listaProductos">
+                                        <c:forEach items="#{categoriasView.listaProductos()}" var="pt">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                                                <div class="custom-box">
+                                                    <div class="project-wrapper">
+                                                        <div class="project">
+                                                            <div class="photo-wrapper">
+                                                                <div class="photo">
+                                                                    <a class="fancybox" href="/imagenes/Productos/Categorias/#{pt.imagenruta}">
+                                                                        <h:graphicImage class="img-responsive" style="display: inherit" value="/imagenes/Productos/Categorias/#{pt.imagenruta}" alt=""/>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="overlay"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="servicetitle">
+                                                        <h4>#{pt.nombre}</h4>
+                                                        <hr/>
+                                                    </div>
+                                                    <div class="icn-main-container" style="height: 128px !important;">
+                                                        <span class="icn-container" style="font-size: inherit;">$ #{pt.precioUnitario}</span>
+                                                    </div>
+                                                    <p>Serial : #{pt.serial}</p>
+                                                    <ul class="pricing">
+                                                        <li>#{msjAlumi.Unidadesdisponibles} : #{pt.cantidad}</li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end custombox -->
+                                            </div>
+                                            <!-- end col-4 -->
+                                        </c:forEach>
+                                    </h:form>
+                                </h:panelGroup>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                </section>
+            </section>
+
+            <!--main content end-->
+        </ui:composition>
+    </f:view>   
+</html>
+

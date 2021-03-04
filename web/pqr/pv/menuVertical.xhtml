@@ -40,6 +40,9 @@
                                 <span>${ruta}</span>
                             </a>
                         </li>
+                        
+                        <li><a href="../usuario/index.xhtml"><em class="fa fa-dashboard"></em> usuario</a></li>
+                        <li><a href="../cliente/index.xhtml"><em class="fa fa-dashboard"></em> tienda</a></li>
                         <c:forEach items="#{usuarioSesion.usuLogin.rolCollection}" var="rol">
 
                             <c:if test="#{rol.nombre != ruta}">

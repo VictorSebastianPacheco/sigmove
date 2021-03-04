@@ -27,8 +27,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,9 +34,17 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "ventas")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Ventas.findAll", query = "SELECT v FROM Ventas v")})
+    @NamedQuery(name = "Ventas.findAll", query = "SELECT v FROM Ventas v")
+    , @NamedQuery(name = "Ventas.findByIDVenta", query = "SELECT v FROM Ventas v WHERE v.iDVenta = :iDVenta")
+    , @NamedQuery(name = "Ventas.findByNombreVendedor", query = "SELECT v FROM Ventas v WHERE v.nombreVendedor = :nombreVendedor")
+    , @NamedQuery(name = "Ventas.findByNombreComprador", query = "SELECT v FROM Ventas v WHERE v.nombreComprador = :nombreComprador")
+    , @NamedQuery(name = "Ventas.findByFecha", query = "SELECT v FROM Ventas v WHERE v.fecha = :fecha")
+    , @NamedQuery(name = "Ventas.findByDireccion", query = "SELECT v FROM Ventas v WHERE v.direccion = :direccion")
+    , @NamedQuery(name = "Ventas.findByDescripcion", query = "SELECT v FROM Ventas v WHERE v.descripcion = :descripcion")
+    , @NamedQuery(name = "Ventas.findByPrecioTotal", query = "SELECT v FROM Ventas v WHERE v.precioTotal = :precioTotal")
+    , @NamedQuery(name = "Ventas.findByPagoTotal", query = "SELECT v FROM Ventas v WHERE v.pagoTotal = :pagoTotal")
+    , @NamedQuery(name = "Ventas.findByMetodoPago", query = "SELECT v FROM Ventas v WHERE v.metodoPago = :metodoPago")})
 public class Ventas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -80,9 +86,9 @@ public class Ventas implements Serializable {
     private String metodoPago;
     @ManyToMany(mappedBy = "ventasCollection", fetch = FetchType.LAZY)
     private Collection<Producto> productoCollection;
-    @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
+    @JoinColumn(name = "ID_Asistente", referencedColumnName = "ID_Asistente")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Asistente asistenteIDAsistente;
+    private Asistente iDAsistente;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "ventas", fetch = FetchType.LAZY)
     private VentasHasCliente ventasHasCliente;
 
@@ -173,7 +179,6 @@ public class Ventas implements Serializable {
         this.metodoPago = metodoPago;
     }
 
-    @XmlTransient
     public Collection<Producto> getProductoCollection() {
         return productoCollection;
     }
@@ -182,12 +187,12 @@ public class Ventas implements Serializable {
         this.productoCollection = productoCollection;
     }
 
-    public Asistente getAsistenteIDAsistente() {
-        return asistenteIDAsistente;
+    public Asistente getIDAsistente() {
+        return iDAsistente;
     }
 
-    public void setAsistenteIDAsistente(Asistente asistenteIDAsistente) {
-        this.asistenteIDAsistente = asistenteIDAsistente;
+    public void setIDAsistente(Asistente iDAsistente) {
+        this.iDAsistente = iDAsistente;
     }
 
     public VentasHasCliente getVentasHasCliente() {

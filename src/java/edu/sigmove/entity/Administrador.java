@@ -20,8 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,9 +27,9 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "administrador")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Administrador.findAll", query = "SELECT a FROM Administrador a")})
+    @NamedQuery(name = "Administrador.findAll", query = "SELECT a FROM Administrador a")
+    , @NamedQuery(name = "Administrador.findByIDAdministrador", query = "SELECT a FROM Administrador a WHERE a.iDAdministrador = :iDAdministrador")})
 public class Administrador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,7 +39,7 @@ public class Administrador implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ID_Administrador")
     private String iDAdministrador;
-    @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
+    @JoinColumn(name = "usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIDUsuario;
     @OneToMany(mappedBy = "administradorIDAdministrador", fetch = FetchType.LAZY)
@@ -70,7 +68,6 @@ public class Administrador implements Serializable {
         this.usuarioIDUsuario = usuarioIDUsuario;
     }
 
-    @XmlTransient
     public Collection<Proveedores> getProveedoresCollection() {
         return proveedoresCollection;
     }

@@ -24,8 +24,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,9 +31,14 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "proveedores")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Proveedores.findAll", query = "SELECT p FROM Proveedores p")})
+    @NamedQuery(name = "Proveedores.findAll", query = "SELECT p FROM Proveedores p")
+    , @NamedQuery(name = "Proveedores.findByIDProveedor", query = "SELECT p FROM Proveedores p WHERE p.iDProveedor = :iDProveedor")
+    , @NamedQuery(name = "Proveedores.findByNombre", query = "SELECT p FROM Proveedores p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Proveedores.findByTipoDocumento", query = "SELECT p FROM Proveedores p WHERE p.tipoDocumento = :tipoDocumento")
+    , @NamedQuery(name = "Proveedores.findByNumeroDocumento", query = "SELECT p FROM Proveedores p WHERE p.numeroDocumento = :numeroDocumento")
+    , @NamedQuery(name = "Proveedores.findByDireccion", query = "SELECT p FROM Proveedores p WHERE p.direccion = :direccion")
+    , @NamedQuery(name = "Proveedores.findByCiudad", query = "SELECT p FROM Proveedores p WHERE p.ciudad = :ciudad")})
 public class Proveedores implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -139,7 +142,6 @@ public class Proveedores implements Serializable {
         this.ciudad = ciudad;
     }
 
-    @XmlTransient
     public Collection<OrdenDeCompra> getOrdenDeCompraCollection() {
         return ordenDeCompraCollection;
     }
@@ -148,7 +150,6 @@ public class Proveedores implements Serializable {
         this.ordenDeCompraCollection = ordenDeCompraCollection;
     }
 
-    @XmlTransient
     public Collection<Producto> getProductoCollection() {
         return productoCollection;
     }

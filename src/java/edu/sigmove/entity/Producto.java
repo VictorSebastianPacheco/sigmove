@@ -25,8 +25,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,9 +32,19 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "producto")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")})
+    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
+    , @NamedQuery(name = "Producto.findByIDProducto", query = "SELECT p FROM Producto p WHERE p.iDProducto = :iDProducto")
+    , @NamedQuery(name = "Producto.findBySerial", query = "SELECT p FROM Producto p WHERE p.serial = :serial")
+    , @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM Producto p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Producto.findByImagenruta", query = "SELECT p FROM Producto p WHERE p.imagenruta = :imagenruta")
+    , @NamedQuery(name = "Producto.findByCantidad", query = "SELECT p FROM Producto p WHERE p.cantidad = :cantidad")
+    , @NamedQuery(name = "Producto.findByUnidadMedida", query = "SELECT p FROM Producto p WHERE p.unidadMedida = :unidadMedida")
+    , @NamedQuery(name = "Producto.findByPrecioUnitario", query = "SELECT p FROM Producto p WHERE p.precioUnitario = :precioUnitario")
+    , @NamedQuery(name = "Producto.findByPrecioventa", query = "SELECT p FROM Producto p WHERE p.precioventa = :precioventa")
+    , @NamedQuery(name = "Producto.findByGenero", query = "SELECT p FROM Producto p WHERE p.genero = :genero")
+    , @NamedQuery(name = "Producto.findByMarca", query = "SELECT p FROM Producto p WHERE p.marca = :marca")
+    , @NamedQuery(name = "Producto.findByTipo", query = "SELECT p FROM Producto p WHERE p.tipo = :tipo")})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -192,7 +200,6 @@ public class Producto implements Serializable {
         this.tipo = tipo;
     }
 
-    @XmlTransient
     public Collection<Ventas> getVentasCollection() {
         return ventasCollection;
     }
@@ -201,7 +208,6 @@ public class Producto implements Serializable {
         this.ventasCollection = ventasCollection;
     }
 
-    @XmlTransient
     public Collection<Proveedores> getProveedoresCollection() {
         return proveedoresCollection;
     }
@@ -218,7 +224,6 @@ public class Producto implements Serializable {
         this.idcategoria = idcategoria;
     }
 
-    @XmlTransient
     public Collection<RegistroDeEntrada> getRegistroDeEntradaCollection() {
         return registroDeEntradaCollection;
     }

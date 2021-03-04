@@ -23,7 +23,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -31,9 +30,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "registro_de_entrada")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RegistroDeEntrada.findAll", query = "SELECT r FROM RegistroDeEntrada r")})
+    @NamedQuery(name = "RegistroDeEntrada.findAll", query = "SELECT r FROM RegistroDeEntrada r")
+    , @NamedQuery(name = "RegistroDeEntrada.findByIDRegistro", query = "SELECT r FROM RegistroDeEntrada r WHERE r.iDRegistro = :iDRegistro")
+    , @NamedQuery(name = "RegistroDeEntrada.findByNombre", query = "SELECT r FROM RegistroDeEntrada r WHERE r.nombre = :nombre")
+    , @NamedQuery(name = "RegistroDeEntrada.findByFecha", query = "SELECT r FROM RegistroDeEntrada r WHERE r.fecha = :fecha")
+    , @NamedQuery(name = "RegistroDeEntrada.findByDescripcion", query = "SELECT r FROM RegistroDeEntrada r WHERE r.descripcion = :descripcion")})
 public class RegistroDeEntrada implements Serializable {
 
     private static final long serialVersionUID = 1L;

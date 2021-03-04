@@ -18,7 +18,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -26,9 +25,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "usuario_telefono")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UsuarioTelefono.findAll", query = "SELECT u FROM UsuarioTelefono u")})
+    @NamedQuery(name = "UsuarioTelefono.findAll", query = "SELECT u FROM UsuarioTelefono u")
+    , @NamedQuery(name = "UsuarioTelefono.findByTelefono", query = "SELECT u FROM UsuarioTelefono u WHERE u.telefono = :telefono")
+    , @NamedQuery(name = "UsuarioTelefono.findByTelefono2", query = "SELECT u FROM UsuarioTelefono u WHERE u.telefono2 = :telefono2")
+    , @NamedQuery(name = "UsuarioTelefono.findByUsuarioIDUsuario", query = "SELECT u FROM UsuarioTelefono u WHERE u.usuarioIDUsuario = :usuarioIDUsuario")})
 public class UsuarioTelefono implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,9 +46,9 @@ public class UsuarioTelefono implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Usuario_ID_Usuario")
+    @Column(name = "usuario_ID_Usuario")
     private Integer usuarioIDUsuario;
-    @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario", insertable = false, updatable = false)
+    @JoinColumn(name = "usuario_ID_Usuario", referencedColumnName = "ID_Usuario", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
 

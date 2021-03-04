@@ -21,8 +21,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,9 +28,13 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "rol")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")})
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
+    , @NamedQuery(name = "Rol.findById", query = "SELECT r FROM Rol r WHERE r.id = :id")
+    , @NamedQuery(name = "Rol.findByNombre", query = "SELECT r FROM Rol r WHERE r.nombre = :nombre")
+    , @NamedQuery(name = "Rol.findByIcono", query = "SELECT r FROM Rol r WHERE r.icono = :icono")
+    , @NamedQuery(name = "Rol.findByRuta", query = "SELECT r FROM Rol r WHERE r.ruta = :ruta")
+    , @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion")})
 public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -106,7 +108,6 @@ public class Rol implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }

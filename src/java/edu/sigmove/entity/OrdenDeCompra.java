@@ -26,8 +26,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,9 +33,21 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "orden_de_compra")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OrdenDeCompra.findAll", query = "SELECT o FROM OrdenDeCompra o")})
+    @NamedQuery(name = "OrdenDeCompra.findAll", query = "SELECT o FROM OrdenDeCompra o")
+    , @NamedQuery(name = "OrdenDeCompra.findByIDOrden", query = "SELECT o FROM OrdenDeCompra o WHERE o.iDOrden = :iDOrden")
+    , @NamedQuery(name = "OrdenDeCompra.findByFecha", query = "SELECT o FROM OrdenDeCompra o WHERE o.fecha = :fecha")
+    , @NamedQuery(name = "OrdenDeCompra.findByNombreComprador", query = "SELECT o FROM OrdenDeCompra o WHERE o.nombreComprador = :nombreComprador")
+    , @NamedQuery(name = "OrdenDeCompra.findByNombreVendedor", query = "SELECT o FROM OrdenDeCompra o WHERE o.nombreVendedor = :nombreVendedor")
+    , @NamedQuery(name = "OrdenDeCompra.findByLugarEmision", query = "SELECT o FROM OrdenDeCompra o WHERE o.lugarEmision = :lugarEmision")
+    , @NamedQuery(name = "OrdenDeCompra.findByDescripcion", query = "SELECT o FROM OrdenDeCompra o WHERE o.descripcion = :descripcion")
+    , @NamedQuery(name = "OrdenDeCompra.findByPrecioUnitario", query = "SELECT o FROM OrdenDeCompra o WHERE o.precioUnitario = :precioUnitario")
+    , @NamedQuery(name = "OrdenDeCompra.findByPrecioTotal", query = "SELECT o FROM OrdenDeCompra o WHERE o.precioTotal = :precioTotal")
+    , @NamedQuery(name = "OrdenDeCompra.findByPagoTotal", query = "SELECT o FROM OrdenDeCompra o WHERE o.pagoTotal = :pagoTotal")
+    , @NamedQuery(name = "OrdenDeCompra.findByMetodoPago", query = "SELECT o FROM OrdenDeCompra o WHERE o.metodoPago = :metodoPago")
+    , @NamedQuery(name = "OrdenDeCompra.findByTelefono", query = "SELECT o FROM OrdenDeCompra o WHERE o.telefono = :telefono")
+    , @NamedQuery(name = "OrdenDeCompra.findByCantidad", query = "SELECT o FROM OrdenDeCompra o WHERE o.cantidad = :cantidad")
+    , @NamedQuery(name = "OrdenDeCompra.findByUnidaddemedida", query = "SELECT o FROM OrdenDeCompra o WHERE o.unidaddemedida = :unidaddemedida")})
 public class OrdenDeCompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -90,9 +100,9 @@ public class OrdenDeCompra implements Serializable {
         @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Proveedores> proveedoresCollection;
-    @JoinColumn(name = "Asistente_ID_Asistente", referencedColumnName = "ID_Asistente")
+    @JoinColumn(name = "ID_Asistente", referencedColumnName = "ID_Asistente")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Asistente asistenteIDAsistente;
+    private Asistente iDAsistente;
 
     public OrdenDeCompra() {
     }
@@ -212,7 +222,6 @@ public class OrdenDeCompra implements Serializable {
         this.unidaddemedida = unidaddemedida;
     }
 
-    @XmlTransient
     public Collection<Proveedores> getProveedoresCollection() {
         return proveedoresCollection;
     }
@@ -221,12 +230,12 @@ public class OrdenDeCompra implements Serializable {
         this.proveedoresCollection = proveedoresCollection;
     }
 
-    public Asistente getAsistenteIDAsistente() {
-        return asistenteIDAsistente;
+    public Asistente getIDAsistente() {
+        return iDAsistente;
     }
 
-    public void setAsistenteIDAsistente(Asistente asistenteIDAsistente) {
-        this.asistenteIDAsistente = asistenteIDAsistente;
+    public void setIDAsistente(Asistente iDAsistente) {
+        this.iDAsistente = iDAsistente;
     }
 
     @Override

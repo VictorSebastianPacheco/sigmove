@@ -21,8 +21,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,9 +28,9 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "asistente")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Asistente.findAll", query = "SELECT a FROM Asistente a")})
+    @NamedQuery(name = "Asistente.findAll", query = "SELECT a FROM Asistente a")
+    , @NamedQuery(name = "Asistente.findByIDAsistente", query = "SELECT a FROM Asistente a WHERE a.iDAsistente = :iDAsistente")})
 public class Asistente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,14 +40,14 @@ public class Asistente implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ID_Asistente")
     private String iDAsistente;
-    @JoinColumn(name = "Usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
+    @JoinColumn(name = "usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIDUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
-    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDAsistente", fetch = FetchType.LAZY)
     private Collection<OrdenDeCompra> ordenDeCompraCollection;
-    @OneToMany(mappedBy = "asistenteIDAsistente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDAsistente", fetch = FetchType.LAZY)
     private Collection<Ventas> ventasCollection;
 
     public Asistente() {
@@ -75,7 +73,6 @@ public class Asistente implements Serializable {
         this.usuarioIDUsuario = usuarioIDUsuario;
     }
 
-    @XmlTransient
     public Collection<RegistroDeEntrada> getRegistroDeEntradaCollection() {
         return registroDeEntradaCollection;
     }
@@ -84,7 +81,6 @@ public class Asistente implements Serializable {
         this.registroDeEntradaCollection = registroDeEntradaCollection;
     }
 
-    @XmlTransient
     public Collection<OrdenDeCompra> getOrdenDeCompraCollection() {
         return ordenDeCompraCollection;
     }
@@ -93,7 +89,6 @@ public class Asistente implements Serializable {
         this.ordenDeCompraCollection = ordenDeCompraCollection;
     }
 
-    @XmlTransient
     public Collection<Ventas> getVentasCollection() {
         return ventasCollection;
     }

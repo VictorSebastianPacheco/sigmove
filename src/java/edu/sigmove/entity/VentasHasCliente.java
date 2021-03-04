@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -26,9 +25,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "ventas_has_cliente")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "VentasHasCliente.findAll", query = "SELECT v FROM VentasHasCliente v")})
+    @NamedQuery(name = "VentasHasCliente.findAll", query = "SELECT v FROM VentasHasCliente v")
+    , @NamedQuery(name = "VentasHasCliente.findByVentasIDVenta", query = "SELECT v FROM VentasHasCliente v WHERE v.ventasIDVenta = :ventasIDVenta")})
 public class VentasHasCliente implements Serializable {
 
     private static final long serialVersionUID = 1L;

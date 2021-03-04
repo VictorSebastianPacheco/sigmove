@@ -15,18 +15,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,9 +30,13 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "beneficio")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Beneficio.findAll", query = "SELECT b FROM Beneficio b")})
+    @NamedQuery(name = "Beneficio.findAll", query = "SELECT b FROM Beneficio b")
+    , @NamedQuery(name = "Beneficio.findByIDBeneficio", query = "SELECT b FROM Beneficio b WHERE b.iDBeneficio = :iDBeneficio")
+    , @NamedQuery(name = "Beneficio.findByNombre", query = "SELECT b FROM Beneficio b WHERE b.nombre = :nombre")
+    , @NamedQuery(name = "Beneficio.findByFecha", query = "SELECT b FROM Beneficio b WHERE b.fecha = :fecha")
+    , @NamedQuery(name = "Beneficio.findByTipo", query = "SELECT b FROM Beneficio b WHERE b.tipo = :tipo")
+    , @NamedQuery(name = "Beneficio.findByProducto", query = "SELECT b FROM Beneficio b WHERE b.producto = :producto")})
 public class Beneficio implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,10 +63,7 @@ public class Beneficio implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "producto")
     private String producto;
-    @JoinTable(name = "beneficio_has_cliente", joinColumns = {
-        @JoinColumn(name = "beneficio_ID_Beneficio", referencedColumnName = "ID_Beneficio")}, inverseJoinColumns = {
-        @JoinColumn(name = "cliente_ID_Cliente", referencedColumnName = "ID_Cliente")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "beneficioIDBeneficio", fetch = FetchType.LAZY)
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
 
     public Beneficio() {
@@ -123,7 +120,6 @@ public class Beneficio implements Serializable {
         this.producto = producto;
     }
 
-    @XmlTransient
     public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
         return clienteFidelizadoCollection;
     }

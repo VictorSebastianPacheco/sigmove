@@ -18,7 +18,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -26,9 +25,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "proveedor_telefono")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProveedorTelefono.findAll", query = "SELECT p FROM ProveedorTelefono p")})
+    @NamedQuery(name = "ProveedorTelefono.findAll", query = "SELECT p FROM ProveedorTelefono p")
+    , @NamedQuery(name = "ProveedorTelefono.findByTelefono", query = "SELECT p FROM ProveedorTelefono p WHERE p.telefono = :telefono")
+    , @NamedQuery(name = "ProveedorTelefono.findByTelefono2", query = "SELECT p FROM ProveedorTelefono p WHERE p.telefono2 = :telefono2")
+    , @NamedQuery(name = "ProveedorTelefono.findByProveedoresIDProveedor", query = "SELECT p FROM ProveedorTelefono p WHERE p.proveedoresIDProveedor = :proveedoresIDProveedor")})
 public class ProveedorTelefono implements Serializable {
 
     private static final long serialVersionUID = 1L;
