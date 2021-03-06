@@ -14,52 +14,43 @@
         <section id="main-content">
             <section class="wrapper">
 
-                <div class="row mt">
+                <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
                     <div class="col-md-12">
                         <div class="content-panel">
-                            <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Lista de usuarios</h4>
-                                <hr/>
-                                <thead>
-                                    <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Tipo documento / documento</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Nombres / Apellidos</th>
-                                        <th><i class="fa fa-bookmark"></i> Correo</th>
-                                        <th><i class=" fa fa-edit"></i> Fecha registro</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <h:form id="listaUsuarios">
-                                        <c:forEach items="#{administradorView.listaUsuarios}" var="usu">
+                            <div class="banner">
 
-                                            <tr>
-                                                <td>
-                                                    #{usu.tipoDocumento} #{usu.documento}
-                                                </td>
-                                                <td class="hidden-phone">#{usu.nombres} #{usu.apellidos}</td>
-                                                <td> #{usu.correo} </td>
-                                                <td><span class="label label-info label-mini">
-                                                        #{usu.fechaRegistro}
-                                                    </span></td>
-                                                <td>
-                                                    <c:if test="#{usuarioSesion.usuLogin.documento != usu.documento}">
-                                                        <h:commandButton style="display: none" id="tbl#{usu.documento}" action="#{administradorView.removerUsuario(usu)}"></h:commandButton>      
-                                                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                                        <button type="button" onclick="$('#listaUsuarios\\:tbl#{usu.documento}').click()" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                                    </c:if>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </h:form>
-                                </tbody>
-                            </table>
+                                <div class="container">
+                                    <div class="banner_desc">
+                                        <h1>BIENVENIDO</h1>
+                                        <h2>Mira lo nuevo en productos</h2>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
                         </div>
+                        <div class="col-md-10 about_left">
+                                <h1>Información de nosotros </h1>
+                                <p>Mars For Everyone es una idea de negocio que surge de ver la necesidad del mercado de lucir un estilo de ropa para las diferentes temporadas que se usa en ciudades o viajes, enfocándose principalmente en la combinación de las tendencias de moda actuales y tradicionales en Colombia.</p>
+                                <p>Esta idea se desarrolla principalmente porque la mayoría de las tiendas de ropa de la ciudad se limitan a ofrecer una moda local y común, por lo que no le dan al mercado un estilo innovador y llamativo como las tendencias colombianas entre mujeres y hombres de cualquier edad.</p>
+                                <div class="faqs">
+                                    <h2>Aproveche nuestros descuentos navideños</h2>
+                                    <div class="questions">
+                                        <br/>
+                                        <img src="../resources/img/dRKAoXm.jpg" class="img-responsive" alt=""/>
+                                        <br/>
+                                        <br/>
+                                        <p>Mars For Everyone offers various garments of origin and unique style, that depends on your taste, addressing looks of different trends in Colombia, so you don't stay with the taste of just one.</p>
+                                    </div>
+                                    				    
+                                </div>  	
+                            </div>
+
                         <!-- /content-panel -->
                     </div>
-                    <!-- /col-md-12 -->
+
                 </div>
+
             </section>
         </section>
         <!--main content end-->

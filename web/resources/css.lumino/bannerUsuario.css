@@ -1,0 +1,63 @@
+.banner {
+	background: url(../img/ropa-negra.jpg ) no-repeat center top;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+	min-height:200px;
+        
+}
+.banner_desc{
+	padding-top:9em;
+	position: relative;
+}
+.banner_desc h1{
+	color: #fff;
+	font-size: 3.5em;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+.banner_desc h2{
+	color:#fff;
+	text-transform:uppercase;
+	font-size:2em;
+	font-weight:500;
+	letter-spacing:5px;
+}
+.banner {
+	min-height: 200px;
+}
+.banner_desc {
+  padding-top: 7em;
+}
+.banner_desc h1 {
+ 	font-size: 3em;
+}
+.banner_desc h2 {
+	font-size: 1.6em;
+}
+.banner {
+  min-height: 350px;
+}
+.banner_desc h1 {
+  font-size: 2.5em;
+}
+.banner_desc h2 {
+  font-size: 1.3em;
+}
+.banner_desc {
+  padding-top: 6em;
+}
+.banner {
+  min-height:250px;
+}
+.banner_desc {
+  padding-top: 4em;
+}
+.button {
+	margin-top: 1em;
+}  
+.banner_desc {
+  padding-top:1.5em;
+}
