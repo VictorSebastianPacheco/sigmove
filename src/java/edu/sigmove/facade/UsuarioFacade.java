@@ -29,7 +29,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-
+    
     @Override
     public Usuario recuperarContraseña(String usuarioIn) {
         try {
@@ -38,7 +38,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
             return (Usuario) qt.getSingleResult();
         } catch (Exception e) {
             return new Usuario();
-        }
+}
 
     }
 

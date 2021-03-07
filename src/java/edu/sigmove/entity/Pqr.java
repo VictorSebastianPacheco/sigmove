@@ -41,7 +41,8 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Pqr.findByNumeroDocumento", query = "SELECT p FROM Pqr p WHERE p.numeroDocumento = :numeroDocumento")
     , @NamedQuery(name = "Pqr.findByDescripcion", query = "SELECT p FROM Pqr p WHERE p.descripcion = :descripcion")
     , @NamedQuery(name = "Pqr.findByTelefono", query = "SELECT p FROM Pqr p WHERE p.telefono = :telefono")
-    , @NamedQuery(name = "Pqr.findByCorreo", query = "SELECT p FROM Pqr p WHERE p.correo = :correo")})
+    , @NamedQuery(name = "Pqr.findByCorreo", query = "SELECT p FROM Pqr p WHERE p.correo = :correo")
+    , @NamedQuery(name = "Pqr.findByRespuesta", query = "SELECT p FROM Pqr p WHERE p.respuesta = :respuesta")})
 public class Pqr implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -90,6 +91,9 @@ public class Pqr implements Serializable {
     @Size(max = 65)
     @Column(name = "Correo")
     private String correo;
+    @Size(max = 2500)
+    @Column(name = "respuesta")
+    private String respuesta;
     @ManyToMany(mappedBy = "pqrCollection", fetch = FetchType.LAZY)
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
 
@@ -189,6 +193,14 @@ public class Pqr implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
     }
 
     public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
