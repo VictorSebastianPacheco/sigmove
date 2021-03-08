@@ -56,8 +56,6 @@ public class OrdenDeCompra implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_Orden")
     private Integer iDOrden;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "Fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
@@ -111,9 +109,8 @@ public class OrdenDeCompra implements Serializable {
         this.iDOrden = iDOrden;
     }
 
-    public OrdenDeCompra(Integer iDOrden, Date fecha, String nombreComprador, String nombreVendedor) {
+    public OrdenDeCompra(Integer iDOrden, String nombreComprador, String nombreVendedor) {
         this.iDOrden = iDOrden;
-        this.fecha = fecha;
         this.nombreComprador = nombreComprador;
         this.nombreVendedor = nombreVendedor;
     }

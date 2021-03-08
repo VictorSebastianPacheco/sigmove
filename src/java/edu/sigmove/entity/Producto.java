@@ -16,8 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -84,11 +82,6 @@ public class Producto implements Serializable {
     @Size(max = 30)
     @Column(name = "Tipo")
     private String tipo;
-    @JoinTable(name = "producto_has_proveedores", joinColumns = {
-        @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
-        @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Proveedores> proveedoresCollection;
     @JoinColumn(name = "idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria idcategoria;
@@ -96,6 +89,8 @@ public class Producto implements Serializable {
     private Collection<Ventaproducto> ventaproductoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
+    @OneToMany(mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
+    private Collection<Proveedores> proveedoresCollection;
 
     public Producto() {
     }
@@ -197,14 +192,6 @@ public class Producto implements Serializable {
         this.tipo = tipo;
     }
 
-    public Collection<Proveedores> getProveedoresCollection() {
-        return proveedoresCollection;
-    }
-
-    public void setProveedoresCollection(Collection<Proveedores> proveedoresCollection) {
-        this.proveedoresCollection = proveedoresCollection;
-    }
-
     public Categoria getIdcategoria() {
         return idcategoria;
     }
@@ -227,6 +214,14 @@ public class Producto implements Serializable {
 
     public void setRegistroDeEntradaCollection(Collection<RegistroDeEntrada> registroDeEntradaCollection) {
         this.registroDeEntradaCollection = registroDeEntradaCollection;
+    }
+
+    public Collection<Proveedores> getProveedoresCollection() {
+        return proveedoresCollection;
+    }
+
+    public void setProveedoresCollection(Collection<Proveedores> proveedoresCollection) {
+        this.proveedoresCollection = proveedoresCollection;
     }
 
     @Override

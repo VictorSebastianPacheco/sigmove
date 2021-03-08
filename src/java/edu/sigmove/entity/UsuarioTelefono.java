@@ -33,9 +33,7 @@ import javax.validation.constraints.Size;
 public class UsuarioTelefono implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
+    @Size(max = 12)
     @Column(name = "Telefono")
     private String telefono;
     @Basic(optional = false)
@@ -59,9 +57,8 @@ public class UsuarioTelefono implements Serializable {
         this.usuarioIDUsuario = usuarioIDUsuario;
     }
 
-    public UsuarioTelefono(Integer usuarioIDUsuario, String telefono, String telefono2) {
+    public UsuarioTelefono(Integer usuarioIDUsuario, String telefono2) {
         this.usuarioIDUsuario = usuarioIDUsuario;
-        this.telefono = telefono;
         this.telefono2 = telefono2;
     }
 

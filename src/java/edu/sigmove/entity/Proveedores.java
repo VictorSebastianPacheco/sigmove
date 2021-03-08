@@ -36,7 +36,9 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Proveedores.findByTipoDocumento", query = "SELECT p FROM Proveedores p WHERE p.tipoDocumento = :tipoDocumento")
     , @NamedQuery(name = "Proveedores.findByNumeroDocumento", query = "SELECT p FROM Proveedores p WHERE p.numeroDocumento = :numeroDocumento")
     , @NamedQuery(name = "Proveedores.findByDireccion", query = "SELECT p FROM Proveedores p WHERE p.direccion = :direccion")
-    , @NamedQuery(name = "Proveedores.findByCiudad", query = "SELECT p FROM Proveedores p WHERE p.ciudad = :ciudad")})
+    , @NamedQuery(name = "Proveedores.findByCiudad", query = "SELECT p FROM Proveedores p WHERE p.ciudad = :ciudad")
+    , @NamedQuery(name = "Proveedores.findByTelefono", query = "SELECT p FROM Proveedores p WHERE p.telefono = :telefono")
+    , @NamedQuery(name = "Proveedores.findByTelefono2", query = "SELECT p FROM Proveedores p WHERE p.telefono2 = :telefono2")})
 public class Proveedores implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -67,13 +69,20 @@ public class Proveedores implements Serializable {
     @Size(max = 20)
     @Column(name = "Ciudad")
     private String ciudad;
+    @Size(max = 45)
+    @Column(name = "Telefono")
+    private String telefono;
+    @Size(max = 45)
+    @Column(name = "Telefono2")
+    private String telefono2;
     @ManyToMany(mappedBy = "proveedoresCollection", fetch = FetchType.LAZY)
     private Collection<OrdenDeCompra> ordenDeCompraCollection;
-    @ManyToMany(mappedBy = "proveedoresCollection", fetch = FetchType.LAZY)
-    private Collection<Producto> productoCollection;
     @JoinColumn(name = "Administrador_ID_Administrador", referencedColumnName = "ID_Administrador")
     @ManyToOne(fetch = FetchType.LAZY)
     private Administrador administradorIDAdministrador;
+    @JoinColumn(name = "producto_ID_Producto", referencedColumnName = "ID_Producto")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Producto productoIDProducto;
 
     public Proveedores() {
     }
@@ -138,6 +147,22 @@ public class Proveedores implements Serializable {
         this.ciudad = ciudad;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getTelefono2() {
+        return telefono2;
+    }
+
+    public void setTelefono2(String telefono2) {
+        this.telefono2 = telefono2;
+    }
+
     public Collection<OrdenDeCompra> getOrdenDeCompraCollection() {
         return ordenDeCompraCollection;
     }
@@ -146,20 +171,20 @@ public class Proveedores implements Serializable {
         this.ordenDeCompraCollection = ordenDeCompraCollection;
     }
 
-    public Collection<Producto> getProductoCollection() {
-        return productoCollection;
-    }
-
-    public void setProductoCollection(Collection<Producto> productoCollection) {
-        this.productoCollection = productoCollection;
-    }
-
     public Administrador getAdministradorIDAdministrador() {
         return administradorIDAdministrador;
     }
 
     public void setAdministradorIDAdministrador(Administrador administradorIDAdministrador) {
         this.administradorIDAdministrador = administradorIDAdministrador;
+    }
+
+    public Producto getProductoIDProducto() {
+        return productoIDProducto;
+    }
+
+    public void setProductoIDProducto(Producto productoIDProducto) {
+        this.productoIDProducto = productoIDProducto;
     }
 
     @Override
