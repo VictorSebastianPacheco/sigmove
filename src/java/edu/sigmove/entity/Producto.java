@@ -84,11 +84,6 @@ public class Producto implements Serializable {
     @Size(max = 30)
     @Column(name = "Tipo")
     private String tipo;
-    @JoinTable(name = "producto_has_ventas", joinColumns = {
-        @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
-        @JoinColumn(name = "Ventas_ID_Venta", referencedColumnName = "ID_Venta")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Ventas> ventasCollection;
     @JoinTable(name = "producto_has_proveedores", joinColumns = {
         @JoinColumn(name = "Producto_ID_Producto", referencedColumnName = "ID_Producto")}, inverseJoinColumns = {
         @JoinColumn(name = "Proveedores_ID_Proveedor", referencedColumnName = "ID_Proveedor")})
@@ -97,6 +92,8 @@ public class Producto implements Serializable {
     @JoinColumn(name = "idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria idcategoria;
+    @OneToMany(mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
+    private Collection<Ventaproducto> ventaproductoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productoIDProducto", fetch = FetchType.LAZY)
     private Collection<RegistroDeEntrada> registroDeEntradaCollection;
 
@@ -200,14 +197,6 @@ public class Producto implements Serializable {
         this.tipo = tipo;
     }
 
-    public Collection<Ventas> getVentasCollection() {
-        return ventasCollection;
-    }
-
-    public void setVentasCollection(Collection<Ventas> ventasCollection) {
-        this.ventasCollection = ventasCollection;
-    }
-
     public Collection<Proveedores> getProveedoresCollection() {
         return proveedoresCollection;
     }
@@ -222,6 +211,14 @@ public class Producto implements Serializable {
 
     public void setIdcategoria(Categoria idcategoria) {
         this.idcategoria = idcategoria;
+    }
+
+    public Collection<Ventaproducto> getVentaproductoCollection() {
+        return ventaproductoCollection;
+    }
+
+    public void setVentaproductoCollection(Collection<Ventaproducto> ventaproductoCollection) {
+        this.ventaproductoCollection = ventaproductoCollection;
     }
 
     public Collection<RegistroDeEntrada> getRegistroDeEntradaCollection() {

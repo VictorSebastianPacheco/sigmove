@@ -8,7 +8,6 @@ package edu.sigmove.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +19,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -73,8 +71,6 @@ public class Proveedores implements Serializable {
     private Collection<OrdenDeCompra> ordenDeCompraCollection;
     @ManyToMany(mappedBy = "proveedoresCollection", fetch = FetchType.LAZY)
     private Collection<Producto> productoCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "proveedores", fetch = FetchType.LAZY)
-    private ProveedorTelefono proveedorTelefono;
     @JoinColumn(name = "Administrador_ID_Administrador", referencedColumnName = "ID_Administrador")
     @ManyToOne(fetch = FetchType.LAZY)
     private Administrador administradorIDAdministrador;
@@ -156,14 +152,6 @@ public class Proveedores implements Serializable {
 
     public void setProductoCollection(Collection<Producto> productoCollection) {
         this.productoCollection = productoCollection;
-    }
-
-    public ProveedorTelefono getProveedorTelefono() {
-        return proveedorTelefono;
-    }
-
-    public void setProveedorTelefono(ProveedorTelefono proveedorTelefono) {
-        this.proveedorTelefono = proveedorTelefono;
     }
 
     public Administrador getAdministradorIDAdministrador() {

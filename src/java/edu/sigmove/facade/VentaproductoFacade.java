@@ -5,7 +5,7 @@
  */
 package edu.sigmove.facade;
 
-import edu.sigmove.entity.ProveedorTelefono;
+import edu.sigmove.entity.Ventaproducto;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author victo
  */
 @Stateless
-public class ProveedorTelefonoFacade extends AbstractFacade<ProveedorTelefono> implements ProveedorTelefonoFacadeLocal {
+public class VentaproductoFacade extends AbstractFacade<Ventaproducto> implements VentaproductoFacadeLocal {
 
     @PersistenceContext(unitName = "sigmovefase4PU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class ProveedorTelefonoFacade extends AbstractFacade<ProveedorTelefono> i
         return em;
     }
 
-    public ProveedorTelefonoFacade() {
-        super(ProveedorTelefono.class);
+    public VentaproductoFacade() {
+        super(Ventaproducto.class);
     }
     
 }

@@ -17,10 +17,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -79,13 +79,11 @@ public class Ventas implements Serializable {
     @NotNull
     @Column(name = "Pago_Total")
     private double pagoTotal;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "Metodo_Pago")
     private String metodoPago;
-    @ManyToMany(mappedBy = "ventasCollection", fetch = FetchType.LAZY)
-    private Collection<Producto> productoCollection;
+    @OneToMany(mappedBy = "ventasIDVenta", fetch = FetchType.LAZY)
+    private Collection<Ventaproducto> ventaproductoCollection;
     @JoinColumn(name = "ID_Asistente", referencedColumnName = "ID_Asistente")
     @ManyToOne(fetch = FetchType.LAZY)
     private Asistente iDAsistente;
@@ -99,12 +97,11 @@ public class Ventas implements Serializable {
         this.iDVenta = iDVenta;
     }
 
-    public Ventas(Integer iDVenta, String nombreComprador, String direccion, double pagoTotal, String metodoPago) {
+    public Ventas(Integer iDVenta, String nombreComprador, String direccion, double pagoTotal) {
         this.iDVenta = iDVenta;
         this.nombreComprador = nombreComprador;
         this.direccion = direccion;
         this.pagoTotal = pagoTotal;
-        this.metodoPago = metodoPago;
     }
 
     public Integer getIDVenta() {
@@ -179,12 +176,12 @@ public class Ventas implements Serializable {
         this.metodoPago = metodoPago;
     }
 
-    public Collection<Producto> getProductoCollection() {
-        return productoCollection;
+    public Collection<Ventaproducto> getVentaproductoCollection() {
+        return ventaproductoCollection;
     }
 
-    public void setProductoCollection(Collection<Producto> productoCollection) {
-        this.productoCollection = productoCollection;
+    public void setVentaproductoCollection(Collection<Ventaproducto> ventaproductoCollection) {
+        this.ventaproductoCollection = ventaproductoCollection;
     }
 
     public Asistente getIDAsistente() {

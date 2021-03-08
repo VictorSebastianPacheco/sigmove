@@ -7,6 +7,7 @@ package edu.sigmove.controlador;
 
 import edu.sigmove.entity.Pqr;
 import edu.sigmove.facade.PqrFacadeLocal;
+import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -19,7 +20,7 @@ import org.primefaces.PrimeFaces;
  */
 @Named(value = "pqrRequest")
 @RequestScoped
-public class pqrRequest {
+public class pqrRequest implements Serializable{
 
     @EJB
     PqrFacadeLocal PqrFacadeLocal;
