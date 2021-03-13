@@ -7,7 +7,6 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <f:view locale="#{lenguageSession.locale}">
         <ui:composition >
             <!-- **********************************************************************************************************************************************************
              MAIN CONTENT
@@ -45,7 +44,7 @@
                             </h:form>
 
                             <div class="row">
-                                <h1> #{msjAlumi.Categoria} -> #{categoriasView.categoriaSelect.nombre} </h1>
+                                <h1> Categoria -> #{categoriasView.categoriaSelect.nombre} </h1>
                             </div>
 
 
@@ -80,12 +79,12 @@
                                                     </div>
                                                     <p>Serial : #{pt.serial}</p>
                                                     <ul class="pricing">
-                                                        <li>#{msjAlumi.Unidadesdisponibles} : #{pt.cantidad}</li>
+                                                        <li>Unidades disponibles : #{pt.cantidad}</li>
                                                     </ul>
 
                                                     <h:commandButton style="display: none" id="tb3#{pt.IDProducto}" action="#{productoView.removerProducto(pt)}"></h:commandButton>
 
-                                                    <button type="button" onclick="$('#listaProductos\\:tb3#{pt.IDProducto}').click()" class="btn btn-round btn-danger">#{msjAlumi.borrar}</button>
+                                                    <button type="button" onclick="$('#listaProductos\\:tb3#{pt.IDProducto}').click()" class="btn btn-round btn-danger">borrar</button>
 
                                                 </div>
                                                 <!-- end custombox -->
@@ -97,7 +96,7 @@
 
                             </div>
                             <div class="row">
-                                <a class="btn btn-success btn-xs" data-toggle="modal" href="#myModal"> New Product</a>
+                                <a class="btn btn-success btn-xs" data-toggle="modal" href="#myModal"> Nuevo producto</a>
                                 <br/>
                                 <br/>
                                 <br/>
@@ -139,7 +138,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">#{msjAlumi.RegistroProductoNuevo}</h4>
+                            <h4 class="modal-title">Registro Producto Nuevo}</h4>
                         </div>
                         <h:form  id="cargaArchivo" enctype="multipart/form-data">
                             <div class="modal-body">
@@ -148,11 +147,11 @@
                                         <f:selectItems itemLabel="#{cat.nombre}" itemValue="#{cat.idcategoria}" value="#{categoriasView.listaCategorias}" var="cat"></f:selectItems>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.nombre}" class="form-control" html5:placeholder="#{msjAlumi.Nombre}" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.serial}" class="form-control" html5:placeholder="#{msjAlumi.Serial}" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.serial}" class="form-control" html5:placeholder="Serial" html5:autofocus="true"/>
                                     <br/>
-                                    <h:inputText value="#{productoView.productoNuevo.cantidad}" class="form-control" html5:placeholder="#{msjAlumi.Cantidad}" html5:autofocus="true"/>
+                                    <h:inputText value="#{productoView.productoNuevo.cantidad}" class="form-control" html5:placeholder="Cantidad" html5:autofocus="true"/>
                                     <br/>
                                     <h:selectOneMenu value="#{productoView.productoNuevo.unidadMedida}" class="form-control">
                                         <f:selectItem itemLabel="XS" itemValue="XS" ></f:selectItem>
@@ -163,16 +162,16 @@
                                         <f:selectItem itemLabel="XXL" itemValue="XXL" ></f:selectItem>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.precioUnitario}"  class="form-control" html5:placeholder="#{msjAlumi.ValorCompra}" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.precioUnitario}"  class="form-control" html5:placeholder="Valor Compra" html5:autofocus="true"/>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.precioventa}"  class="form-control" html5:placeholder="#{msjAlumi.ValorVenta}" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.precioventa}"  class="form-control" html5:placeholder="Valor Venta" html5:autofocus="true"/>
                                     <br/>
                                     <h:selectOneMenu value="#{productoView.productoNuevo.genero}" class="form-control">
-                                        <f:selectItem itemLabel="#{msjAlumi.Femenino}" itemValue="Femenino" ></f:selectItem>
-                                        <f:selectItem itemLabel="#{msjAlumi.Masculino}" itemValue="Masculino" ></f:selectItem>
+                                        <f:selectItem itemLabel="Femenino" itemValue="Femenino" ></f:selectItem>
+                                        <f:selectItem itemLabel="Masculino" itemValue="Masculino" ></f:selectItem>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.marca}"  class="form-control" html5:placeholder="#{msjAlumi.marca}" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.marca}"  class="form-control" html5:placeholder="Marca" html5:autofocus="true"/>
                                     <br/>
 
                                 </div>
@@ -214,7 +213,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button data-dismiss="modal" class="btn btn-default" type="button">#{msjAlumi.Cancelar}</button>
+                                <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
                                 <h:commandButton onclick="window.location.reload()" action="#{productoView.nuevoProducto()}" class="btn btn-theme" value="Register"/>
                             </div>
                         </h:form>
@@ -225,6 +224,5 @@
             <!-- modal -->
             <!--main content end-->
         </ui:composition>
-    </f:view>
 </html>
 

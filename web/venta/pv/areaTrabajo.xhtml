@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view locale="#{lenguageSession.locale}">
+    
         <ui:composition >
             <!-- **********************************************************************************************************************************************************
              MAIN CONTENT
@@ -23,21 +23,21 @@
                                 <li><a href="#">
                                         <em class="fa fa-home"></em>
                                     </a></li>
-                                <li class="active">#{msjAlumi.Ventas}</li>
+                                <li class="active">Ventas</li>
                             </ol>
                         </div><!--/.row-->
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="page-header">#{msjAlumi.Ventas}</h1>
+                                <h1 class="page-header">Ventas</h1>
                             </div>
                         </div><!--/.row-->
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <h2>#{msjAlumi.FormatoDeVenta}</h2>
+                                <h2>Formato de Venta</h2>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        #{msjAlumi.IngreseDatosDeVentaCliente}
+                                        Ingrese datos de venta cliente
                                         <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                                     </div>
 
@@ -52,32 +52,32 @@
                                                     <h:inputText html5:type="text" class="form-control" html5:placeholder="Vendedor" value="#{ventaRequest.newVen.nombreVendedor}" required=""/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="firstName">#{msjAlumi.NombreCliente}</label>
+                                                    <label for="firstName">Nombre Cliente</label>
                                                     <i class="glyphicon glyphicon-user"></i>
                                                     <h:inputText html5:type="text" class="form-control" html5:placeholder="Cliente" value="#{ventaRequest.newVen.nombreComprador}" required=""/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="firstName">#{msjAlumi.Dirreción}</label>
+                                                    <label for="firstName">Dirreción</label>
                                                     <i class="glyphicon glyphicon-home"></i>
-                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="#{msjAlumi.Dirreción}" value="#{ventaRequest.newVen.direccion}" required=""/>
+                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Dirreción" value="#{ventaRequest.newVen.direccion}" required=""/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="address">#{msjAlumi.Descripción}</label>
+                                                    <label for="address">Descripción</label>
                                                     <i class="glyphicon glyphicon-pencil"></i>
-                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="#{msjAlumi.Descripcióndelproducto}" value="#{ventaRequest.newVen.descripcion}" required=""/>
+                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Descripción del producto" value="#{ventaRequest.newVen.descripcion}" required=""/>
                                                 </div>
 
                                             </div>
                                             <br></br>
                                             <div class="col-lg-3 mb-3">
-                                                <label for="firstName">#{msjAlumi.PrecioTotal}</label>
+                                                <label for="firstName">Precio total</label>
                                                 <i class="glyphicon glyphicon-usd"></i>
-                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="#{msjAlumi.Preciototal}" value="#{ventaRequest.newVen.precioTotal}" required=""/>
+                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="Precio total}" value="#{ventaRequest.newVen.precioTotal}" required=""/>
                                             </div>
                                             <div class="col-lg-3 mb-3">
-                                                <label for="firstName">#{msjAlumi.Pagototal}</label>
+                                                <label for="firstName">Pago total</label>
                                                 <i class="glyphicon glyphicon-usd"></i>
-                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="#{msjAlumi.Pagototal}" value="#{ventaRequest.newVen.pagoTotal}" required=""/>
+                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="Pago total" value="#{ventaRequest.newVen.pagoTotal}" required=""/>
                                             </div>
                                             <br></br>
                                             <br></br>
@@ -88,8 +88,8 @@
                                             <br></br>
 
 
-                                            <h:commandButton class="btn btn-primary btn-block" value="#{msjAlumi.ConfirmarCompra}" action="#{ventaRequest.registrarVenta()}" style="width: 170px; text-align: center;"/>
-                                            <h:commandButton class="btn btn-danger btn-block" value="#{msjAlumi.Cancelarcompra}" style="width: 170px; text-align: center;"/>
+                                            <h:commandButton class="btn btn-primary btn-block" value="Confirmar compra" action="#{ventaRequest.registrarVenta()}" style="width: 170px; text-align: center;"/>
+                                            <h:commandButton class="btn btn-danger btn-block" value="Cancelar compra" style="width: 170px; text-align: center;"/>
                                         </h:form>
                                         <br></br>
                                         <br></br>
@@ -104,12 +104,7 @@
                                                 <h2>Agregue los productos vendidos para registrarlos</h2>
                                                 <div class="col-lg-5 mb-3">
                                                     
-                                                    <!--<select name="Producto" id="Producto">
-                                                        <option value="volvo">Volvo</option>
-                                                        <option value="saab">Saab</option>
-                                                        <option value="mercedes">Mercedes</option>
-                                                        <option value="audi">Audi</option>
-                                                    </select>-->
+                                                    
                                                     <h:selectOneMenu  class="form-control ">
                                                         <f:selectItem itemLabel="Jean blanco    (1136)"></f:selectItem>
                                                         <f:selectItem itemLabel="Camisa a rayas (1137)"></f:selectItem>
@@ -136,7 +131,7 @@
                                                         <h:inputText html5:type="text" class="form-control" html5:placeholder="Cantidad" value="#{ventasProductoRequest.venProReg.cantidad}" required=""/>
                                                     </div>
 
-                                                    <h:commandButton action="#{ventasProductosView.registrarVentaproducto()}" class="btn btn-success" value="Registrar"/>
+                                                    <h:commandButton action="#{ventasProductoRequest.registrarVentaproducto()}" class="btn btn-success" value="Registrar"/>
                                                 </div>
                                             </h:form>
 
@@ -196,18 +191,18 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header card-header-primary">
-                                            <h4 class="card-title ">#{msjAlumi.RegistrosdeVentas}</h4>
+                                            <h4 class="card-title ">Registros de Ventas</h4>
                                         </div>
                                         <table class="table table-striped table-advance table-hover">
 
                                             <thead>
                                                 <tr>
 
-                                                    <th><i class="fa fa-bookmark"></i> #{msjAlumi.CodigodeVenta}</th>
-                                                    <th class="hidden-phone"><i class="fa fa-question-circle"></i>  #{msjAlumi.NombreCliente}</th>
-                                                    <th><i class="fa fa-bullhorn"></i>  #{msjAlumi.Dirreción}</th>
-                                                    <th><i class="fa fa-bookmark" style="center"></i>  #{msjAlumi.Fecha} </th>
-                                                    <th><i class="fa fa-bullhorn"></i>  #{msjAlumi.PrecioTotal}</th>
+                                                    <th><i class="fa fa-bookmark"></i> Codigo de venta}</th>
+                                                    <th class="hidden-phone"><i class="fa fa-question-circle"></i>  Nombre Cliente</th>
+                                                    <th><i class="fa fa-bullhorn"></i>  Dirreción</th>
+                                                    <th><i class="fa fa-bookmark" style="center"></i>  Fecha </th>
+                                                    <th><i class="fa fa-bullhorn"></i>  Precio Total</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -228,8 +223,9 @@
                                                             <td> #{ven.pagoTotal} </td>
 
                                                             <td>
-                                                                <h:commandButton class="btn btn-success btn-xs" value=" #{msjAlumi.factura}" action="#{ventasView.descargaFactura(ven.IDVenta)}"></h:commandButton>
-                                                            </td>#{administradorView.descargaCertificado(usu.id)}
+                                                                <h:commandLink class="btn btn-success btn-xs" action="#{ventasView.descargaFactura(ven.IDVenta)}" value="factura" ></h:commandLink>
+                                                                <!--<h:commandButton class="btn btn-success btn-xs" value=" factura" action="{ventasView.descargaFactura(ven.IDVenta)}"></h:commandButton>-->
+                                                            </td>
 
                                                         </tr>
 
@@ -254,6 +250,6 @@
             </section>
             <!--main content end-->
         </ui:composition>
-    </f:view>
+    
 </html>
 

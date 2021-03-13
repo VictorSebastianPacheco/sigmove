@@ -5,7 +5,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view locale="#{lenguageSession.locale}">
         <ui:composition >
 
             <!-- **********************************************************************************************************************************************************
@@ -13,18 +12,7 @@
                 *********************************************************************************************************************************************************** -->
             <!--sidebar start-->
             <aside>
-                <h:form prependId="false">
-                    <div class="one-fifth column row_1">
-                        <span class="selection-box">
-                            <h:selectOneMenu class="domains valid"  value="#{lenguageSession.lang}"
-                                             onchange="submit();" >
-                                <f:selectItems value="#{lenguageSession.locales}"
-                                               var="l" itemLabel="#{l.language}"/>
-                            </h:selectOneMenu>
-                        </span>
-
-                    </div>
-                </h:form>
+                
                 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
                     <div class="profile-sidebar">
                         <div class="profile-userpic">
@@ -57,8 +45,8 @@
                         </c:forEach>
 
                         
-                        <li><a href="../pqr/index.xhtml"><em class="fa fa-arrow-right"></em> pqr</a></li>
-                        <li><a href="../cliente/index.xhtml"><em class="fa fa-dashboard"></em> tienda</a></li>
+                        <li><a href="../pqr/index.xhtml"><em class="fa fa-arrow-right"></em> PQR</a></li>
+                        <li><a href="../cliente/index.xhtml"><em class="fa fa-dashboard"></em> Tienda</a></li>
 
 
                         <li>
@@ -74,6 +62,5 @@
             <!--sidebar end-->
 
         </ui:composition>
-    </f:view>
 </html>
 

@@ -4,28 +4,16 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view locale="#{lenguageSession.locale}">
 
         <ui:composition >
             <!--header start-->
             <header class="header black-bg">
                 <div class="header_top">
                     <div class="container">
-                        <h:form prependId="false">
-                            <div class="one-fifth column row_1">
-                                <span class="selection-box">
-                                    <h:selectOneMenu class="domains valid"  value="#{lenguageSession.lang}"
-                                                     onchange="submit();" >
-                                        <f:selectItems value="#{lenguageSession.locales}"
-                                                       var="l" itemLabel="#{l.language}"/>
-                                    </h:selectOneMenu>
-                                </span>
-
-                            </div>
-                        </h:form>
+                        
                         <div class="cssmenu">
                             <ul>
-                                <li class="active"><a href="login.xhtml">#{msjheader.IniciarSesión}</a></li> 
+                                <li class="active"><a href="login.xhtml">Iniciar Sesión</a></li> 
                             </ul>
                         </div>
                     </div>
@@ -40,27 +28,27 @@
                             </div>
                             <div class="col-6 menu">
                                 <ul class="megamenu skyblue">
-                                    <li class="active grid"><a class="color1" href="principal2.xhtml">#{msjheader.Ropaparahombre}</a><div class="megapanel">
+                                    <li class="active grid"><a class="color1" href="principal2.xhtml">Ropa para hombre</a><div class="megapanel">
                                             <div class="row">
                                                 <div class="col1">
                                                     <div class="h_nav">
-                                                        <h4>#{msjLogin.Elige}</h4>
+                                                        <h4>Elige</h4>
                                                         <ul>
-                                                            <li><a href="principal2.xhtml">#{msjheader.CamisasMangaCorta}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.CamisasMangaLarga}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.Sudaderas}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.ChaquetasyAbrigos}</a></li>
+                                                            <li><a href="principal2.xhtml">Camisetas Manga Corta</a></li>
+                                                            <li><a href="principal2.xhtml">Camisas Manga Larga</a></li>
+                                                            <li><a href="principal2.xhtml">Sudaderas</a></li>
+                                                            <li><a href="principal2.xhtml">Chaquetas y Abrigos</a></li>
                                                             <li><a href="principal2.xhtml">Jeans</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.ChaquetasdePunto}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.Chaquetasdecuero}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.CamisasMangaCorta}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.CamisasMangaLarga}</a></li>
+                                                            <li><a href="principal2.xhtml">Chaquetas de Punto</a></li>
+                                                            <li><a href="principal2.xhtml">Chaquetas de cuero</a></li>
+                                                            <li><a href="principal2.xhtml">Camisas Manga Corta</a></li>
+                                                            <li><a href="principal2.xhtml">Camisas Manga Larga</a></li>
                                                         </ul>	
                                                     </div>							
                                                 </div>
                                                 <div class="col1">
                                                     <div class="h_nav">
-                                                        <h4>#{msjheader.MarcasPopulares}</h4>
+                                                        <h4>Marcas Populares</h4>
                                                         <ul>
                                                             <li><a href="principal2.xhtml">Levis</a></li>
                                                             <li><a href="principal2.xhtml">Ppjeans</a></li>
@@ -77,28 +65,28 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="grid"><a class="color2" href="#">#{msjheader.Ropaparamujer}</a>
+                                    <li class="grid"><a class="color2" href="#">Ropa para mujer</a>
                                         <div class="megapanel">
                                             <div class="row">
                                                 <div class="col1">
                                                     <div class="h_nav">
                                                         <h4>#{msjLogin.Elige}</h4>
                                                         <ul>
-                                                            <li><a href="principal2.xhtml">#{msjheader.Vestidos}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.CamisetasMangaCorta}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.Blusas}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.ChaquetasdeCuero}</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.ChaquetasyAbrigos}</a></li>
+                                                            <li><a href="principal2.xhtml">Vestidos</a></li>
+                                                            <li><a href="principal2.xhtml">Camisetas Manga Corta</a></li>
+                                                            <li><a href="principal2.xhtml">Blusas</a></li>
+                                                            <li><a href="principal2.xhtml">Chaquetas de Cuero</a></li>
+                                                            <li><a href="principal2.xhtml">Chaquetas y Abrigos</a></li>
                                                             <li><a href="principal2.xhtml">Jeans</a></li>
                                                             <li><a href="principal2.xhtml">Shorts</a></li>
-                                                            <li><a href="principal2.xhtml">#{msjheader.Faldas}</a></li>
+                                                            <li><a href="principal2.xhtml">Faldas</a></li>
                                                             <li><a href="principal2.xhtml">Leggins</a></li>
                                                         </ul>	
                                                     </div>							
                                                 </div>
                                                 <div class="col1">
                                                     <div class="h_nav">
-                                                        <h4>#{msjheader.MarcasPopulares}</h4>
+                                                        <h4>Marcas Populares</h4>
                                                         <ul>
                                                             <li><a href="principal2.xhtml">Ela</a></li>
                                                             <li><a href="principal2.xhtml">Mango</a></li>
@@ -115,9 +103,9 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a class="color4" href="sobreNosotros.xhtml">#{msjheader.SobreNosotros}</a></li>
-                                    <li><a class="color5" href="Error404.xhtml">#{msjheader.Proyectos}</a></li>
-                                    <li><a class="color6" href="contactenos.xhtml">#{msjheader.Contactenos}</a></li>
+                                    <li><a class="color4" href="sobreNosotros.xhtml">Sobre Nosotros</a></li>
+                                    <li><a class="color5" href="Error404.xhtml">Proyectos</a></li>
+                                    <li><a class="color6" href="contactenos.xhtml">Contactenos</a></li>
                                 </ul> 
                             </div>
                         </div>
@@ -139,5 +127,4 @@
             </header>
             <!--header end-->
         </ui:composition>
-    </f:view>
 </html>

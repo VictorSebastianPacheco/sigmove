@@ -4,7 +4,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view locale="#{lenguageSession.locale}">
         <ui:composition >
             <header class="header black-bg">
                 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -16,18 +15,7 @@
                             
                             <ul class=" navbar-right">
                                 
-                                    <h:form prependId="false">
-                                        <div class="one-fifth column row_1 " >
-                                            <span class="selection-box">
-                                                <h:selectOneMenu class="domains valid " style="margin-left:130px;"  value="#{lenguageSession.lang}"
-                                                                 onchange="submit();" >
-                                                    <f:selectItems value="#{lenguageSession.locales}"
-                                                                   var="l" itemLabel="#{l.language}"/>
-                                                </h:selectOneMenu>
-                                            </span>
-
-                                        </div>
-                                    </h:form>
+                                    
 
                                 
                                
@@ -43,6 +31,5 @@
             <!--header end-->
 
         </ui:composition>
-    </f:view>
 </html>
 

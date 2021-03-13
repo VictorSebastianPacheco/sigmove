@@ -6,7 +6,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:view locale="#{lenguageSession.locale}">
         <ui:composition >
             <!--main content start-->
 
@@ -17,46 +16,46 @@
                             <div class="register">
 
                                 <div class="register-top-grid">
-                                    <h3>#{msjAreaTrabajo.INFORMACIÓNPERSONAL}</h3>
+                                    <h3>INFORMACIÓN PERSONAL</h3>
                                     <div>
-                                        <span>#{msjAreaTrabajo.Nombres}<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Nombre}" html5:autofocus="true" />
+                                        <span>Nombres<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="Nombres" html5:autofocus="true" />
                                     </div>
 
 
                                     <div>
-                                        <span>#{msjAreaTrabajo.Apellidos}<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Apellidos}" html5:autofocus="true" />
+                                        <span>Apellidos<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellidos" html5:autofocus="true" />
                                     </div>
                                     <div>
-                                        <span>#{msjAreaTrabajo.Tipodedocumento}<label>*</label></span>
+                                        <span>Tipo de documento<label>*</label></span>
                                         <h:selectOneMenu value="#{usuarioRequest.usuReg.tipoDocumento}" class="form-control ">
-                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Cedula}" itemValue="Cedula" ></f:selectItem>
-                                            <f:selectItem itemLabel="#{msjAreaTrabajo.CedulaEx}" itemValue="Cedula Ex." ></f:selectItem>
-                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Pasaporte}" itemValue="Pasaporte" ></f:selectItem>
+                                            <f:selectItem itemLabel="Cédula" itemValue="Cédula" ></f:selectItem>
+                                            <f:selectItem itemLabel="Cédula Ex." itemValue="Cédula Ex." ></f:selectItem>
+                                            <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
                                         </h:selectOneMenu>
 
                                     </div>
                                     <div>
-                                        <span>#{msjAreaTrabajo.Númerodedocumento}<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Numerodocumento}" html5:autofocus="true"/>
+                                        <span>Número de documento<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Número de documento" html5:autofocus="true"/>
                                     </div>
 
                                     <div> 
-                                        <span> #{msjAreaTrabajo.Correo}<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="#{msjAreaTrabajo.Usuario}" html5:autofocus="true"/> 
+                                        <span>Correo<label>*</label></span>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/> 
                                     </div>
 
                                     <div>
-                                        <span>#{msjAreaTrabajo.Dirección}<label>*</label></span>
+                                        <span>Dirección<label>*</label></span>
                                         <h:inputText  value="#{usuarioRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
                                     </div>
 
                                     <div> 
-                                        <span>#{msjAreaTrabajo.Genero}<label>*</label></span>
+                                        <span>Genero<label>*</label></span>
                                         <h:selectOneMenu value="#{usuarioRequest.usuReg.genero}" class="form-control">
-                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Femenino}" itemValue="Femenino" ></f:selectItem>
-                                            <f:selectItem itemLabel="#{msjAreaTrabajo.Masculino}" itemValue="Masculino" ></f:selectItem>
+                                            <f:selectItem itemLabel="Femenino" itemValue="Femenino" ></f:selectItem>
+                                            <f:selectItem itemLabel="Masculino" itemValue="Masculino" ></f:selectItem>
                                         </h:selectOneMenu>
                                     </div>
                                 </div>
@@ -70,16 +69,16 @@
                                 <div class="register-top-grid">
                                     <br/><br/><br/>
                                     <div class="register-bottom-grid">
-                                        <h3>#{msjAreaTrabajo.INFORMACIÓNDEINGRESO}</h3>
+                                        <h3>INFORMACIÓN DE INGRESO</h3>
                                         <div>
-                                            <span>#{msjAreaTrabajo.Contraseña}<label>*</label></span>
+                                            <span>Contraseña<label>*</label></span>
                                             <h:inputSecret  value="#{usuarioRequest.usuReg.contraseña}" class="form-control col-md-6 " html5:placeholder="Clave"/>
                                         </div>
 
                                     </div>
                                     <br/><br/>
                                     <div class="register-but ">
-                                        <h:commandButton action="#{usuarioRequest.registrarUsuario()}" class="btn btn-theme btn-block acount-btn" value="#{msjAreaTrabajo.Registrarse}" style="width: 200px; height: 40px;"  />
+                                        <h:commandButton action="#{usuarioRequest.registrarUsuario()}" class="btn btn-theme btn-block acount-btn" value="Registrarse" style="width: 200px; height: 40px;"  />
 
                                     </div>
                                 </div>
@@ -93,6 +92,5 @@
 
             <!--main content end--> 
         </ui:composition>
-    </f:view>
 </html>
 

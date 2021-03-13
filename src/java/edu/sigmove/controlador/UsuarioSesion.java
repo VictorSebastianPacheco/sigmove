@@ -49,7 +49,7 @@ public class UsuarioSesion implements Serializable {
                 mensajeAlerta = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
             } else {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
-                facesContext.getExternalContext().redirect("../usuario/index.xhtml?faces-redirect=true");
+                facesContext.getExternalContext().redirect("../inicio/index.xhtml?faces-redirect=true");
             }
 
         } catch (Exception e) {

@@ -22,19 +22,19 @@
                             <li><a href="#">
                                     <em class="fa fa-home"></em>
                                 </a></li>
-                            <li class="active">#{msjAlumi.Fidelización}</li>
+                            <li class="active">Fidelización</li>
                         </ol>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="page-header">#{msjAlumi.Peticionesquejasyreclamos}</h1>
+                            <h1 class="page-header">Peticiones, quejas y reclamos(P.Q.R)</h1>
                         </div>
                     </div>
                     <div class="container">
                         <div class="panel panel-default articles">
                             <div class="panel-heading">
-                                #{msjAlumi.FormularioParaPeticionesQuejas}
+                                Formulario para P.Q.R
                                 <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
                             <div class="panel-body articles-container">
                                 <div class="article border-bottom">
@@ -44,31 +44,31 @@
                                                 <div class="well well-sm">
                                                     <h:form class="form-horizontal">
                                                         <fieldset>
-                                                            <legend class="text-center header">#{msjAlumi.Aseguresedecompletartodosloscampos}.</legend>
+                                                            <legend class="text-center header">Asegurese de completar todos los campos.</legend>
 
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-info"></i></span>
                                                                 <div class="col-md-8">
                                                                     <h:selectOneMenu class="form-control" value="#{pqrRequest.newpqr.tipo}">
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Seleccionedeacuerdo}" itemValue="Seleccione de acuerdo al requerimiento que desea presentar"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Petición}" itemValue="Petición"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.QuejasReclamo}" itemValue="Quejas/Reclamo"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Recursodereposición}" itemValue="Recurso de reposición"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Recursodereposiciónyensubsidio}" itemValue="Recurso de reposición y en subsidio de apelación"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Seleccione de acuerdo al requerimiento que desea presentar"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Petición" itemValue="Petición"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Quejas/Reclamos" itemValue="Quejas/Reclamo"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Recurso de reposición" itemValue="Recurso de reposición"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Recurso de reposición y en subsidio" itemValue="Recurso de reposición y en subsidio de apelación"></f:selectItem>
                                                                     </h:selectOneMenu>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText id="fname" html5:type="text" html5:placeholder="#{msjAlumi.Nombre}" class="form-control" value="#{pqrRequest.newpqr.nombre}"/>
+                                                                    <h:inputText id="fname" html5:type="text" html5:placeholder="Nombre" class="form-control" value="#{pqrRequest.newpqr.nombre}"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText id="lname" html5:type="text" html5:placeholder="#{msjAlumi.Apellido}" class="form-control" value="#{pqrRequest.newpqr.apellido}"/>
+                                                                    <h:inputText id="lname" html5:type="text" html5:placeholder="Apellido" class="form-control" value="#{pqrRequest.newpqr.apellido}"/>
                                                                 </div>
                                                             </div>
 
@@ -76,10 +76,10 @@
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-address-card"></i></span>
                                                                 <div class="col-md-3">
                                                                     <h:selectOneMenu class="form-control" value="#{pqrRequest.newpqr.tipoDocumento}">
-                                                                        <f:selectItem itemLabel="#{msjAlumi.TipodeDocumento}" itemValue="Tipo de documento"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Ceduladeciudadania}" itemValue="Cedula de ciudadania"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Ceduladeextranjeria}" itemValue="Cedula de extranjeria"></f:selectItem>
-                                                                        <f:selectItem itemLabel="#{msjAlumi.Pasaporte}" itemValue="Pasaporte"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Tipo de documento" itemValue="Tipo de documento"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Cedula de ciudadania" itemValue="Cedula de ciudadania"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Cedula de extranjeria" itemValue="Cedula de extranjeria"></f:selectItem>
+                                                                        <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"></f:selectItem>
                                                                         <f:selectItem itemLabel="NIT" itemValue="NIT"></f:selectItem>
                                                                     </h:selectOneMenu>
                                                                 </div>
@@ -88,43 +88,35 @@
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-hashtag"></i></span>
                                                                 <div class="col-md-3">
-                                                                    <h:inputText id="email" html5:type="number" html5:placeholder="#{msjAlumi.Numerodeidentificacion}" class="form-control" value="#{pqrRequest.newpqr.numeroDocumento}"/>
+                                                                    <h:inputText id="email" html5:type="number" html5:placeholder="Número de identificación" class="form-control" value="#{pqrRequest.newpqr.numeroDocumento}"/>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText html5:type="text" html5:placeholder="#{msjAlumi.CorreoElectronico}" class="form-control" value="#{pqrRequest.newpqr.correo}"/>
+                                                                    <h:inputText html5:type="text" html5:placeholder="Correo Electrónico}" class="form-control" value="#{pqrRequest.newpqr.correo}"/>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText id="phone" html5:type="text" html5:placeholder="#{msjAlumi.telefono}" class="form-control" value="#{pqrRequest.newpqr.telefono}"/>
+                                                                    <h:inputText id="phone" html5:type="text" html5:placeholder="Teléfono" class="form-control" value="#{pqrRequest.newpqr.telefono}"/>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText class="form-control" id="message" html5:placeholder="#{msjAlumi.Cuálessonloshechosen}" html5:rows="7" value="#{pqrRequest.newpqr.descripcion}"/>
+                                                                    <h:inputText class="form-control" id="message" html5:placeholder="¿Cuáles son los hechos en que fundamenta el requerimiento?" html5:rows="7" value="#{pqrRequest.newpqr.descripcion}"/>
                                                                 </div>
                                                             </div>
-                                                            <!--
-                                                            <div class="form-group">
-                                                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-cloud-upload"></i></span>
-                                                                <div class="col-md-8">
-                                                                    <p>#{msjAlumi.Pruebasquedeseeaportar}</p>
-                                                                    <input type="file" name="archive" id="file" class="inputfile inputfile-6" style="width: calc(103% - 460px); height: 41px;box-sizing: border-box;"/>
-                                                                </div>
-                                                            </div>
-                                                            -->
+                                                            
                                                             <div class="form-group">
                                                                 <div class="col-md-12 text-center">
-                                                                    <h:commandButton type="submit" class="btn btn-danger btn-lg" value="#{msjAlumi.Cancelar}"/>
-                                                                    <h:commandButton type="submit" class="btn btn-success btn-lg" value="#{msjAlumi.Finalizar}" action="#{pqrRequest.registrarPqr()}"/>
+                                                                    <h:commandButton type="submit" class="btn btn-danger btn-lg" value="Cancelar"/>
+                                                                    <h:commandButton type="submit" class="btn btn-success btn-lg" value="Finalizar" action="#{pqrRequest.registrarPqr()}"/>
                                                                 </div>
                                                             </div>
                                                         </fieldset>

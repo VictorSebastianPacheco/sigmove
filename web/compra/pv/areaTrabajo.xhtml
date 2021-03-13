@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view locale="#{lenguageSession.locale}">
+    
         <ui:composition >
             <!-- **********************************************************************************************************************************************************
              MAIN CONTENT
@@ -23,19 +23,19 @@
                                 <li><a href="#">
                                         <em class="fa fa-home"></em>
                                     </a></li>
-                                <li class="active">#{msjAlumi.Compras}</li>
+                                <li class="active">Compras</li>
                             </ol>
                         </div><!--/.row-->
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="page-header">#{msjAlumi.Compras}</h1>
+                                <h1 class="page-header">Compras</h1>
                             </div>
                         </div><!--/.row-->
 
                         <div class="row">
                             <div class="col-lg-15">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">#{msjAlumi.Nuevaordendecompra}</div>
+                                    <div class="panel-heading">Nueva orden de compra</div>
                                     <div class="panel-body">
                                         <div class="col-lg-15">
                                             <div class="col-lg-15">
@@ -49,37 +49,37 @@
                                                                     <!-- Form Name -->
                                                                     <legend>
                                                                         <center>
-                                                                            <h2><b>#{msjAlumi.FormatoCompraProveedor}</b></h2>
+                                                                            <h2><b>Formato de Compra Proveedor</b></h2>
                                                                         </center>
                                                                     </legend><br></br>
 
                                                                     <!-- Text input-->
 
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.NombreComprador}</label>
+                                                                        <label class="col-md-4 control-label">Nombre Comprador}</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Nombre}" class="form-control" value="#{compraRequest.ordcom.nombreComprador}"/>
+                                                                                <h:inputText html5:placeholder="#Nombre" class="form-control" value="#{compraRequest.ordcom.nombreComprador}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.NombreVendedor}</label>
+                                                                        <label class="col-md-4 control-label">Nombre Vendedor}</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Nombre}" class="form-control" value="#{compraRequest.ordcom.nombreVendedor}"/>
+                                                                                <h:inputText html5:placeholder="Nombre" class="form-control" value="#{compraRequest.ordcom.nombreVendedor}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Ciudad}</label>
+                                                                        <label class="col-md-4 control-label">Ciudad</label>
                                                                         <div class="col-md-4 selectContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                                                                 <h:selectOneMenu value="#{compraRequest.ordcom.lugarEmision}" class="form-control selectpicker">
-                                                                                    <f:selectItem itemLabel="#{msjAlumi.Seleccione}" itemValue="Seleccione"></f:selectItem>
+                                                                                    <f:selectItem itemLabel="Seleccione" itemValue="Seleccione"></f:selectItem>
                                                                                     <f:selectItem itemLabel="Bogota" itemValue="Bogota"></f:selectItem>
                                                                                     <f:selectItem itemLabel="Medellin" itemValue="Medellin"></f:selectItem>
                                                                                     <f:selectItem itemLabel="Barranquilla" itemValue="Barranquilla"></f:selectItem>
@@ -95,30 +95,30 @@
                                                                     <!-- Text input-->
 
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Númerodecontacto}</label>
+                                                                        <label class="col-md-4 control-label">Número de contacto</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Número}" class="form-control" value="#{compraRequest.ordcom.telefono}"/>
+                                                                                <h:inputText html5:placeholder="Número" class="form-control" value="#{compraRequest.ordcom.telefono}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Cantidaddemercancia}</label>
+                                                                        <label class="col-md-4 control-label">Cantidad de mercancia</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Cantidad}" class="form-control" value="#{compraRequest.ordcom.cantidad}"/>
+                                                                                <h:inputText html5:placeholder="Cantidad" class="form-control" value="#{compraRequest.ordcom.cantidad}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Unidaddemedida}</label>
+                                                                        <label class="col-md-4 control-label">Unidad de medida</label>
                                                                         <div class="col-md-4 selectContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
                                                                                 <h:selectOneMenu value="#{compraRequest.ordcom.unidaddemedida}" class="form-control selectpicker">
-                                                                                    <f:selectItem itemLabel="#{msjAlumi.Seleccione}" itemValue="Seleccione"></f:selectItem>
+                                                                                    <f:selectItem itemLabel="Seleccione" itemValue="Seleccione"></f:selectItem>
                                                                                     <f:selectItem itemLabel="XS" itemValue="XS"></f:selectItem>
                                                                                     <f:selectItem itemLabel="XL" itemValue="XL"></f:selectItem>
                                                                                     <f:selectItem itemLabel="XM" itemValue="XM"></f:selectItem>
@@ -131,58 +131,58 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Descripción}</label>
+                                                                        <label class="col-md-4 control-label">Descripción</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Descripción}" class="form-control" value="#{compraRequest.ordcom.descripcion}"/>
+                                                                                <h:inputText html5:placeholder="Descripción" class="form-control" value="#{compraRequest.ordcom.descripcion}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.MetodoDePago}</label>
+                                                                        <label class="col-md-4 control-label">Metodo De Pago</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
                                                                                 <h:selectOneMenu value="#{compraRequest.ordcom.metodoPago}" class="form-control selectpicker">
-                                                                                    <f:selectItem itemLabel="#{msjAlumi.Seleccione}" itemValue="Seleccione"></f:selectItem>
-                                                                                    <f:selectItem itemLabel="#{msjAlumi.Efectivo}" itemValue="Efectivo"></f:selectItem>
-                                                                                    <f:selectItem itemLabel="#{msjAlumi.Tarjetacredito}" itemValue="Tarjeta credito"></f:selectItem>
-                                                                                    <f:selectItem itemLabel="#{msjAlumi.Tarjetadebito}" itemValue="Tarjeta debito"></f:selectItem>
+                                                                                    <f:selectItem itemLabel="Seleccione" itemValue="Seleccione"></f:selectItem>
+                                                                                    <f:selectItem itemLabel="Efectivo" itemValue="Efectivo"></f:selectItem>
+                                                                                    <f:selectItem itemLabel="Tarjeta credito" itemValue="Tarjeta credito"></f:selectItem>
+                                                                                    <f:selectItem itemLabel="Tarjeta debito" itemValue="Tarjeta debito"></f:selectItem>
                                                                                 </h:selectOneMenu>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Preciounitario}</label>
+                                                                        <label class="col-md-4 control-label">Precio Unitario</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Valorprenda}" class="form-control" value="#{compraRequest.ordcom.precioUnitario}"/>
+                                                                                <h:inputText html5:placeholder="Precio Unitario del producto" class="form-control" value="#{compraRequest.ordcom.precioUnitario}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.Preciototal}</label>
+                                                                        <label class="col-md-4 control-label">Precio total</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Valortotal}" class="form-control" value="#{compraRequest.ordcom.precioTotal}"/>
+                                                                                <h:inputText html5:placeholder="Valor total" class="form-control" value="#{compraRequest.ordcom.precioTotal}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">#{msjAlumi.PagoTotal}</label>
+                                                                        <label class="col-md-4 control-label">Pago Total</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-                                                                                <h:inputText html5:placeholder="#{msjAlumi.Pagorealizado}" class="form-control" value="#{compraRequest.ordcom.pagoTotal}"/>
+                                                                                <h:inputText html5:placeholder="Pago realizado" class="form-control" value="#{compraRequest.ordcom.pagoTotal}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <!--
                                                                     <div class="form-group">
-                                                                        <label class="col-md-4 control-label">¿#{msjAlumi.Añadirarchivosdefactura}?</label>
+                                                                        <label class="col-md-4 control-label">Añadir archivos de factura?</label>
                                                                         <div class="col-md-4 inputGroupContainer">
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-level-up"></i></span>
@@ -202,10 +202,10 @@
                                                                     <br></br>
                                                                     <div class="row ">
                                                                         <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                                                            <h:commandButton type="reset"  class="btn btn-danger" value="#{msjAlumi.Cancelar}"/>
+                                                                            <h:commandButton type="reset"  class="btn btn-danger" value="Cancelar"/>
                                                                         </div>
                                                                         <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                                                            <h:commandButton type="submit" class="btn btn-warning btn-block" value="#{msjAlumi.ConfirmarCompra}" action="#{compraRequest.registrarOrden()}"/>
+                                                                            <h:commandButton type="submit" class="btn btn-warning btn-block" value="Confirmar Compra" action="#{compraRequest.registrarOrden()}"/>
                                                                         </div>
                                                                     </div>
                                                                 </fieldset>
@@ -220,8 +220,9 @@
                                                     <div class="col-md-12">
                                                         <div class="card">
                                                             <div class="card-header card-header-primary">
-                                                                <h4 class="card-title ">Registro de compras</h4>
+                                                                <h1 class="page-header">Registro de compra</h1>
                                                             </div>
+
                                                             <table class="table table-striped table-advance table-hover">
                                                                 <h4><i class="fa fa-angle-right"></i> Lista de ordenes</h4>
                                                                 <hr/>
@@ -282,34 +283,34 @@
                             <div class="col-lg-12">
 
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">#{msjAlumi.FormulariodeRegistro}</div>
+                                    <div class="panel-heading">Formulario de Registro</div>
                                     <div class="panel-body">
                                         <div class="col-md-6">
                                             <h:form>
                                                 <div class="form-group">
-                                                    <label class="col-6 control-label">#{msjAlumi.NombreProveedor}</label>
+                                                    <label class="col-6 control-label">Nombre Proveedor</label>
                                                     <h:inputText  value="#{proveedoresRequest.provReg.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-6 control-label">Tipo de documento</label>
                                                     <h:selectOneMenu value="#{proveedoresRequest.provReg.tipoDocumento}" class="form-control" >
-                                                        <f:selectItem itemLabel="#{msjAlumi.cedula}" itemValue="Cedula" ></f:selectItem>
-                                                        <f:selectItem itemLabel="#{msjAlumi.Ceduladeextranjeria}" itemValue="Cedula Extranjeria" ></f:selectItem>
-                                                        <f:selectItem itemLabel="#{msjAlumi.Pasaporte}" itemValue="Pasaporte" ></f:selectItem>
+                                                        <f:selectItem itemLabel="cedula" itemValue="Cedula" ></f:selectItem>
+                                                        <f:selectItem itemLabel="#Cedula Extranjeria" itemValue="Cedula Extranjeria" ></f:selectItem>
+                                                        <f:selectItem itemLabel="#Pasaporte" itemValue="Pasaporte" ></f:selectItem>
                                                         <f:selectItem itemLabel="NIT" itemValue="NIT" ></f:selectItem>
                                                     </h:selectOneMenu>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-6 control-label" >#{msjAlumi.Numerodeidentificacion}</label>
+                                                    <label class="col-6 control-label" >Numero de documento</label>
                                                     <h:inputText  value="#{proveedoresRequest.provReg.numeroDocumento}" class="form-control" html5:placeholder="Numero de documento" html5:autofocus="true"/>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-6 control-label" >#{msjAlumi.Dirreción}</label>
+                                                    <label class="col-6 control-label" >Dirreción</label>
                                                     <h:inputText  value="#{proveedoresRequest.provReg.direccion}" class="form-control" html5:placeholder="Dirreción" html5:autofocus="true"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-6 control-label" >#{msjAlumi.Ciudad}</label>
+                                                    <label class="col-6 control-label" >Ciudad</label>
                                                     <h:inputText  value="#{proveedoresRequest.provReg.ciudad}" class="form-control" html5:placeholder="Ciudad" html5:autofocus="true"/>
                                                 </div>
                                                 <div class="form-group">
@@ -335,7 +336,7 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header card-header-primary">
-                                            <h4 class="card-title ">Proveedores</h4>
+                                            <h1 class="page-header">Proveedores</h1>
                                         </div>
                                         <table class="table table-striped table-advance table-hover">
                                             <h4><i class="fa fa-angle-right"></i> Lista de proveedores</h4>
@@ -438,5 +439,5 @@
             </section>
             <!--main content end-->
         </ui:composition>
-    </f:view>
+    
 </html>
