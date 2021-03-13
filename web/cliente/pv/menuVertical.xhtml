@@ -33,8 +33,7 @@
                         </a>
                     </li>
                     
-                    <li><a href="../inicio/index.xhtml"><em class="fa fa-dashboard"></em> Inicio</a></li>
-                    <li><a href="../pqr/index.xhtml"><em class="fa fa-arrow-right"></em> PQR</a></li>
+                    
 
                     <c:forEach items="#{usuarioSesion.usuLogin.rolCollection}" var="rol">
 
@@ -45,6 +44,8 @@
                         </c:if>
 
                     </c:forEach>
+                    <li><a href="../inicio/index.xhtml"><em class="fa fa-bars"></em> Inicio</a></li>
+                    <li><a href="../pqr/index.xhtml"><em class="fa fa-users"></em> PQR</a></li>
 
                     <li>
                         <h:form id="salir">  

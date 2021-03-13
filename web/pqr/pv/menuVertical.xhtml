@@ -5,65 +5,67 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   
-        <ui:composition >
 
-            <!-- **********************************************************************************************************************************************************
-                MAIN SIDEBAR MENU
-                *********************************************************************************************************************************************************** -->
-            <!--sidebar start-->
-            <aside>
-                <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <ui:composition >
 
-                    <div class="profile-sidebar">
-                        <div class="profile-userpic ">
-                            <img src="../resources/img.lum/usuario4.png" class="img-responsive" alt=""/>
-                            
-                        </div>
+        <!-- **********************************************************************************************************************************************************
+            MAIN SIDEBAR MENU
+            *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
-                        <div class="profile-usertitle">
-                            <div class="profile-usertitle-name">${nombreUsuario}</div>
-                            <div class="profile-usertitle-status">
-                                <span class="indicator label-success"></span>Online
+                <div class="profile-sidebar">
+                    <div class="profile-userpic ">
+                        <img src="../resources/img.lum/usuario4.png" class="img-responsive" alt=""/>
 
-                            </div>
-
-                        </div>
-                        <div class="clear"></div>
                     </div>
-                    <div class="divider"></div>
 
-                    <ul class="nav menu">
-                        <li class="mt">
-                            <a class="active" href="#">
-                                <i class="fa fa-dashboard"></i>
-                                <span>${ruta}</span>
-                            </a>
-                        </li>
-                        
-                        
-                        <c:forEach items="#{usuarioSesion.usuLogin.rolCollection}" var="rol">
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">${nombreUsuario}</div>
+                        <div class="profile-usertitle-status">
+                            <span class="indicator label-success"></span>Online
 
-                            <c:if test="#{rol.nombre != ruta}">
+                        </div>
 
-                                <li><a href="#{rol.ruta}"><em class="#{rol.icono}"></em> #{rol.nombre}</a></li>
-
-                            </c:if>
-
-                        </c:forEach>
-
-                        <li>
-                            <h:form id="salir">  
-                                <h:commandLink id="link" action="#{usuarioSesion.cerraSesion()}" ></h:commandLink>
-                            </h:form>
-                            <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
-                        </li>
-                    </ul>
-
+                    </div>
+                    <div class="clear"></div>
                 </div>
-            </aside>
-            <!--sidebar end-->
+                <div class="divider"></div>
 
-        </ui:composition>
-   
+                <ul class="nav menu">
+                    <li class="mt">
+                        <a class="active" href="#">
+                            <i class="fa fa-dashboard"></i>
+                            <span>${ruta}</span>
+                        </a>
+                    </li>
+
+
+                    <c:forEach items="#{usuarioSesion.usuLogin.rolCollection}" var="rol">
+
+                        <c:if test="#{rol.nombre != ruta}">
+
+                            <li><a href="#{rol.ruta}"><em class="#{rol.icono}"></em> #{rol.nombre}</a></li>
+
+                        </c:if>
+
+                    </c:forEach>
+                    <li><a href="../inicio/index.xhtml"><em class="fa fa-bars"></em> Inicio</a></li>
+                    <li><a href="../cliente/index.xhtml"><em class="fa fa-umbrella"></em> Tienda</a></li>
+
+                    <li>
+                        <h:form id="salir">  
+                            <h:commandLink id="link" action="#{usuarioSesion.cerraSesion()}" ></h:commandLink>
+                        </h:form>
+                        <a class="fa fa-power-off" onclick="$('#salir\\:link').click()">Salir</a>
+                    </li>
+                </ul>
+
+            </div>
+        </aside>
+        <!--sidebar end-->
+
+    </ui:composition>
+
 </html>
