@@ -45,6 +45,7 @@
 
                                         <br></br>
                                         <h:form class="needs-validation">
+                                            <h:messages></h:messages>
                                             <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                     <label for="firstName">Vendedor</label>
@@ -101,22 +102,14 @@
 
                                         <div class="row">
                                             <h:form >
+                                                <h:messages></h:messages>
                                                 <h2>Agregue los productos vendidos para registrarlos</h2>
                                                 <div class="col-lg-5 mb-3">
+                                                    <div class="form-group">
+                                                        <label for="cantidad">Cantidad</label>
+                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Cantidad" value="#{ventasProductoRequest.venProReg.cantidad}" required=""/>
+                                                    </div>
                                                     
-                                                    
-                                                    <h:selectOneMenu  class="form-control ">
-                                                        <f:selectItem itemLabel="Jean blanco    (1136)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Camisa a rayas (1137)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Abrigo Channel (1138)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Chaqueta azul  (1145)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Camisa Blanca  (1150)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Jean azul rey  (1151)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Chaqueta negra (1153)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Camisa negra   (1154)"></f:selectItem>
-                                                        <f:selectItem itemLabel="Sudadera blanca(1156)"></f:selectItem>
-    
-                                                    </h:selectOneMenu>
                                                     <br></br>
                                                     <div  class="form-group">
                                                         <label for="Código de producto">Codigo de producto</label>
@@ -126,10 +119,7 @@
                                                         <label for="Código de Venta">Codigo de Venta</label>
                                                         <h:inputText html5:type="text" class="form-control" html5:placeholder="Venta" value="#{ventasProductoRequest.venProReg.ventasIDVenta}" required=""/>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="cantidad">Cantidad</label>
-                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Cantidad" value="#{ventasProductoRequest.venProReg.cantidad}" required=""/>
-                                                    </div>
+                                                    
 
                                                     <h:commandButton action="#{ventasProductoRequest.registrarVentaproducto()}" class="btn btn-success" value="Registrar"/>
                                                 </div>

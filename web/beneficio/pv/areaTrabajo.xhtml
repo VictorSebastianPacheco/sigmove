@@ -95,6 +95,7 @@
 
 
                             <h:form role="form" class="form-horizontal">
+                                <h:messages></h:messages>
                                 <div class="form-group">
                                     <label class="col-6 control-label">Nombre</label>
                                     <h:inputText  value="#{beneficioView.beneficioSelect.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
@@ -106,7 +107,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-6 control-label">Tipo de Beneficio}</label>
+                                    <label class="col-6 control-label">Tipo de Beneficio</label>
                                     <h:selectOneMenu value="#{beneficioView.beneficioSelect.tipo}" class="form-control" >
                                         <f:selectItem itemLabel="Regalo" itemValue="Regalo" ></f:selectItem>
                                         <f:selectItem itemLabel="Promocion" itemValue="Promocion" ></f:selectItem>
@@ -153,7 +154,7 @@
                             <div class="modal-body">
 
 
-
+                                
                                 <div class="login-wrap">
                                     <h:inputText  value="#{beneficioView.benReg.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
                                     <br/>

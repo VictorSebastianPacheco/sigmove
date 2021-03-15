@@ -6,7 +6,6 @@
 package edu.sigmove.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,7 +14,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -94,8 +94,9 @@ public class Pqr implements Serializable {
     @Size(max = 2500)
     @Column(name = "respuesta")
     private String respuesta;
-    @ManyToMany(mappedBy = "pqrCollection", fetch = FetchType.LAZY)
-    private Collection<ClienteFidelizado> clienteFidelizadoCollection;
+    @JoinColumn(name = "usuario_ID_Usuario", referencedColumnName = "ID_Usuario")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Usuario usuarioIDUsuario;
 
     public Pqr() {
     }
@@ -203,12 +204,12 @@ public class Pqr implements Serializable {
         this.respuesta = respuesta;
     }
 
-    public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
-        return clienteFidelizadoCollection;
+    public Usuario getUsuarioIDUsuario() {
+        return usuarioIDUsuario;
     }
 
-    public void setClienteFidelizadoCollection(Collection<ClienteFidelizado> clienteFidelizadoCollection) {
-        this.clienteFidelizadoCollection = clienteFidelizadoCollection;
+    public void setUsuarioIDUsuario(Usuario usuarioIDUsuario) {
+        this.usuarioIDUsuario = usuarioIDUsuario;
     }
 
     @Override

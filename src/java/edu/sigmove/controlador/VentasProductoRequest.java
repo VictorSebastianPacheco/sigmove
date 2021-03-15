@@ -31,7 +31,7 @@ public class VentasProductoRequest {
     public void registrarVentaproducto() {
         String mensajeRequest="";
         try {
-            ventaproductoFacadeLocal.create(VenProReg);
+            ventaproductoFacadeLocal.ingresarVentaProducto(0,0,0);
             mensajeRequest = "swal('Registro', 'Exitoso !!!!', 'success');";
         } catch (Exception e) {
             System.out.println("Error RegistroRequest:registrarVenta producto " +e.getMessage());

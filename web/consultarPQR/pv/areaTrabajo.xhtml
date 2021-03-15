@@ -31,7 +31,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="page-header">Fidelización ultimos P.Q.R.S</h1>
+                                <h1 class="page-header">Ultimos P.Q.R.S</h1>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -118,7 +118,7 @@
 
                                 <div class="form-group">
 
-                                    <h:commandButton class="btn btn-success" action="#{consultaPqrView.actualizarPqr()}" value="#{msjAlumi.Guardar}"></h:commandButton>
+                                    <h:commandButton class="btn btn-success" action="#{consultaPqrView.actualizarPqr()}" value="Guardar"></h:commandButton>
 
                                 </div>
                                 <br/>
@@ -146,6 +146,7 @@
                             <tbody>
                                 <h:form >
                                     <c:forEach items="#{consultaPqrView.listaPqr}" var="pqr">
+                                        
                                         <tr>
                                             <td>#{pqr.idPqr}</td>
                                             <td></td>

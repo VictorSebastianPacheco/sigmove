@@ -16,8 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -61,11 +59,6 @@ public class ClienteFidelizado implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    @JoinTable(name = "cliente_has_pqr", joinColumns = {
-        @JoinColumn(name = "Cliente_ID_Cliente", referencedColumnName = "ID_Cliente")}, inverseJoinColumns = {
-        @JoinColumn(name = "ID_PQR", referencedColumnName = "ID_PQR")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Pqr> pqrCollection;
     @JoinColumn(name = "beneficio_ID_Beneficio", referencedColumnName = "ID_Beneficio")
     @ManyToOne(fetch = FetchType.LAZY)
     private Beneficio beneficioIDBeneficio;
@@ -118,14 +111,6 @@ public class ClienteFidelizado implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public Collection<Pqr> getPqrCollection() {
-        return pqrCollection;
-    }
-
-    public void setPqrCollection(Collection<Pqr> pqrCollection) {
-        this.pqrCollection = pqrCollection;
     }
 
     public Beneficio getBeneficioIDBeneficio() {

@@ -106,6 +106,8 @@ public class Usuario implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private UsuarioTelefono usuarioTelefono;
     @OneToMany(mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
+    private Collection<Pqr> pqrCollection;
+    @OneToMany(mappedBy = "usuarioIDUsuario", fetch = FetchType.LAZY)
     private Collection<ClienteFidelizado> clienteFidelizadoCollection;
 
     public Usuario() {
@@ -244,6 +246,14 @@ public class Usuario implements Serializable {
 
     public void setUsuarioTelefono(UsuarioTelefono usuarioTelefono) {
         this.usuarioTelefono = usuarioTelefono;
+    }
+
+    public Collection<Pqr> getPqrCollection() {
+        return pqrCollection;
+    }
+
+    public void setPqrCollection(Collection<Pqr> pqrCollection) {
+        this.pqrCollection = pqrCollection;
     }
 
     public Collection<ClienteFidelizado> getClienteFidelizadoCollection() {
