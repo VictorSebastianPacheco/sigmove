@@ -30,6 +30,6 @@ public interface VentaproductoFacadeLocal {
 
     int count();
     
-    public Ventaproducto ingresarVentaProducto(int cantidad, int producto_ID_Producto, int ventas_ID_Venta);
+    public boolean ingresarVentaProducto(int cantidad, int producto_ID_Producto, int ventas_ID_Venta);
     
 }

@@ -16,7 +16,6 @@
 	<parameter name="UsuarioReporte" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Reporte generado por " + $F{usuario_Nombre}]]></defaultValueExpression>
 	</parameter>
-	<parameter name="RutaImagen" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      usuario.`ID_Usuario` AS usuario_ID_Usuario,
@@ -85,10 +84,6 @@ FROM
 						</textElement>
 						<text><![CDATA[ Mars For every One]]></text>
 					</staticText>
-					<image>
-						<reportElement x="23" y="16" width="35" height="34" uuid="b0258138-71dd-4bfd-8848-68b632f070b9"/>
-						<imageExpression><![CDATA[$P{RutaImagen}]]></imageExpression>
-					</image>
 					<textField>
 						<reportElement mode="Transparent" x="518" y="50" width="213" height="17" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="475e4e17-a51d-48d9-9575-31529bc9a5bc"/>
 						<box>

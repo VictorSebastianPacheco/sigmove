@@ -40,8 +40,6 @@ public class VentasProductoRequest {
         PrimeFaces.current().executeScript(mensajeRequest);
         VenProReg = new Ventaproducto();
     }
-    
-    
 
     public Ventaproducto getVenProReg() {
         return VenProReg;
@@ -52,6 +50,8 @@ public class VentasProductoRequest {
     }
     
     
+
+
     
     
 }

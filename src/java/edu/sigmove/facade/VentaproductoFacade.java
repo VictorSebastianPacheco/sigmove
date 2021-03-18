@@ -31,15 +31,16 @@ public class VentaproductoFacade extends AbstractFacade<Ventaproducto> implement
     }
     
     @Override
-    public  Ventaproducto ingresarVentaProducto(int cantidad, int producto_ID_Producto, int ventas_ID_Venta) {
+    public boolean ingresarVentaProducto(int cantidad, int producto_ID_Producto, int ventas_ID_Venta) {
         try {
-            Query q = em.createNativeQuery("INSERT INTO cantidad, producto_ID_Producto, ventas_ID_Venta FROM bdsigmovenew.ventaproducto");
+            Query q = em.createNativeQuery("INSERT INTO bdsigmovenew.ventaproducto (cantidad, producto_ID_Producto, ventas_ID_Venta)");
             q.setParameter(1, cantidad);
             q.setParameter(2, producto_ID_Producto);
             q.setParameter(3, ventas_ID_Venta);
-            return (Ventaproducto) q.getSingleResult();
+            q.executeUpdate();
+            return true; 
         } catch (Exception e) {
-            return null ;
+            return false ;
         }
     }
  

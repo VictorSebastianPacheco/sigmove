@@ -112,7 +112,7 @@ public class UsuarioView implements Serializable{
         try {
             Map parametro = new HashMap();
             parametro.put("UsuarioReporte", usuarioSesion.getUsuLogin().getNombre() + " " +usuarioSesion.getUsuLogin().getApellido());
-            parametro.put("RutaImagen", context.getRealPath("/resources/img/mars.jpeg"));
+            //parametro.put("RutaImagen", context.getRealPath("/resources/img/mars.jpeg"));
             Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bdsigmovenew", "root", "");
            //C:\LIBRERIA\WebApp1966781B2\src\java\edu\webapp1966781b\reportes\ListaUsuarios.jrxml
             File jasper = new File(context.getRealPath("/WEB-INF/classes/edu/sigmove/reportes/ListaUsuarios.jasper"));

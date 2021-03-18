@@ -43,10 +43,10 @@ public class Ventaproducto implements Serializable {
     @Column(name = "cantidad")
     private int cantidad;
     @JoinColumn(name = "producto_ID_Producto", referencedColumnName = "ID_Producto")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Producto productoIDProducto;
     @JoinColumn(name = "ventas_ID_Venta", referencedColumnName = "ID_Venta")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Ventas ventasIDVenta;
 
     public Ventaproducto() {
