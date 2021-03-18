@@ -7,19 +7,22 @@
     
         <ui:composition template="../WEB-INF/template/maqueta.xhtml">
             <ui:param name="nombreUsuario" value="#{usuarioSesion.usuLogin.nombre} #{usuarioSesion.usuLogin.apellido}"></ui:param>
-            <ui:param name="ruta" value="Compra"></ui:param>
+            <ui:param name="ruta" value="Usuario"></ui:param>
 
             <ui:define name="menuVertical">
                 <ui:include src="pv/menuVertical.xhtml"></ui:include>
             </ui:define>
 
             <ui:define name="areaTrabajo">
+
                 <ui:include src="pv/areaTrabajo.xhtml"></ui:include>
+
             </ui:define>
+
             <ui:define name="myscript"> 
                 <script src="#{request.contextPath}/resources/js2/jquery-1.11.1.min.js" type="text/javascript"></script>
             </ui:define>
+
         </ui:composition>
-    
 </html>
 

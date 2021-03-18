@@ -18,49 +18,55 @@
                                 <div class="register-top-grid">
                                     
                                     <h3>INFORMACIÓN PERSONAL</h3>
-                                    <h:messages></h:messages>
                                     <div>
                                         
                                         <span>Nombres<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="Nombres" html5:autofocus="true" />
+                                        <h:inputText  value="#{usuarioRequest.usuReg.nombre}" class="form-control" html5:placeholder="Nombres" html5:autofocus="true" required="true" id="nom" label="Dato Obligatorio" html5:pattern="[A-Za-z ]+"/>
+                                        <strong><h:message for="nom" style="color: #e50000;"></h:message></strong>
                                     </div>
 
 
                                     <div>
                                         <span>Apellidos<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellidos" html5:autofocus="true" />
+                                        <h:inputText  value="#{usuarioRequest.usuReg.apellido}" class="form-control" html5:placeholder="Apellidos" html5:autofocus="true" required="true" id="apelli" label="Dato Obligatorio" html5:pattern="[A-Za-z ]+"/>
+                                        <strong><h:message for="apelli" style="color: #e50000;"></h:message></strong>
                                     </div>
                                     <div>
                                         <span>Tipo de documento<label>*</label></span>
-                                        <h:selectOneMenu value="#{usuarioRequest.usuReg.tipoDocumento}" class="form-control ">
+                                        <h:selectOneMenu value="#{usuarioRequest.usuReg.tipoDocumento}" class="form-control" required="true" id="tipd" label="Seleccione campo">
                                             <f:selectItem itemLabel="Cédula" itemValue="Cédula" ></f:selectItem>
                                             <f:selectItem itemLabel="Cédula Ex." itemValue="Cédula Ex." ></f:selectItem>
                                             <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" ></f:selectItem>
                                         </h:selectOneMenu>
+                                        <strong><h:message for="tipd" style="color: #e50000;"></h:message></strong>
 
                                     </div>
                                     <div>
                                         <span>Número de documento<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Número de documento" html5:autofocus="true"/>
+                                        <h:inputText  value="#{usuarioRequest.usuReg.numeroDocumento}" class="form-control" html5:placeholder="Número de documento" html5:autofocus="true" required="true" id="numd" label="Dato Obligatorio" html5:pattern="[0-9]+"/>
+                                        <strong><h:message for="numd" style="color: #e50000;"></h:message></strong>
                                     </div>
 
                                     <div> 
                                         <span>Correo<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true"/> 
+                                        <h:inputText  value="#{usuarioRequest.usuReg.usuario}" class="form-control" html5:placeholder="Usuario" html5:autofocus="true" required="true" id="corr" label="Dato Obligatorio"/> 
+                                        <strong><h:message for="corr" style="color: #e50000;"></h:message></strong>
                                     </div>
 
                                     <div>
                                         
                                         <span>Dirección<label>*</label></span>
-                                        <h:inputText  value="#{usuarioRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true"/> 
+                                        <h:inputText  value="#{usuarioRequest.usuReg.direccion}" class="form-control" html5:placeholder="Direccion" html5:autofocus="true" required="true" id="dir" label="Incompleto" html5:pattern="[A-Za-z0-9 ]+"/> 
+                                        <strong><h:message for="dir" style="color: #e50000;"></h:message></strong>
                                     </div>
 
                                     <div> 
                                         <span>Genero<label>*</label></span>
-                                        <h:selectOneMenu value="#{usuarioRequest.usuReg.genero}" class="form-control">
+                                        <h:selectOneMenu value="#{usuarioRequest.usuReg.genero}" class="form-control" required="true" id="gen" label="Seleccione campo">
                                             <f:selectItem itemLabel="Femenino" itemValue="Femenino" ></f:selectItem>
                                             <f:selectItem itemLabel="Masculino" itemValue="Masculino" ></f:selectItem>
                                         </h:selectOneMenu>
+                                        <strong><h:message for="gen" style="color: #e50000;"></h:message></strong>
                                     </div>
                                 </div>
 
@@ -76,14 +82,15 @@
                                         <h3>INFORMACIÓN DE INGRESO</h3>
                                         <div>
                                             <span>Contraseña<label>*</label></span>
-                                            <h:inputSecret  value="#{usuarioRequest.usuReg.contraseña}" class="form-control col-md-6 " html5:placeholder="Clave"/>
+                                            <h:inputSecret  value="#{usuarioRequest.usuReg.contraseña}" class="form-control col-md-6 " html5:placeholder="Clave" required="true" id="confpass" label="Dato Obligatorio" html5:pattern="{8,16}"/>
+                                            <strong><h:message for="confpass" style="color: #e50000;"></h:message></strong>
                                         </div>
 
                                     </div>
                                     <br/><br/>
                                     <div class="register-but ">
                                         <h:commandButton action="#{usuarioRequest.registrarUsuario()}" class="btn btn-theme btn-block acount-btn" value="Registrarse" style="width: 200px; height: 40px;"  />
-
+                                        
                                     </div>
                                 </div>
 

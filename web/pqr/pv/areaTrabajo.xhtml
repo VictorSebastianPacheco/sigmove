@@ -43,87 +43,96 @@
                                             <div class="col-md-12">
                                                 <div class="well well-sm">
                                                     <h:form class="form-horizontal">
-                                                        <h:messages></h:messages>
                                                         <fieldset>
                                                             <legend class="text-center header">Asegurese de completar todos los campos.</legend>
 
-                                                            
+
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center" for="tipo"><i class="fa fa-info"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:selectOneMenu class="form-control" value="#{pqrRequest.newpqr.tipo}" >
+                                                                    <h:selectOneMenu class="form-control" value="#{pqrRequest.newpqr.tipo}" required="true" id="selecpqr" label="Seleccione campo" >
                                                                         <f:selectItem itemLabel="Seleccione de acuerdo al requerimiento que desea presentar"></f:selectItem>
                                                                         <f:selectItem itemLabel="Petición" itemValue="Petición"></f:selectItem>
                                                                         <f:selectItem itemLabel="Quejas/Reclamos" itemValue="Quejas/Reclamo"></f:selectItem>
                                                                         <f:selectItem itemLabel="Recurso de reposición" itemValue="Recurso de reposición"></f:selectItem>
                                                                         <f:selectItem itemLabel="Recurso de reposición y en subsidio" itemValue="Recurso de reposición y en subsidio de apelación"></f:selectItem>
                                                                     </h:selectOneMenu>
+                                                                    <strong><h:message for="selecpqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"  ><i class="fa fa-user bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText  html5:type="text" html5:placeholder="Nombre"  class="form-control" value="#{pqrRequest.newpqr.nombre}"/>
+                                                                    <h:inputText  html5:type="text" html5:placeholder="Nombre"  class="form-control" value="#{pqrRequest.newpqr.nombre}" required="true" id="nombrepqr" label="Dato Incompleto" html5:pattern="[A-Za-z ]+"/>
+                                                                    <strong><h:message for="nombrepqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText id="lname" html5:type="text" html5:placeholder="Apellido" class="form-control" value="#{pqrRequest.newpqr.apellido}"/>
+                                                                    <h:inputText html5:type="text" html5:placeholder="Apellido" class="form-control" value="#{pqrRequest.newpqr.apellido}" required="true" id="apellpqr" label="Dato Incompleto" html5:pattern="[A-Za-z ]+"/>
+                                                                    <strong><h:message for="apellpqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
+                                                            <!---->
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText  html5:type="text" html5:placeholder="ID de Usuario" class="form-control" value="#{pqrRequest.newpqr.usuarioIDUsuario}"/>
+                                                                    <h:inputText  html5:type="text" html5:placeholder="ID de Usuario" class="form-control" value="#{pqrRequest.newpqr.usuarioIDUsuario}" required="true" id="iduser" label="Dato Obligatorio" html5:pattern="[A-Za-z0-9 ]+"/>
+                                                                    <strong><h:message for="iduser" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
-                                                            
+
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-address-card"></i></span>
                                                                 <div class="col-md-3">
-                                                                    <h:selectOneMenu class="form-control" value="#{pqrRequest.newpqr.tipoDocumento}">
+                                                                    <h:selectOneMenu class="form-control" value="#{pqrRequest.newpqr.tipoDocumento}" required="true" id="selectddp" label="Seleccione campo" >
                                                                         <f:selectItem itemLabel="Tipo de documento" itemValue="Tipo de documento"></f:selectItem>
                                                                         <f:selectItem itemLabel="Cedula de ciudadania" itemValue="Cedula de ciudadania"></f:selectItem>
                                                                         <f:selectItem itemLabel="Cedula de extranjeria" itemValue="Cedula de extranjeria"></f:selectItem>
                                                                         <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"></f:selectItem>
                                                                         <f:selectItem itemLabel="NIT" itemValue="NIT"></f:selectItem>
                                                                     </h:selectOneMenu>
+                                                                    <strong><h:message for="selectddp" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-hashtag"></i></span>
                                                                 <div class="col-md-3">
-                                                                    <h:inputText id="email" html5:type="number" html5:placeholder="Número de identificación" class="form-control" value="#{pqrRequest.newpqr.numeroDocumento}"/>
+                                                                    <h:inputText html5:type="number" html5:placeholder="Número de identificación" class="form-control" value="#{pqrRequest.newpqr.numeroDocumento}" required="true" id="numpqr" label="Dato Obligatorio" html5:pattern="[0-9]+"/>
+                                                                    <strong><h:message for="numpqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText html5:type="text" html5:placeholder="Correo Electrónico" class="form-control" value="#{pqrRequest.newpqr.correo}"/>
+                                                                    <h:inputText html5:type="text" html5:placeholder="Correo Electrónico}" class="form-control" value="#{pqrRequest.newpqr.correo}" required="true" id="emailpqr" label="Dato Obligatorio" html5:pattern="[A-Za-z0-9@ ]+"/>
+                                                                    <strong><h:message for="emailpqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText id="phone" html5:type="text" html5:placeholder="Teléfono" class="form-control" value="#{pqrRequest.newpqr.telefono}"/>
+                                                                    <h:inputText html5:type="text" html5:placeholder="Teléfono" class="form-control" value="#{pqrRequest.newpqr.telefono}" required="true" id="telpqr" label="Dato Obligatorio" html5:pattern="[0-9]+"/>
+                                                                    <strong><h:message for="telpqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                                                                 <div class="col-md-8">
-                                                                    <h:inputText class="form-control" id="message" html5:placeholder="¿Cuáles son los hechos en que fundamenta el requerimiento?" html5:rows="7" value="#{pqrRequest.newpqr.descripcion}"/>
+                                                                    <h:inputText class="form-control" html5:placeholder="¿Cuáles son los hechos en que fundamenta el requerimiento?" html5:rows="7" value="#{pqrRequest.newpqr.descripcion}" required="true" id="txtpqr" label="Texto Obligatorio" html5:pattern="[A-Za-z0-9 ]+"/>
+                                                                    <strong><h:message for="txtpqr" style="color: #e50000;"></h:message></strong>
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <div class="col-md-12 text-center">
-                                                                    <h:commandButton type="submit" class="btn btn-danger btn-lg" value="Cancelar"/>
+                                                                    <h:commandButton type="reset" class="btn btn-danger btn-lg" value="Cancelar"/>
                                                                     <h:commandButton type="submit" class="btn btn-success btn-lg" value="Finalizar" action="#{pqrRequest.registrarPqr()}"/>
                                                                 </div>
                                                             </div>
@@ -162,16 +171,16 @@
                                 <tbody>
                                     <h:form >
                                         <c:forEach items="#{usuarioSesion.usuLogin.pqrCollection}" var="pqr2">
-                                            
-                                                <tr>
-                                                    <td>#{pqr2.idPqr}</td>
-                                                    <td>#{pqr2.usuarioIDUsuario.usuario}</td>
-                                                    <td>#{pqr2.descripcion}</td>
-                                                    <td>#{pqr2.respuesta}</td>
-                                                    <td></td>
-                                                    
-                                                    <td></td>
-                                                </tr>
+
+                                            <tr>
+                                                <td>#{pqr2.idPqr}</td>
+                                                <td>#{pqr2.usuarioIDUsuario.usuario}</td>
+                                                <td>#{pqr2.descripcion}</td>
+                                                <td>#{pqr2.respuesta}</td>
+                                                <td></td>
+
+                                                <td></td>
+                                            </tr>
                                         </c:forEach>
 
 

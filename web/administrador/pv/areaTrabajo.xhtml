@@ -101,27 +101,25 @@
 
 
                             <h:form role="form" class="form-horizontal">
-                                <h:messages></h:messages>
-
                                 <div class="form-group">
                                     <label class="col-6 control-label">Nombre</label>
-                                    <h:inputText  value="#{usuarioView.usuarioSelect.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
-
+                                    <h:inputText  value="#{usuarioView.usuarioSelect.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true" required="true" id="nombr" label="Dato incompleto" html5:pattern="[A-Za-z ]+"/>
+                                    <strong><h:message for="nombr" style="color: #e50000;"></h:message></strong>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-6 control-label">Apellido</label>
-                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.apellido}" rows="3" class="form-control" html5:placeholder="Apellido" html5:autofocus="true"/>
-
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.apellido}" rows="3" class="form-control" html5:placeholder="Apellido" html5:autofocus="true" required="true" id="apell" label="Dato incompleto" html5:pattern="[A-Za-z ]+"/>
+                                    <strong><h:message for="apell" style="color: #e50000;"></h:message></strong>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-6 control-label">Correo</label>
-                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.usuario}" rows="3" class="form-control" html5:placeholder="Correo" html5:autofocus="true"/>
-
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.usuario}" rows="3" class="form-control" html5:placeholder="Correo" html5:autofocus="true" required="true" id="mail" label="Dato obligatorio"/>
+                                    <strong><h:message for="mail" style="color: #e50000;"></h:message></strong>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-6 control-label">Contraseña</label>
-                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.contraseña}" rows="3" class="form-control" html5:placeholder="Contraseña" html5:autofocus="true"/>
-
+                                    <h:inputTextarea  value="#{usuarioView.usuarioSelect.contraseña}" rows="3" class="form-control" html5:placeholder="Contraseña" html5:autofocus="true" required="true" id="pass" label="Dato obligatorio"/>
+                                    <strong><h:message for="pass" style="color: #e50000;"></h:message></strong>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-6 control-label">Tipo de Documento</label>

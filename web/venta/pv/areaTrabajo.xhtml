@@ -5,7 +5,8 @@
       xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     
         <ui:composition >
             <!-- **********************************************************************************************************************************************************
@@ -45,27 +46,30 @@
 
                                         <br></br>
                                         <h:form class="needs-validation">
-                                            <h:messages></h:messages>
                                             <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                     <label for="firstName">Vendedor</label>
                                                     <i class="glyphicon glyphicon-user"></i>
-                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Vendedor" value="#{ventaRequest.newVen.nombreVendedor}" required=""/>
+                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Vendedor" value="#{ventaRequest.newVen.nombreVendedor}" required="true" id="nombreven" label="Dato incorrecto" html5:pattern="[A-Za-z ]+"/>
+                                                    <strong><h:message for="nombreven" style="color: #e50000;"></h:message></strong>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                     <label for="firstName">Nombre Cliente</label>
                                                     <i class="glyphicon glyphicon-user"></i>
-                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Cliente" value="#{ventaRequest.newVen.nombreComprador}" required=""/>
+                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Cliente" value="#{ventaRequest.newVen.nombreComprador}" required="true" id="nombrecli" label="Dato incorrecto" html5:pattern="[A-Za-z ]+"/>
+                                                    <strong><h:message for="nombrecli" style="color: #e50000;"></h:message></strong>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                     <label for="firstName">Dirreción</label>
                                                     <i class="glyphicon glyphicon-home"></i>
-                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Dirreción" value="#{ventaRequest.newVen.direccion}" required=""/>
+                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Dirreción" value="#{ventaRequest.newVen.direccion}" required="true" id="nombredir" label="Dirección incorrecta" html5:pattern="[A-Za-z0-9 ]+"/>
+                                                    <strong><h:message for="nombredir" style="color: #e50000;"></h:message></strong>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                     <label for="address">Descripción</label>
                                                     <i class="glyphicon glyphicon-pencil"></i>
-                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Descripción del producto" value="#{ventaRequest.newVen.descripcion}" required=""/>
+                                                    <h:inputText html5:type="text" class="form-control" html5:placeholder="Descripción del producto" value="#{ventaRequest.newVen.descripcion}" required="true" id="nombredes" label="Incompleto" html5:pattern="[A-Za-z0-9 ]+"/>
+                                                    <strong><h:message for="nombredes" style="color: #e50000;"></h:message></strong>
                                                 </div>
 
                                             </div>
@@ -73,12 +77,14 @@
                                             <div class="col-lg-3 mb-3">
                                                 <label for="firstName">Precio total</label>
                                                 <i class="glyphicon glyphicon-usd"></i>
-                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="Precio total}" value="#{ventaRequest.newVen.precioTotal}" required=""/>
+                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="Precio total" value="#{ventaRequest.newVen.precioTotal}" required="true" html5:pattern="[0-9]+" id="preciotot" label="Incompleto"/>
+                                                <strong><h:message for="preciotot" style="color: #e50000;"></h:message></strong>
                                             </div>
                                             <div class="col-lg-3 mb-3">
                                                 <label for="firstName">Pago total</label>
                                                 <i class="glyphicon glyphicon-usd"></i>
-                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="Pago total" value="#{ventaRequest.newVen.pagoTotal}" required=""/>
+                                                <h:inputText html5:type="number" class="form-control" html5:placeholder="Pago total" value="#{ventaRequest.newVen.pagoTotal}" required="true" html5:pattern="[0-9]+" id="pagotot" label="Incompleto"/>
+                                                <strong><h:message for="pagotot" style="color: #e50000;"></h:message></strong>
                                             </div>
                                             <br></br>
                                             <br></br>
@@ -90,7 +96,7 @@
 
 
                                             <h:commandButton class="btn btn-primary btn-block" value="Confirmar compra" action="#{ventaRequest.registrarVenta()}" style="width: 170px; text-align: center;"/>
-                                            <h:commandButton class="btn btn-danger btn-block" value="Cancelar compra" style="width: 170px; text-align: center;"/>
+                                            <h:commandButton class="btn btn-danger btn-block" value="Cancelar compra" style="width: 170px; text-align: center;" type="reset"/>
                                         </h:form>
                                         <br></br>
                                         <br></br>
@@ -102,22 +108,24 @@
 
                                         <div class="row">
                                             <h:form >
-                                                <h:messages></h:messages>
                                                 <h2>Agregue los productos vendidos para registrarlos</h2>
                                                 <div class="col-lg-5 mb-3">
                                                     <div class="form-group">
                                                         <label for="cantidad">Cantidad</label>
-                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Cantidad" value="#{ventasProductoRequest.venProReg.cantidad}" required=""/>
+                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Cantidad" value="#{ventasProductoRequest.venProReg.cantidad}" required="true" html5:pattern="[0-9]+" id="cant" label="Obligatorio"/>
+                                                        <strong><h:message for="cant" style="color: #e50000;"></h:message></strong>
                                                     </div>
                                                     
                                                     <br></br>
                                                     <div  class="form-group">
                                                         <label for="Código de producto">Codigo de producto</label>
-                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Producto" value="#{ventasProductoRequest.venProReg.productoIDProducto}" required=""/>
+                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Producto" value="#{ventasProductoRequest.venProReg.productoIDProducto}" required="true" html5:pattern="[0-9]+" id="codpro" label="Codigo obligatorio"/>
+                                                        <strong><h:message for="codpro" style="color: #e50000;"></h:message></strong>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Código de Venta">Codigo de Venta</label>
-                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Venta" value="#{ventasProductoRequest.venProReg.ventasIDVenta}" required=""/>
+                                                        <h:inputText html5:type="text" class="form-control" html5:placeholder="Venta" value="#{ventasProductoRequest.venProReg.ventasIDVenta}" required="true" html5:pattern="[0-9]+" id="codven" label="Codigo obligatorio"/>
+                                                        <strong><h:message for="codven" style="color: #e50000;"></h:message></strong>
                                                     </div>
                                                     
 

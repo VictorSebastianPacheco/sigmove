@@ -84,7 +84,7 @@
 
                                                     <h:commandButton style="display: none" id="tb3#{pt.IDProducto}" action="#{productoView.removerProducto(pt)}"></h:commandButton>
 
-                                                    <button type="button" onclick="$('#listaProductos\\:tb3#{pt.IDProducto}').click()" class="btn btn-round btn-danger">borrar</button>
+                                                    <button type="button" onclick="$('#listaProductos\\:tb3#{pt.IDProducto}').click()" class="btn btn-round btn-danger">Borrar</button>
 
                                                 </div>
                                                 <!-- end custombox -->
@@ -138,7 +138,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Registro Producto Nuevo}</h4>
+                            <h4 class="modal-title">Registro Producto Nuevo</h4>
                         </div>
                         <h:form  id="cargaArchivo" enctype="multipart/form-data">
                             <div class="modal-body">
@@ -147,11 +147,14 @@
                                         <f:selectItems itemLabel="#{cat.nombre}" itemValue="#{cat.idcategoria}" value="#{categoriasView.listaCategorias}" var="cat"></f:selectItems>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.nombre}" class="form-control" html5:placeholder="Nombre" html5:autofocus="true" required="true" id="nompro" label="Dato incorrecto" html5:pattern="[A-Za-z0-9 ]+"/>
+                                    <strong><h:message for="nompro" style="color: #e50000;"></h:message></strong>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.serial}" class="form-control" html5:placeholder="Serial" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.serial}" class="form-control" html5:placeholder="Serial" html5:autofocus="true" required="true" id="ser" label="Dato incorrecto" html5:pattern="[A-Za-z0-9]+"/>
+                                    <strong><h:message for="ser" style="color: #e50000;"></h:message></strong>
                                     <br/>
-                                    <h:inputText value="#{productoView.productoNuevo.cantidad}" class="form-control" html5:placeholder="Cantidad" html5:autofocus="true"/>
+                                    <h:inputText value="#{productoView.productoNuevo.cantidad}" class="form-control" html5:placeholder="Cantidad" html5:autofocus="true" required="true" html5:pattern="[0-9]+" id="cantpro" label="Dato obligatorio"/>
+                                    <strong><h:message for="cantpro" style="color: #e50000;"></h:message></strong>
                                     <br/>
                                     <h:selectOneMenu value="#{productoView.productoNuevo.unidadMedida}" class="form-control">
                                         <f:selectItem itemLabel="XS" itemValue="XS" ></f:selectItem>
@@ -162,16 +165,19 @@
                                         <f:selectItem itemLabel="XXL" itemValue="XXL" ></f:selectItem>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.precioUnitario}"  class="form-control" html5:placeholder="Valor Compra" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.precioUnitario}"  class="form-control" html5:placeholder="Valor Compra" html5:autofocus="true" required="true" html5:pattern="[0-9]+" id="valcom" label="Valor obligatorio"/>
+                                    <strong><h:message for="valcom" style="color: #e50000;"></h:message></strong>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.precioventa}"  class="form-control" html5:placeholder="Valor Venta" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.precioventa}"  class="form-control" html5:placeholder="Valor Venta" html5:autofocus="true" required="true" html5:pattern="[0-9]+" id="preven" label="Valor obligatorio"/>
+                                    <strong><h:message for="preven" style="color: #e50000;"></h:message></strong>
                                     <br/>
                                     <h:selectOneMenu value="#{productoView.productoNuevo.genero}" class="form-control">
                                         <f:selectItem itemLabel="Femenino" itemValue="Femenino" ></f:selectItem>
                                         <f:selectItem itemLabel="Masculino" itemValue="Masculino" ></f:selectItem>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:inputText  value="#{productoView.productoNuevo.marca}"  class="form-control" html5:placeholder="Marca" html5:autofocus="true"/>
+                                    <h:inputText  value="#{productoView.productoNuevo.marca}"  class="form-control" html5:placeholder="Marca" html5:autofocus="true" required="true" id="mar" label="Dato incorrecto" html5:pattern="[A-Za-z0-9 ]+"/>
+                                    <strong><h:message for="mar" style="color: #e50000;"></h:message></strong>
                                     <br/>
 
                                 </div>
