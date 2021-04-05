@@ -29,19 +29,46 @@ public class VentaproductoFacade extends AbstractFacade<Ventaproducto> implement
     public VentaproductoFacade() {
         super(Ventaproducto.class);
     }
-    
+
     @Override
     public boolean ingresarVentaProducto(int cantidad, int producto_ID_Producto, int ventas_ID_Venta) {
         try {
-            Query q = em.createNativeQuery("INSERT INTO bdsigmovenew.ventaproducto (cantidad, producto_ID_Producto, ventas_ID_Venta)");
-            q.setParameter(1, cantidad);
-            q.setParameter(2, producto_ID_Producto);
-            q.setParameter(3, ventas_ID_Venta);
-            q.executeUpdate();
-            return true; 
+            //INSERT INTO `bdsigmovenew`.`ventaproducto` (`cantidad`, `producto_ID_Producto`, `ventas_ID_Venta`) VALUES ('1', '1136', '9102');
+            //INSERT INTO `ventaproducto` (`codigo`, `cantidad`, `producto_ID_Producto`, `ventas_ID_Venta`) VALUES (NULL, '3', '1154', '9109');
+            Query nativeQuery = em.createNativeQuery("INSERT INTO ventaproducto (cantidad, producto_ID_Producto, ventas_ID_Venta) ");
+            nativeQuery.setParameter("cantidad", cantidad);
+            nativeQuery.setParameter("producto_ID_Producto", producto_ID_Producto);
+            nativeQuery.setParameter("ventas_ID_Venta", ventas_ID_Venta);
+            nativeQuery.executeUpdate();
+            return true;
         } catch (Exception e) {
-            return false ;
+            return false;
         }
     }
- 
+
+    /*
+    @Override
+    public boolean ingresarVentaProducto2(int cantidad, int producto_ID_Producto, int ventas_ID_Venta) {
+        try {
+           Query nativeQuery = em.createNativeQuery("INSERT INTO ventaproducto (cantidad, producto_ID_Producto, ventas_ID_Venta) VALUES(?,?,?)");
+            nativeQuery.setParameter(1, cantidad);
+            nativeQuery.setParameter(2, producto_ID_Producto);
+            nativeQuery.setParameter(3, ventas_ID_Venta);
+            nativeQuery.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+     */
+    @Override
+    public void insert(int cantidad, int producto_ID_Producto, int ventas_ID_Venta) {
+        em.getTransaction().begin();
+        Query query = em.createNativeQuery("INSERT INTO ventaproducto (cantidad, producto_ID_Producto, ventas_ID_Venta) ");
+        query.setParameter("cantidad", cantidad);
+        query.setParameter("producto_ID_Producto", producto_ID_Producto);
+        query.setParameter("ventas_ID_Venta", ventas_ID_Venta);
+        query.executeUpdate();
+        em.getTransaction().commit();
+    }
 }

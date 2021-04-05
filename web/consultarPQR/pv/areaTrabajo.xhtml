@@ -64,8 +64,12 @@
                                                     <td>
 
                                                         <h:commandButton  style="display: none" id="pqr#{pqr.idPqr}" action="#{consultaPqrView.PqrSelecionado(pqr)}"></h:commandButton>  
+                                                         <h:commandButton style="display: none" id="tbl#{pqr.idPqr}" action="#{consultaPqrView.removerPqr(pqr)}"></h:commandButton>
                                                         <button type="button" onclick="$('#listaPqr\\:pqr#{pqr.idPqr}').click()" class="btn btn-success btn-xs"><i><a class="btn btn-success btn-xs">Responder</a></i></button>
+                                                          
+                                                        <button type="button" onclick="$('#listaPqr\\:tbl#{pqr.idPqr}').click()" class="btn btn-danger btn-xs"><i> Eliminar</i></button>
 
+              
                                                     </td>
                                                     <td></td>
                                                 </tr>
@@ -134,7 +138,6 @@
                             <thead>
                                 <tr>
                                     <th>Codigo</th>
-                                    <th>Usuario</th>
                                     <th>Descripción</th>
                                     <th>Respuesta</th>
 
@@ -149,7 +152,6 @@
                                         
                                         <tr>
                                             <td>#{pqr.idPqr}</td>
-                                            <td></td>
                                             <td>#{pqr.descripcion}</td>
                                             <td>#{pqr.respuesta}</td>
                                             <td>

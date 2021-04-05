@@ -30,4 +30,7 @@ public interface PqrFacadeLocal {
 
     int count();
     
+    public boolean ingresarNuevaPqr(int cantidad, int producto_ID_Producto, int ventas_ID_Venta);
+    
+    
 }

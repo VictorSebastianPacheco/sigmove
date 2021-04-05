@@ -55,6 +55,18 @@ public class ConsultaPqrView implements Serializable{
         PrimeFaces.current().executeScript(mensajeAlerta);
 
     }
+    public void removerPqr(Pqr pqrRemov) {
+        String mensajeAlerta = "";
+        try {
+            pqrFacadeLocal.remove(pqrRemov);
+            listaPqr.remove(pqrRemov);
+            mensajeAlerta = "swal('Removido el Beneficio', '" + pqrRemov.getIdPqr() + ' ' + pqrRemov.getTipo() + "', 'success');";
+        } catch (Exception e) {
+            mensajeAlerta = "swal('Problemas eliminando a ', '" + pqrRemov.getIdPqr() + ' ' + pqrRemov.getTipo() + "', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeAlerta);
+
+    }
     
     
     public ConsultaPqrView() {

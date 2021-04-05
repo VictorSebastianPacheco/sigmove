@@ -32,4 +32,5 @@ public interface VentaproductoFacadeLocal {
     
     public boolean ingresarVentaProducto(int cantidad, int producto_ID_Producto, int ventas_ID_Venta);
     
+     public void insert(int cantidad, int producto_ID_Producto, int ventas_ID_Venta);
 }

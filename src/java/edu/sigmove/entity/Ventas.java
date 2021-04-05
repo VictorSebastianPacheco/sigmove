@@ -82,7 +82,7 @@ public class Ventas implements Serializable {
     @Size(max = 30)
     @Column(name = "Metodo_Pago")
     private String metodoPago;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ventasIDVenta", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ventasIDVenta", fetch = FetchType.LAZY)
     private Collection<Ventaproducto> ventaproductoCollection;
     @JoinColumn(name = "ID_Asistente", referencedColumnName = "ID_Asistente")
     @ManyToOne(fetch = FetchType.LAZY)
